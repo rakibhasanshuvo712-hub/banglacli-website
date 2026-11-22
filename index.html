@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BanglaCLI — The Trilingual AI Coding Agent in Your Terminal (Bangla, Banglish &amp; English)</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="BanglaCLI is a lightweight, serverless BYOK AI coding agent CLI that understands Bangla, Banglish, and English naturally. Features OpenCode-style Build & Plan modes, 4 autonomous tools, and 100% free tier AI support." />
+  <meta name="keywords" content="BanglaCLI, banglacli, AI coding agent, Bangla AI, Banglish AI, BYOK AI, terminal agent, Node.js CLI, Rakib Hasan Shuvo, Gemini AI, OpenRouter" />
+  <meta name="author" content="Rakib Hasan Shuvo" />
+  <meta name="theme-color" content="#0d1117" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BanglaCLI — The Trilingual AI Coding Agent in Your Terminal" />
+  <meta property="og:description" content="Build entire software projects directly from your terminal using natural Bangla, Banglish, or English. 100% BYOK, OpenCode-style Build & Plan modes." />
+  <meta property="og:url" content="https://github.com/rakibhasanshuvo712-hub/banglacli-website" />
+  <meta property="og:image" content="https://github.com/rakibhasanshuvo712-hub.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BanglaCLI — Trilingual AI Coding Agent" />
+  <meta name="twitter:description" content="Autonomous AI coding in your terminal with Bangla, Banglish & English fluency. 100% serverless & BYOK." />
+  <meta name="twitter:image" content="https://github.com/rakibhasanshuvo712-hub.png" />
+
+  <!-- Fonts: Inter, JetBrains Mono, and Hind Siliguri for Bengali -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN for instant utility styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: '#08090c',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+            bengali: ['Hind Siliguri', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-dark text-slate antialiased selection:bg-emerald-500 selection:text-black">
+
+  <!-- Glow Background Accents -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-[25%] left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-gradient-to-b from-emerald-500/15 via-teal-500/8 to-transparent blur-[140px] rounded-full"></div>
+    <div class="absolute top-[40%] -right-[15%] w-[600px] h-[600px] bg-cyan-500/10 blur-[150px] rounded-full"></div>
+    <div class="absolute bottom-[20%] -left-[15%] w-[600px] h-[600px] bg-red-500/10 blur-[150px] rounded-full"></div>
+  </div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-dark/80 border-b border-white/10 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo & Brand -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="relative w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 p-0.5 shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform duration-300">
+          <div class="w-full h-full bg-[#0d1117] rounded-[10px] flex items-center justify-center relative overflow-hidden">
+            <span class="absolute w-5 h-5 rounded-full bg-red-600/80 -top-1 -right-1 blur-[1px]"></span>
+            <span class="font-mono font-bold text-emerald-400 text-base">&gt;_</span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-lg text-white tracking-tight">Bangla<span class="text-emerald-400">CLI</span></span>
+            <span class="px-2 py-0.5 text-[11px] font-mono font-semibold uppercase tracking-wider rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">v1.2.0</span>
+          </div>
+          <span class="text-[11px] text-slate-400 -mt-0.5 font-bengali">বাংলা কোডিং এজেন্ট</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#features" class="hover:text-emerald-400 transition-colors">Features</a>
+        <a href="#simulator" class="hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Live Simulator
+        </a>
+        <a href="#modes" class="hover:text-emerald-400 transition-colors">Build &amp; Plan</a>
+        <a href="#providers" class="hover:text-emerald-400 transition-colors">Free Models</a>
+        <a href="#quickstart" class="hover:text-emerald-400 transition-colors">Docs</a>
+        <a href="#developer" class="hover:text-emerald-400 transition-colors">Developer</a>
+        <a href="#faq" class="hover:text-emerald-400 transition-colors">FAQ</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="hidden sm:flex items-center gap-3">
+        <a href="https://github.com/rakibhasanshuvo712-hub/banglacli-website" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-200 border border-white/10 flex items-center gap-2 text-sm font-medium transition-all duration-200 hover:border-white/20">
+          <i data-lucide="github" class="w-4 h-4"></i>
+          <span>GitHub</span>
+          <span class="bg-white/10 px-1.5 py-0.5 rounded text-[11px] text-emerald-400 font-mono">★ Star</span>
+        </a>
+        <a href="#quickstart" class="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-sm shadow-lg shadow-emerald-500/25 transition-all duration-200 hover:shadow-emerald-500/40 hover:-translate-y-0.5 flex items-center gap-2">
+          <i data-lucide="terminal" class="w-4 h-4"></i>
+          <span>Install CLI</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-400 hover:text-white focus:outline-none" aria-label="Toggle Menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-white/10 bg-dark/95 backdrop-blur-2xl px-6 py-5 space-y-4">
+      <a href="#features" class="block text-slate-300 hover:text-emerald-400 font-medium py-1">Features</a>
+      <a href="#simulator" class="block text-slate-300 hover:text-emerald-400 font-medium py-1">Live Terminal Simulator</a>
+      <a href="#modes" class="block text-slate-300 hover:text-emerald-400 font-medium py-1">Build &amp; Plan Modes</a>
+      <a href="#providers" class="block text-slate-300 hover:text-emerald-400 font-medium py-1">Free Models &amp; BYOK</a>
+      <a href="#quickstart" class="block text-slate-300 hover:text-emerald-400 font-medium py-1">Quickstart &amp; Commands</a>
+      <a href="#developer" class="block text-slate-300 hover:text-emerald-400 font-medium py-1">Developer: Rakib Hasan Shuvo</a>
+      <a href="#faq" class="block text-slate-300 hover:text-emerald-400 font-medium py-1">FAQ</a>
+      <div class="pt-3 border-t border-white/10 flex flex-col gap-2">
+        <a href="https://github.com/rakibhasanshuvo712-hub/banglacli-website" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-white/5 text-center text-slate-200 border border-white/10 flex items-center justify-center gap-2 font-medium">
+          <i data-lucide="github" class="w-4 h-4"></i> View on GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/rakib-hasan-shuvo-7110ba407" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-blue-600/20 text-center text-blue-400 border border-blue-500/30 flex items-center justify-center gap-2 font-medium">
+          <i data-lucide="linkedin" class="w-4 h-4"></i> Connect on LinkedIn
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- HERO SECTION -->
+    <section class="pt-20 pb-16 md:pt-28 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+      
+      <!-- Top Announcement Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs sm:text-sm font-medium mb-8 hover:bg-emerald-500/15 transition-all cursor-pointer">
+        <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span>🇧🇩 Open-Source &amp; 100% BYOK Serverless Coding Agent</span>
+        <span class="text-slate-500">•</span>
+        <span class="text-white font-mono">v1.2.0 Released</span>
+        <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-0.5"></i>
+      </div>
+
+      <!-- Main Heading with Trilingual Accent -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.12] max-w-5xl mx-auto">
+        Code Faster in <span class="gradient-text">বাংলা, Banglish</span> &amp; <span class="text-white">English</span> Directly in Your Terminal.
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+        <strong>BanglaCLI</strong> is an autonomous, serverless AI coding agent designed from the ground up for Bangladeshi and Bengali developers worldwide. Equipped with <span class="text-emerald-400 font-semibold">OpenCode-style Build &amp; Plan modes</span>, 4 autonomous file/system tools, and zero-cost free model integrations.
+      </p>
+
+      <!-- Quick Copy Install Command Box -->
+      <div class="mt-10 max-w-xl mx-auto">
+        <div class="p-1 rounded-2xl bg-gradient-to-r from-emerald-500/30 via-teal-500/20 to-cyan-500/30 shadow-2xl shadow-emerald-950/50">
+          <div class="bg-[#0b0e14] rounded-xl border border-white/10 p-2 sm:p-2.5 flex items-center justify-between gap-3">
+            
+            <!-- Command switcher tabs -->
+            <div class="flex items-center gap-1 bg-white/5 p-1 rounded-lg">
+              <button id="tab-npm" class="px-2.5 py-1 text-xs font-mono font-medium rounded text-emerald-400 bg-white/10 transition-all" onclick="switchInstallCommand('npm')">npm i -g</button>
+              <button id="tab-npx" class="px-2.5 py-1 text-xs font-mono font-medium rounded text-slate-400 hover:text-white transition-all" onclick="switchInstallCommand('npx')">npx</button>
+            </div>
+
+            <!-- Command string -->
+            <div class="flex items-center gap-2 overflow-x-auto py-1 px-2 font-mono text-sm text-slate-200">
+              <span class="text-emerald-400 select-none">$</span>
+              <span id="install-command-text" class="text-white font-semibold">npm install -g banglacli</span>
+            </div>
+
+            <!-- Copy button with check animation -->
+            <button id="copy-hero-btn" onclick="copyInstallCommand()" class="px-3.5 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/30 text-xs font-medium flex items-center gap-1.5 transition-all duration-200 hover:scale-105 active:scale-95 shrink-0" title="Copy to clipboard">
+              <i data-lucide="copy" class="w-3.5 h-3.5" id="copy-icon"></i>
+              <span id="copy-text">Copy</span>
+            </button>
+          </div>
+        </div>
+        <p class="mt-2.5 text-xs text-slate-500 font-mono">Requires Node.js 18+ • Zero setup fees • 100% BYOK Privacy</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a href="#simulator" class="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-base shadow-xl shadow-emerald-500/25 transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2">
+          <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+          <span>Try Live Terminal Simulator</span>
+        </a>
+        <a href="#modes" class="px-6 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-white font-medium text-base border border-white/10 transition-all duration-200 hover:border-white/20 flex items-center gap-2">
+          <i data-lucide="layers" class="w-4 h-4 text-emerald-400"></i>
+          <span>Explore Build &amp; Plan Modes</span>
+        </a>
+      </div>
+
+      <!-- Value Metrics Bar -->
+      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-10 border-t border-white/5">
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+          <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">100%</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1 font-medium">BYOK &amp; Serverless</div>
+        </div>
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">3 Languages</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1 font-medium font-bengali">বাংলা, Banglish, English</div>
+        </div>
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+          <div class="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono">2 Modes</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1 font-medium">⚡ BUILD &amp; 📋 PLAN</div>
+        </div>
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+          <div class="text-2xl sm:text-3xl font-extrabold text-amber-400 font-mono">0 BDT / $0</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1 font-medium">Free Tier Gemini &amp; OpenRouter</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE INTERACTIVE TERMINAL SIMULATOR SECTION -->
+    <section id="simulator" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+          <i data-lucide="terminal" class="w-3.5 h-3.5"></i> Interactive Terminal Playground
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Experience BanglaCLI Right Here in Your Browser
+        </h2>
+        <p class="mt-3 text-slate-400 text-base">
+          Click any preset scenario below to watch how BanglaCLI processes natural language, reasons autonomously, invokes tools, prompts for safety confirmation, and writes production code.
+        </p>
+      </div>
+
+      <!-- Simulator Preset Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6 max-w-4xl mx-auto">
+        <button onclick="runTerminalScenario('bangla')" id="btn-scenario-bangla" class="scenario-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-medium flex items-center gap-2 transition-all">
+          <span class="text-base">🇧🇩</span>
+          <span>বাংলা: Express REST API</span>
+        </button>
+        <button onclick="runTerminalScenario('banglish')" id="btn-scenario-banglish" class="scenario-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium flex items-center gap-2 transition-all">
+          <span class="text-base">🔤</span>
+          <span>Banglish: React Counter App</span>
+        </button>
+        <button onclick="runTerminalScenario('english')" id="btn-scenario-english" class="scenario-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium flex items-center gap-2 transition-all">
+          <span class="text-base">🇬🇧</span>
+          <span>English: Next.js Auth System</span>
+        </button>
+        <button onclick="runTerminalScenario('plan')" id="btn-scenario-plan" class="scenario-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium flex items-center gap-2 transition-all">
+          <span class="text-base">📋</span>
+          <span>PLAN Mode: Senior Architecture Audit</span>
+        </button>
+      </div>
+
+      <!-- The Terminal Window Container -->
+      <div class="max-w-4xl mx-auto rounded-2xl bg-[#090d13] border border-white/15 shadow-2xl shadow-black/80 overflow-hidden font-mono text-xs sm:text-sm">
+        
+        <!-- Terminal Titlebar -->
+        <div class="bg-[#111620] px-4 py-3 flex items-center justify-between border-b border-white/10 select-none">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+            <span class="ml-2 text-slate-400 text-xs font-semibold tracking-wide">banglacli terminal ~ (interactive)</span>
+          </div>
+
+          <!-- Active Mode & Model Badge inside Titlebar -->
+          <div class="flex items-center gap-2">
+            <div id="term-mode-pill" class="px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+              <span id="term-mode-icon">⚡</span>
+              <span id="term-mode-label">BUILD MODE</span>
+            </div>
+            <div id="term-model-pill" class="px-2.5 py-0.5 rounded text-[11px] font-medium bg-white/5 text-slate-300 border border-white/10 hidden sm:flex items-center gap-1">
+              <span>🤖</span>
+              <span id="term-model-name">gemini-2.0-flash</span>
+            </div>
+            <button onclick="clearTerminalLog()" class="text-slate-400 hover:text-white text-xs px-2 py-0.5 rounded hover:bg-white/10 transition-colors" title="Clear Screen">
+              Clear
+            </button>
+          </div>
+        </div>
+
+        <!-- Terminal Output Viewport -->
+        <div id="terminal-viewport" class="p-4 sm:p-6 min-h-[420px] max-h-[500px] overflow-y-auto space-y-3 scrollbar-thin scrollbar-thumb-white/10">
+          <!-- Terminal logs injected dynamically via JS -->
+        </div>
+
+        <!-- Interactive Terminal Prompt Input Bar -->
+        <div class="bg-[#0d121b] border-t border-white/10 p-3 sm:p-4 flex items-center gap-2 sm:gap-3">
+          <span class="text-emerald-400 font-bold select-none text-sm sm:text-base">banglacli &gt;</span>
+          <input 
+            type="text" 
+            id="term-user-input" 
+            placeholder="Type a command (/plan, /build, /model, /help) or prompt in বাংলা / Banglish / English..." 
+            class="w-full bg-transparent border-0 text-white placeholder-slate-500 focus:outline-none focus:ring-0 text-xs sm:text-sm font-mono"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button onclick="submitCustomPrompt()" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs shrink-0 flex items-center gap-1 transition-all">
+            <span>Send</span>
+            <i data-lucide="send" class="w-3 h-3"></i>
+          </button>
+        </div>
+
+        <!-- Quick Slash Command Hints -->
+        <div class="bg-[#090d13] px-4 py-2 border-t border-white/5 flex flex-wrap items-center justify-between text-[11px] text-slate-500">
+          <div class="flex items-center gap-3">
+            <span>Commands:</span>
+            <button onclick="executeQuickCommand('/plan')" class="text-cyan-400 hover:underline">/plan</button>
+            <button onclick="executeQuickCommand('/build')" class="text-emerald-400 hover:underline">/build</button>
+            <button onclick="executeQuickCommand('/mode')" class="text-amber-400 hover:underline">/mode</button>
+            <button onclick="executeQuickCommand('/model')" class="text-purple-400 hover:underline">/model</button>
+            <button onclick="executeQuickCommand('/help')" class="text-slate-300 hover:underline">/help</button>
+          </div>
+          <span class="text-slate-600">Press Enter to run in simulator</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CORE FEATURES SECTION -->
+    <section id="features" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+          <i data-lucide="cpu" class="w-3.5 h-3.5"></i> Autonomous Capabilities
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          Built for Developers Who Think in Bangla &amp; Code for the World.
+        </h2>
+        <p class="mt-4 text-slate-400 text-base sm:text-lg">
+          No awkward Google Translate jargon. BanglaCLI is tuned to understand colloquial Bangladeshi development language, phonetic Banglish, and standard software engineering English.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Feature 1: Trilingual Comprehension -->
+        <div class="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-emerald-500/30 transition-all duration-300 group hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-5 group-hover:scale-110 transition-transform">
+            <span class="text-2xl">🇧🇩</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Native Trilingual Comprehension</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Express yourself naturally in proper বাংলা (<span class="font-bengali text-emerald-300">"একটি auth middleware বানাও"</span>), Banglish (<span class="text-emerald-300">"ekta mongo schema banai daw"</span>), or English. BanglaCLI responds in the same language.
+          </p>
+          <div class="bg-black/40 rounded-lg p-2.5 font-mono text-xs text-slate-300 border border-white/5">
+            <span class="text-emerald-400">&gt;</span> <span class="font-bengali">"React-এ একটা ড্রপডাউন মেনু বানাও"</span>
+          </div>
+        </div>
+
+        <!-- Feature 2: Dual Modes: Build & Plan -->
+        <div class="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-all duration-300 group hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="toggle-left" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Dual Modes: BUILD &amp; PLAN</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Switch effortlessly between <strong class="text-emerald-400">⚡ BUILD Mode</strong> (creates files, installs packages, runs scripts) and <strong class="text-cyan-400">📋 PLAN Mode</strong> (read-only architectural auditor that drafts roadmaps without touching files).
+          </p>
+          <div class="bg-black/40 rounded-lg p-2.5 font-mono text-xs text-slate-300 border border-white/5 flex items-center justify-between">
+            <span class="text-cyan-400">/plan</span>
+            <span class="text-slate-500">Read-Only Safe Audit</span>
+          </div>
+        </div>
+
+        <!-- Feature 3: 100% BYOK & Serverless -->
+        <div class="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-amber-500/30 transition-all duration-300 group hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="key" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">100% BYOK &amp; Serverless</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Zero subscription fees and zero proxy servers. Your API keys are saved locally on your own machine using secure OS storage. All requests go directly to your chosen AI provider.
+          </p>
+          <div class="bg-black/40 rounded-lg p-2.5 font-mono text-xs text-amber-300 border border-white/5">
+            <span>🔒 Direct Client-to-API • 0 Telemetry</span>
+          </div>
+        </div>
+
+        <!-- Feature 4: 4 Autonomous Native Tools -->
+        <div class="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-purple-500/30 transition-all duration-300 group hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="wrench" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">4 Autonomous Native Tools</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            The AI inspects your codebase with <code class="text-purple-300">list_files</code> and <code class="text-purple-300">read_file</code>, creates nested code with <code class="text-purple-300">write_file</code>, and executes terminal commands with <code class="text-purple-300">run_command</code>.
+          </p>
+          <div class="bg-black/40 rounded-lg p-2.5 font-mono text-xs text-purple-300 border border-white/5">
+            <span>🛠️ Complete Full-Stack Project Scaffolding</span>
+          </div>
+        </div>
+
+        <!-- Feature 5: Safety First Confirmation -->
+        <div class="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-red-500/30 transition-all duration-300 group hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="shield-check" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Interactive Safety Guardrails</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Never worry about accidental deletions. Before executing any write or shell command, BanglaCLI displays the diff/command and prompts for approval: <code class="text-red-300">[Y/n]</code> or <code class="text-emerald-300">[a]</code> (Approve all for session).
+          </p>
+          <div class="bg-black/40 rounded-lg p-2.5 font-mono text-xs text-slate-400 border border-white/5">
+            <span>[CONFIRM] Execute 'npm install' [Y/n/a]:</span>
+          </div>
+        </div>
+
+        <!-- Feature 6: Live Status Bar & Slash Commands -->
+        <div class="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-emerald-500/30 transition-all duration-300 group hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="sliders" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Live Status Bar &amp; Commands</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Always see your active model, provider, and mode directly above the prompt. Switch models seamlessly on the fly with <code class="text-emerald-300">/model</code>, change keys with <code class="text-emerald-300">/config</code>, and wipe chat with <code class="text-emerald-300">/clear</code>.
+          </p>
+          <div class="bg-black/40 rounded-lg p-2.5 font-mono text-xs text-emerald-400 border border-white/5">
+            <span>[⚡ BUILD MODE] [🤖 openrouter/free]</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- OPENCODE BUILD & PLAN MODES DEEP DIVE -->
+    <section id="modes" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+            <i data-lucide="layers" class="w-3.5 h-3.5"></i> Dual Architecture
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            OpenCode-Style Dual Modes: ⚡ BUILD vs 📋 PLAN
+          </h2>
+          <p class="mt-3 text-slate-400 text-base">
+            Engineered to provide the freedom of autonomous agentic development while keeping high-stakes codebases safe.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Mode 1: BUILD MODE -->
+          <div class="p-6 sm:p-8 rounded-2xl bg-[#0b0e14] border border-emerald-500/30 relative overflow-hidden">
+            <div class="absolute top-0 right-0 px-4 py-1.5 bg-emerald-500 text-black font-mono font-bold text-xs uppercase rounded-bl-xl">
+              Default Mode
+            </div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-3xl">⚡</span>
+              <div>
+                <h3 class="text-xl font-bold text-white">BUILD Mode</h3>
+                <p class="text-xs font-mono text-emerald-400">Switch command: /build or /mode</p>
+              </div>
+            </div>
+            <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+              Full autonomous full-stack developer. Can create files, directories, refactor legacy code, install npm dependencies, and run test suites.
+            </p>
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-400">
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <span><code class="text-white">write_file</code>: Creates &amp; edits project files</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <span><code class="text-white">run_command</code>: Runs build tools, npm, and git</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <span>Safety verification before file write or command execution</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <span>"Yes to all" session approval for high-speed workflows</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Mode 2: PLAN MODE -->
+          <div class="p-6 sm:p-8 rounded-2xl bg-[#0b0e14] border border-cyan-500/30 relative overflow-hidden">
+            <div class="absolute top-0 right-0 px-4 py-1.5 bg-cyan-500 text-black font-mono font-bold text-xs uppercase rounded-bl-xl">
+              Safe Mode
+            </div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-3xl">📋</span>
+              <div>
+                <h3 class="text-xl font-bold text-white">PLAN Mode</h3>
+                <p class="text-xs font-mono text-cyan-400">Switch command: /plan or /mode</p>
+              </div>
+            </div>
+            <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+              Read-only Senior Software Architect. Thoroughly investigates directory structures and reads code without risking any accidental edits.
+            </p>
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-400">
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+                <span><code class="text-white">list_files</code> &amp; <code class="text-white">read_file</code> enabled for exploration</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="slash" class="w-4 h-4 text-red-400 shrink-0"></i>
+                <span><code class="text-slate-400">write_file</code> &amp; <code class="text-slate-400">run_command</code> strictly disabled</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+                <span>Produces detailed step-by-step implementation plans</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+                <span>Perfect for code reviews, architecture discussions, and audits</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FREE AI PROVIDERS & BYOK SECTION -->
+    <section id="providers" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+          <i data-lucide="zap" class="w-3.5 h-3.5"></i> 100% Free Tier Options
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          Code with Free High-Performance AI Models
+        </h2>
+        <p class="mt-4 text-slate-400 text-base sm:text-lg">
+          No credit card required. BanglaCLI connects directly to the best free AI APIs available today.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Provider 1: Google Gemini -->
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-emerald-500/30 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-mono font-semibold">Recommended</span>
+              <span class="text-xs text-slate-500 font-mono">15 RPM Free</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Google Gemini</h3>
+            <p class="text-slate-400 text-sm mb-4">
+              Official SDK integration using Google's next-gen Gemini models with up to 1M token context window.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-slate-300 mb-6">
+              <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between">
+                <span>gemini-2.0-flash</span>
+                <span class="text-emerald-400">Default</span>
+              </div>
+              <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between">
+                <span>gemini-1.5-flash</span>
+                <span class="text-slate-400">High speed</span>
+              </div>
+              <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between">
+                <span>gemini-3.8-flash</span>
+                <span class="text-cyan-400">Next-gen</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-center font-medium text-xs flex items-center justify-center gap-1.5 transition-all">
+            <span>Get Free Key (Google AI Studio)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Provider 2: OpenRouter Free Models -->
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-mono font-semibold">Multi-Model</span>
+              <span class="text-xs text-slate-500 font-mono">Zero Downtime</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">OpenRouter Free Tier</h3>
+            <p class="text-slate-400 text-sm mb-4">
+              Access top free models without rate limit locks using the auto-routing <code class="text-cyan-300">openrouter/free</code> gateway.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-slate-300 mb-6">
+              <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between">
+                <span>openrouter/free</span>
+                <span class="text-cyan-400">Auto Route</span>
+              </div>
+              <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between">
+                <span>particle-1:free</span>
+                <span class="text-slate-400">1M Context</span>
+              </div>
+              <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between">
+                <span>gemma-4-31b-it:free</span>
+                <span class="text-purple-400">Deep Reasoning</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://openrouter.ai/keys" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-center font-medium text-xs flex items-center justify-center gap-1.5 transition-all">
+            <span>Get Free Key (OpenRouter)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Provider 3: Custom OpenAI / Groq / Ollama -->
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-purple-500/30 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-mono font-semibold">Custom / Offline</span>
+              <span class="text-xs text-slate-500 font-mono">100% Private</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Groq, DeepSeek &amp; Ollama</h3>
+            <p class="text-slate-400 text-sm mb-4">
+              Connect to any custom OpenAI-compatible endpoint, including lightning-fast Groq Cloud or 100% offline local models via Ollama.
+            </p>
+            <div class="space-y-1.5 font-mono text-xs text-slate-300 mb-6">
+              <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between">
+                <span>Groq (Llama 3.3 70B)</span>
+                <span class="text-purple-400">500+ T/s</span>
+              </div>
+              <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between">
+                <span>Ollama Local</span>
+                <span class="text-amber-400">Offline</span>
+              </div>
+              <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between">
+                <span>DeepSeek Chat</span>
+                <span class="text-blue-400">API</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 border border-purple-500/30 text-center font-medium text-xs flex items-center justify-center gap-1.5 transition-all">
+            <span>Get Free Key (Groq Cloud)</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP-BY-STEP QUICKSTART & CHEATSHEET -->
+    <section id="quickstart" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+          <i data-lucide="book-open" class="w-3.5 h-3.5"></i> Quickstart Guide
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          Up and Running in 30 Seconds
+        </h2>
+        <p class="mt-4 text-slate-400 text-base sm:text-lg">
+          Install globally or run zero-install via npx. The interactive wizard takes care of everything.
+        </p>
+      </div>
+
+      <!-- 3-Step Process -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 relative">
+          <div class="w-9 h-9 rounded-full bg-emerald-500 text-black font-bold font-mono text-sm flex items-center justify-center mb-4">1</div>
+          <h3 class="text-lg font-bold text-white mb-2">Install Globally</h3>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+            Install banglacli globally using npm, pnpm, or yarn to access the command anywhere.
+          </p>
+          <div class="bg-black/50 p-3 rounded-lg border border-white/5 font-mono text-xs text-emerald-400 flex items-center justify-between">
+            <span>npm install -g banglacli</span>
+            <button onclick="copySnippet('npm install -g banglacli')" class="text-slate-400 hover:text-white" title="Copy"><i data-lucide="copy" class="w-3.5 h-3.5"></i></button>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 relative">
+          <div class="w-9 h-9 rounded-full bg-emerald-500 text-black font-bold font-mono text-sm flex items-center justify-center mb-4">2</div>
+          <h3 class="text-lg font-bold text-white mb-2">Run Onboarding Setup</h3>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+            Type <code class="text-white">banglacli</code>. If it's your first run, the Clack interactive prompt will guide you to pick a provider and save your free key.
+          </p>
+          <div class="bg-black/50 p-3 rounded-lg border border-white/5 font-mono text-xs text-emerald-400 flex items-center justify-between">
+            <span>banglacli</span>
+            <button onclick="copySnippet('banglacli')" class="text-slate-400 hover:text-white" title="Copy"><i data-lucide="copy" class="w-3.5 h-3.5"></i></button>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 relative">
+          <div class="w-9 h-9 rounded-full bg-emerald-500 text-black font-bold font-mono text-sm flex items-center justify-center mb-4">3</div>
+          <h3 class="text-lg font-bold text-white mb-2">Start Coding</h3>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+            Tell BanglaCLI what to build in Bangla, Banglish, or English. Confirm tool actions and watch your software come to life!
+          </p>
+          <div class="bg-black/50 p-3 rounded-lg border border-white/5 font-mono text-xs text-emerald-400 font-bengali">
+            <span>&gt; একটি Todo App বানাও React দিয়ে</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Command Cheatsheet Table -->
+      <div class="rounded-2xl bg-[#090d13] border border-white/10 overflow-hidden">
+        <div class="p-5 border-b border-white/10 bg-white/[0.02] flex items-center justify-between">
+          <h3 class="font-bold text-white text-base flex items-center gap-2">
+            <i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i>
+            Command &amp; Slash Command Reference
+          </h3>
+          <span class="text-xs text-slate-500 font-mono">banglacli CLI v1.2.0</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left font-mono text-xs sm:text-sm">
+            <thead class="bg-white/[0.03] text-slate-400 border-b border-white/5">
+              <tr>
+                <th class="p-3.5 sm:p-4">Command</th>
+                <th class="p-3.5 sm:p-4">Type</th>
+                <th class="p-3.5 sm:p-4">Description</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-slate-300">
+              <tr>
+                <td class="p-3.5 sm:p-4 text-emerald-400 font-bold">banglacli</td>
+                <td class="p-3.5 sm:p-4 text-slate-400">Terminal CLI</td>
+                <td class="p-3.5 sm:p-4">Starts the trilingual interactive AI coding session.</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 sm:p-4 text-emerald-400 font-bold">banglacli config</td>
+                <td class="p-3.5 sm:p-4 text-slate-400">Terminal CLI</td>
+                <td class="p-3.5 sm:p-4">Runs the interactive provider, model &amp; API key setup wizard.</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 sm:p-4 text-emerald-400 font-bold">banglacli list-models</td>
+                <td class="p-3.5 sm:p-4 text-slate-400">Terminal CLI</td>
+                <td class="p-3.5 sm:p-4">Displays free Gemini &amp; OpenRouter models with context limits.</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 sm:p-4 text-cyan-400 font-bold">/mode, /plan, /build</td>
+                <td class="p-3.5 sm:p-4 text-slate-400">Chat Slash Command</td>
+                <td class="p-3.5 sm:p-4">Switches between autonomous BUILD mode and read-only PLAN mode.</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 sm:p-4 text-cyan-400 font-bold">/model</td>
+                <td class="p-3.5 sm:p-4 text-slate-400">Chat Slash Command</td>
+                <td class="p-3.5 sm:p-4">Interactive menu to switch the active AI model on the fly.</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 sm:p-4 text-cyan-400 font-bold">/clear</td>
+                <td class="p-3.5 sm:p-4 text-slate-400">Chat Slash Command</td>
+                <td class="p-3.5 sm:p-4">Clears the conversation context window and terminal screen.</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 sm:p-4 text-cyan-400 font-bold">/exit, /quit</td>
+                <td class="p-3.5 sm:p-4 text-slate-400">Chat Slash Command</td>
+                <td class="p-3.5 sm:p-4">Safely terminates the session and returns to normal terminal.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVELOPER SPOTLIGHT SECTION -->
+    <section id="developer" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="p-8 sm:p-14 rounded-3xl bg-gradient-to-br from-[#0c1017] via-[#090d13] to-[#0d131f] border border-white/10 relative overflow-hidden shadow-2xl">
+        
+        <!-- Glow orb behind card -->
+        <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
+          
+          <!-- Developer Profile Image & Badges -->
+          <div class="relative shrink-0">
+            <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden p-1 bg-gradient-to-br from-emerald-500 via-teal-400 to-cyan-500 shadow-xl shadow-emerald-950/60">
+              <img 
+                src="https://github.com/rakibhasanshuvo712-hub.png" 
+                alt="Rakib Hasan Shuvo" 
+                class="w-full h-full object-cover rounded-xl bg-slate-900"
+                onerror="this.src='https://ui-avatars.com/api/?name=Rakib+Hasan+Shuvo&background=006A4E&color=fff&size=256'"
+              />
+            </div>
+            <div class="absolute -bottom-3 -right-3 px-3 py-1 bg-emerald-500 text-black font-bold font-mono text-xs rounded-full shadow-lg border border-black/20 flex items-center gap-1">
+              <span>🇧🇩</span> Bangladesh
+            </div>
+          </div>
+
+          <!-- Developer Bio & Info -->
+          <div class="flex-1 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+              <i data-lucide="code-2" class="w-3.5 h-3.5"></i> Architect &amp; Creator
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Rakib Hasan Shuvo
+            </h2>
+            <p class="text-emerald-400 font-medium text-base sm:text-lg mt-1">
+              Full-Stack Web Developer &amp; Open-Source Architect
+            </p>
+            <p class="text-slate-300 text-sm sm:text-base mt-4 leading-relaxed max-w-2xl">
+              Based in Savar, Dhaka, Bangladesh. Rakib built <strong>BanglaCLI</strong> to bridge the gap between cutting-edge autonomous AI coding agents and the vibrant Bengali software developer community — making world-class AI tooling accessible, affordable, and natively bilingual for everyone.
+            </p>
+
+            <!-- Skill Tags -->
+            <div class="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-2">
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-slate-300">TypeScript / Node.js</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-slate-300">Next.js &amp; React</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-slate-300">MERN Stack</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-slate-300">AI Agent Architecture</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-slate-300">CLI &amp; Developer Tools</span>
+            </div>
+
+            <!-- Social and Contact Links -->
+            <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              <a href="https://github.com/rakibhasanshuvo712-hub" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/15 text-sm font-medium flex items-center gap-2 transition-all hover:scale-105">
+                <i data-lucide="github" class="w-4 h-4"></i>
+                <span>github.com/rakibhasanshuvo712-hub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/rakib-hasan-shuvo-7110ba407?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-[#0077b5]/20 hover:bg-[#0077b5]/30 text-sky-300 border border-[#0077b5]/40 text-sm font-medium flex items-center gap-2 transition-all hover:scale-105">
+                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                <span>LinkedIn Profile</span>
+              </a>
+              <a href="mailto:rakibhasanshuvo712@gmail.com" class="px-4 py-2.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-sm font-medium flex items-center gap-2 transition-all hover:scale-105">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                <span>rakibhasanshuvo712@gmail.com</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FREQUENTLY ASKED QUESTIONS (FAQ) -->
+    <section id="faq" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+          <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Common Inquiries
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Frequently Asked Questions
+        </h2>
+      </div>
+
+      <div class="space-y-4" id="faq-container">
+        
+        <!-- FAQ 1 -->
+        <div class="faq-card rounded-2xl bg-white/[0.02] border border-white/10 overflow-hidden transition-all">
+          <button class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-white text-base sm:text-lg focus:outline-none">
+            <span>Is BanglaCLI really 100% free to use?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform"></i>
+          </button>
+          <div class="faq-answer px-5 sm:px-6 pb-6 text-slate-300 text-sm leading-relaxed hidden">
+            Yes! BanglaCLI itself is free and open-source under the MIT license. Furthermore, it connects natively to free tiers: Google AI Studio provides 15 requests per minute with 1M tokens free of charge for models like <code>gemini-2.0-flash</code>. OpenRouter also offers a rich catalog of free coding models.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-card rounded-2xl bg-white/[0.02] border border-white/10 overflow-hidden transition-all">
+          <button class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-white text-base sm:text-lg focus:outline-none">
+            <span>How does BYOK work? Are my API keys safe?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform"></i>
+          </button>
+          <div class="faq-answer px-5 sm:px-6 pb-6 text-slate-300 text-sm leading-relaxed hidden">
+            BYOK stands for <em>Bring Your Own Key</em>. BanglaCLI is 100% serverless: there are zero middleman proxy servers. Your keys are saved directly on your local machine using the encrypted config store (<code>conf</code>) in your user home directory. All requests travel directly from your terminal to Google or OpenRouter.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-card rounded-2xl bg-white/[0.02] border border-white/10 overflow-hidden transition-all">
+          <button class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-white text-base sm:text-lg focus:outline-none">
+            <span>Can I switch between BUILD mode and PLAN mode during a session?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform"></i>
+          </button>
+          <div class="faq-answer px-5 sm:px-6 pb-6 text-slate-300 text-sm leading-relaxed hidden">
+            Yes! Simply type <code>/plan</code> to activate read-only mode, or <code>/build</code> to return to autonomous creation mode. You can also type <code>/mode</code> to toggle between them. The live status bar above the prompt updates immediately.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-card rounded-2xl bg-white/[0.02] border border-white/10 overflow-hidden transition-all">
+          <button class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-white text-base sm:text-lg focus:outline-none">
+            <span>What happens if the AI attempts to overwrite my existing files?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform"></i>
+          </button>
+          <div class="faq-answer px-5 sm:px-6 pb-6 text-slate-300 text-sm leading-relaxed hidden">
+            BanglaCLI has built-in safety guardrails. Before executing any <code>write_file</code> or <code>run_command</code>, it displays the proposed action and halts for user confirmation <code>[Y/n]</code>. You can approve individual actions or type <code>a</code> (Yes to all) to auto-approve actions for that specific session.
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-card rounded-2xl bg-white/[0.02] border border-white/10 overflow-hidden transition-all">
+          <button class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-white text-base sm:text-lg focus:outline-none">
+            <span>Can it run completely offline with local models?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform"></i>
+          </button>
+          <div class="faq-answer px-5 sm:px-6 pb-6 text-slate-300 text-sm leading-relaxed hidden">
+            Yes. By choosing the "Custom OpenAI-Compatible" provider in <code>banglacli config</code>, you can point the base URL to your local Ollama server (e.g. <code>http://localhost:11434/v1</code>) and run models like <code>qwen2.5-coder</code> completely air-gapped without internet access.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION BANNER -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="p-8 sm:p-14 rounded-3xl bg-gradient-to-r from-emerald-950/40 via-[#0a111a] to-cyan-950/40 border border-emerald-500/20 text-center relative overflow-hidden">
+        <div class="max-w-3xl mx-auto relative z-10">
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+            Ready to Build Next-Gen Software in বাংলা?
+          </h2>
+          <p class="mt-4 text-slate-300 text-base sm:text-lg">
+            Download BanglaCLI today and supercharge your coding workflow in your native language.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <button onclick="copySnippet('npm install -g banglacli')" class="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-base shadow-xl shadow-emerald-500/25 transition-all flex items-center gap-2">
+              <i data-lucide="terminal" class="w-4 h-4"></i>
+              <span>npm install -g banglacli</span>
+            </button>
+            <a href="https://github.com/rakibhasanshuvo712-hub/banglacli-website" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-medium text-base border border-white/15 transition-all flex items-center gap-2">
+              <i data-lucide="github" class="w-4 h-4"></i>
+              <span>Star on GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 bg-[#07090d] text-slate-400 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-mono font-bold text-sm">
+          &gt;_
+        </div>
+        <div>
+          <span class="text-white font-bold text-sm">BanglaCLI</span>
+          <span class="text-slate-500 text-xs ml-2 font-mono">MIT License</span>
+        </div>
+      </div>
+
+      <p class="text-xs text-slate-500 text-center">
+        Designed &amp; Developed with ❤️ by <a href="https://github.com/rakibhasanshuvo712-hub" target="_blank" class="text-slate-300 hover:text-emerald-400 underline decoration-slate-600">Rakib Hasan Shuvo</a> in Savar, Dhaka, Bangladesh 🇧🇩
+      </p>
+
+      <div class="flex items-center gap-4 text-xs">
+        <a href="https://github.com/rakibhasanshuvo712-hub/banglacli-website" target="_blank" class="hover:text-emerald-400 transition-colors">GitHub Repository</a>
+        <span class="text-slate-700">•</span>
+        <a href="https://www.linkedin.com/in/rakib-hasan-shuvo-7110ba407?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="hover:text-emerald-400 transition-colors">LinkedIn</a>
+        <span class="text-slate-700">•</span>
+        <a href="mailto:rakibhasanshuvo712@gmail.com" class="hover:text-emerald-400 transition-colors">Contact</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-emerald-500 text-black font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-2xl flex items-center gap-2 pointer-events-none">
+    <i data-lucide="check-circle" class="w-4 h-4"></i>
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>

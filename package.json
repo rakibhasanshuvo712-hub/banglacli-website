@@ -1,0 +1,29 @@
+{
+  "name": "banglacli-website",
+  "version": "1.0.0",
+  "description": "Official website and documentation for BanglaCLI — The Trilingual AI Coding Agent in Your Terminal (Bangla, Banglish & English).",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "banglacli",
+    "ai",
+    "coding-agent",
+    "bangla",
+    "banglish",
+    "terminal",
+    "byok",
+    "developer-tools"
+  ],
+  "author": "Rakib Hasan Shuvo <rakibhasanshuvo712@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rakibhasanshuvo712-hub/banglacli-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rakibhasanshuvo712-hub/banglacli-website/issues"
+  },
+  "homepage": "https://github.com/rakibhasanshuvo712-hub/banglacli-website#readme"
+}
