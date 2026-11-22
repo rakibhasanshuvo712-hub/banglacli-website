@@ -1,5 +1,5 @@
 /**
- * BanglaCLI Official Website Interactive Script
+ * BanglaCLI Official Website Interactive Engine
  * Author: Rakib Hasan Shuvo
  */
 
@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Initialize Canvas Starfield Background
+  initStarfield();
+
   // Initialize Terminal with default Bangla scenario
   runTerminalScenario('bangla');
 
@@ -42,31 +45,101 @@ document.addEventListener('DOMContentLoaded', () => {
   setupFAQ();
 });
 
-// Install Command Switcher
-let activeInstallType = 'npm';
+// ==========================================
+// STARFIELD CANVAS BACKGROUND
+// ==========================================
+function initStarfield() {
+  const canvas = document.getElementById('star-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
 
-function switchInstallCommand(type) {
-  activeInstallType = type;
-  const tabNpm = document.getElementById('tab-npm');
-  const tabNpx = document.getElementById('tab-npx');
-  const commandText = document.getElementById('install-command-text');
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
 
-  if (type === 'npm') {
-    tabNpm.className = 'px-2.5 py-1 text-xs font-mono font-medium rounded text-emerald-400 bg-white/10 transition-all';
-    tabNpx.className = 'px-2.5 py-1 text-xs font-mono font-medium rounded text-slate-400 hover:text-white transition-all';
-    commandText.textContent = 'npm install -g banglacli';
-  } else {
-    tabNpx.className = 'px-2.5 py-1 text-xs font-mono font-medium rounded text-emerald-400 bg-white/10 transition-all';
-    tabNpm.className = 'px-2.5 py-1 text-xs font-mono font-medium rounded text-slate-400 hover:text-white transition-all';
-    commandText.textContent = 'npx banglacli';
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+
+  const numStars = Math.min(65, Math.floor((width * height) / 18000));
+  const stars = [];
+
+  for (let i = 0; i < numStars; i++) {
+    stars.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: Math.random() * 1.5 + 0.5,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      alpha: Math.random() * 0.7 + 0.3
+    });
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < stars.length; i++) {
+      const star = stars[i];
+      star.x += star.vx;
+      star.y += star.vy;
+
+      if (star.x < 0) star.x = width;
+      if (star.x > width) star.x = 0;
+      if (star.y < 0) star.y = height;
+      if (star.y > height) star.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0, 229, 153, ${star.alpha * 0.6})`;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = '#00e599';
+      ctx.fill();
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+// ==========================================
+// PACKAGE MANAGER SWITCHER
+// ==========================================
+let activePM = 'npm';
+const pmCommands = {
+  npm: 'npm install -g banglacli',
+  npx: 'npx banglacli',
+  pnpm: 'pnpm add -g banglacli',
+  bun: 'bun add -d banglacli'
+};
+
+function switchPackageManager(pm) {
+  activePM = pm;
+  const pms = ['npm', 'npx', 'pnpm', 'bun'];
+  
+  pms.forEach(p => {
+    const btn = document.getElementById(`pm-${p}`);
+    if (btn) {
+      if (p === pm) {
+        btn.className = 'px-2.5 py-1 text-xs font-mono font-bold rounded bg-emerald-400/20 text-emerald-400 border border-emerald-400/30 transition-all';
+      } else {
+        btn.className = 'px-2.5 py-1 text-xs font-mono font-medium rounded text-slate-400 hover:text-white transition-all';
+      }
+    }
+  });
+
+  const display = document.getElementById('pm-command-display');
+  if (display) {
+    display.textContent = pmCommands[pm] || pmCommands.npm;
   }
 }
 
-function copyInstallCommand() {
-  const text = activeInstallType === 'npm' ? 'npm install -g banglacli' : 'npx banglacli';
+function copyActiveCommand() {
+  const text = pmCommands[activePM] || pmCommands.npm;
   navigator.clipboard.writeText(text).then(() => {
     showToast(`Copied "${text}" to clipboard!`);
-    const copyText = document.getElementById('copy-text');
+    const copyText = document.getElementById('hero-copy-text');
     if (copyText) {
       copyText.textContent = 'Copied!';
       setTimeout(() => {
@@ -95,7 +168,7 @@ function showToast(message) {
   setTimeout(() => {
     toast.classList.remove('translate-y-0', 'opacity-100');
     toast.classList.add('translate-y-20', 'opacity-0');
-  }, 3000);
+  }, 2800);
 }
 
 // ==========================================
@@ -103,7 +176,6 @@ function showToast(message) {
 // ==========================================
 let currentTerminalMode = 'BUILD';
 let currentTerminalModel = 'gemini-2.0-flash';
-let isTerminalTyping = false;
 let terminalTimeoutIds = [];
 
 const scenarios = {
@@ -177,7 +249,6 @@ function clearTerminalLog() {
   if (viewport) {
     viewport.innerHTML = '';
   }
-  isTerminalTyping = false;
 }
 
 function updateTerminalPill(mode, model) {
@@ -190,13 +261,13 @@ function updateTerminalPill(mode, model) {
   const modelName = document.getElementById('term-model-name');
 
   if (mode === 'PLAN') {
-    modeIcon.textContent = '📋';
-    modeLabel.textContent = 'PLAN MODE';
-    modePill.className = 'px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 flex items-center gap-1';
+    if (modeIcon) modeIcon.textContent = '📋';
+    if (modeLabel) modeLabel.textContent = 'PLAN MODE';
+    if (modePill) modePill.className = 'px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 flex items-center gap-1.5';
   } else {
-    modeIcon.textContent = '⚡';
-    modeLabel.textContent = 'BUILD MODE';
-    modePill.className = 'px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1';
+    if (modeIcon) modeIcon.textContent = '⚡';
+    if (modeLabel) modeLabel.textContent = 'BUILD MODE';
+    if (modePill) modePill.className = 'px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5';
   }
 
   if (modelName) {
@@ -207,8 +278,7 @@ function updateTerminalPill(mode, model) {
 function runTerminalScenario(scenarioKey) {
   clearTerminalLog();
 
-  // Update button active state
-  document.querySelectorAll('.scenario-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.scenario-pill').forEach(btn => btn.classList.remove('active'));
   const activeBtn = document.getElementById(`btn-scenario-${scenarioKey}`);
   if (activeBtn) activeBtn.classList.add('active');
 
@@ -220,13 +290,13 @@ function runTerminalScenario(scenarioKey) {
   const viewport = document.getElementById('terminal-viewport');
   let delay = 100;
 
-  scenario.steps.forEach((step, idx) => {
+  scenario.steps.forEach((step) => {
     const timeoutId = setTimeout(() => {
       appendTerminalStep(viewport, step);
       viewport.scrollTop = viewport.scrollHeight;
     }, delay);
     terminalTimeoutIds.push(timeoutId);
-    delay += (step.type === 'ai-final' ? 600 : 450);
+    delay += (step.type === 'ai-final' ? 550 : 400);
   });
 }
 
@@ -236,11 +306,11 @@ function appendTerminalStep(viewport, step) {
 
   switch (step.type) {
     case 'user':
-      line.innerHTML = `<span class="term-prompt">banglacli &gt;</span> <span class="term-user-text">${escapeHtml(step.text)}</span>`;
+      line.innerHTML = `<span class="text-emerald-400 font-bold select-none font-mono">banglacli &gt;</span> <span class="text-white font-semibold">${escapeHtml(step.text)}</span>`;
       break;
 
     case 'mode-switch':
-      line.innerHTML = `<div class="p-2 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-bold text-xs">${escapeHtml(step.text)}</div>`;
+      line.innerHTML = `<div class="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-bold text-xs">${escapeHtml(step.text)}</div>`;
       break;
 
     case 'ai-thought':
@@ -248,7 +318,7 @@ function appendTerminalStep(viewport, step) {
       break;
 
     case 'tool-call':
-      line.innerHTML = `<span class="term-badge term-badge-tool">[TOOL]</span> <span class="text-purple-300 font-semibold">${escapeHtml(step.name)}</span>(<span class="text-amber-300">${escapeHtml(step.arg)}</span>)`;
+      line.innerHTML = `<span class="term-badge term-badge-tool">[TOOL]</span> <span class="text-purple-300 font-bold font-mono">${escapeHtml(step.name)}</span>(<span class="text-amber-300">${escapeHtml(step.arg)}</span>)`;
       break;
 
     case 'confirm':
@@ -256,12 +326,12 @@ function appendTerminalStep(viewport, step) {
       break;
 
     case 'tool-result':
-      line.innerHTML = `<span class="text-emerald-400 text-xs ml-4">${escapeHtml(step.text)}</span>`;
+      line.innerHTML = `<span class="text-emerald-400 text-xs ml-4 font-mono">${escapeHtml(step.text)}</span>`;
       break;
 
     case 'ai-final':
       const formatted = escapeHtml(step.text).replace(/\n/g, '<br/>');
-      line.innerHTML = `<div class="p-3 mt-1 rounded-xl bg-white/[0.03] border border-white/10 text-slate-200 leading-relaxed text-xs sm:text-sm font-sans">${formatted}</div>`;
+      line.innerHTML = `<div class="p-4 mt-2 rounded-2xl bg-white/[0.04] border border-white/10 text-slate-200 leading-relaxed text-xs sm:text-sm font-sans shadow-lg">${formatted}</div>`;
       break;
   }
 
@@ -280,14 +350,14 @@ function submitCustomPrompt() {
   // Print user prompt
   const userLine = document.createElement('div');
   userLine.className = 'term-line';
-  userLine.innerHTML = `<span class="term-prompt">banglacli &gt;</span> <span class="term-user-text">${escapeHtml(raw)}</span>`;
+  userLine.innerHTML = `<span class="text-emerald-400 font-bold select-none font-mono">banglacli &gt;</span> <span class="text-white font-semibold">${escapeHtml(raw)}</span>`;
   viewport.appendChild(userLine);
 
   // Command handlers
   if (raw === '/plan') {
     updateTerminalPill('PLAN');
     const msg = document.createElement('div');
-    msg.className = 'term-line text-cyan-400 font-bold';
+    msg.className = 'term-line text-cyan-400 font-bold text-xs';
     msg.textContent = 'Switched to 📋 PLAN MODE (Read-only architectural analysis enabled).';
     viewport.appendChild(msg);
     viewport.scrollTop = viewport.scrollHeight;
@@ -297,7 +367,7 @@ function submitCustomPrompt() {
   if (raw === '/build') {
     updateTerminalPill('BUILD');
     const msg = document.createElement('div');
-    msg.className = 'term-line text-emerald-400 font-bold';
+    msg.className = 'term-line text-emerald-400 font-bold text-xs';
     msg.textContent = 'Switched to ⚡ BUILD MODE (Autonomous file creation & command execution enabled).';
     viewport.appendChild(msg);
     viewport.scrollTop = viewport.scrollHeight;
@@ -308,7 +378,7 @@ function submitCustomPrompt() {
     const nextMode = currentTerminalMode === 'BUILD' ? 'PLAN' : 'BUILD';
     updateTerminalPill(nextMode);
     const msg = document.createElement('div');
-    msg.className = `term-line font-bold ${nextMode === 'PLAN' ? 'text-cyan-400' : 'text-emerald-400'}`;
+    msg.className = `term-line font-bold text-xs ${nextMode === 'PLAN' ? 'text-cyan-400' : 'text-emerald-400'}`;
     msg.textContent = `Active mode is now: ${nextMode === 'PLAN' ? '📋 PLAN MODE (Read-Only)' : '⚡ BUILD MODE (Full Agent)'}`;
     viewport.appendChild(msg);
     viewport.scrollTop = viewport.scrollHeight;
@@ -321,7 +391,7 @@ function submitCustomPrompt() {
     const nextModel = models[(currentIdx + 1) % models.length];
     updateTerminalPill(currentTerminalMode, nextModel);
     const msg = document.createElement('div');
-    msg.className = 'term-line text-purple-400 font-bold';
+    msg.className = 'term-line text-purple-400 font-bold text-xs';
     msg.textContent = `Switched model to: 🤖 ${nextModel}`;
     viewport.appendChild(msg);
     viewport.scrollTop = viewport.scrollHeight;
@@ -330,14 +400,14 @@ function submitCustomPrompt() {
 
   if (raw === '/help') {
     const help = document.createElement('div');
-    help.className = 'term-line p-3 bg-white/5 rounded-lg border border-white/10 text-xs text-slate-300 space-y-1';
+    help.className = 'term-line p-3 bg-white/5 rounded-xl border border-white/10 text-xs text-slate-300 space-y-1.5';
     help.innerHTML = `
       <div class="text-emerald-400 font-bold mb-1">BanglaCLI Slash Commands:</div>
-      <div><span class="text-cyan-400 font-mono">/mode</span> — Toggle between BUILD and PLAN modes</div>
-      <div><span class="text-cyan-400 font-mono">/plan</span> — Activate safe read-only architect mode</div>
-      <div><span class="text-cyan-400 font-mono">/build</span> — Activate autonomous builder mode</div>
-      <div><span class="text-cyan-400 font-mono">/model</span> — Switch active AI model</div>
-      <div><span class="text-cyan-400 font-mono">/clear</span> — Clear terminal output</div>
+      <div><span class="text-cyan-400 font-mono font-bold">/mode</span> — Toggle between BUILD and PLAN modes</div>
+      <div><span class="text-cyan-400 font-mono font-bold">/plan</span> — Activate safe read-only architect mode</div>
+      <div><span class="text-cyan-400 font-mono font-bold">/build</span> — Activate autonomous builder mode</div>
+      <div><span class="text-cyan-400 font-mono font-bold">/model</span> — Switch active AI model</div>
+      <div><span class="text-cyan-400 font-mono font-bold">/clear</span> — Clear terminal output</div>
     `;
     viewport.appendChild(help);
     viewport.scrollTop = viewport.scrollHeight;
@@ -357,15 +427,15 @@ function submitCustomPrompt() {
 
   setTimeout(() => {
     const aiResp = document.createElement('div');
-    aiResp.className = 'term-line p-3 rounded-xl bg-white/[0.03] border border-white/10 text-slate-200 text-xs sm:text-sm font-sans';
+    aiResp.className = 'term-line p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-slate-200 text-xs sm:text-sm font-sans shadow-lg';
     aiResp.innerHTML = `
-      <div class="font-semibold text-emerald-400 mb-1">BanglaCLI (${currentTerminalMode} Mode):</div>
+      <div class="font-bold text-emerald-400 mb-1">BanglaCLI (${currentTerminalMode} Mode):</div>
       <p>আপনার নির্দেশনা গ্রহণ করা হয়েছে: <em>"${escapeHtml(raw)}"</em></p>
       <p class="mt-2 text-slate-400">প্রোজেক্টের রুট ডিরেক্টরি এবং ডিপেন্ডেন্সি এনালাইসিস করে যথাযথ ফাইল এবং কমান্ড তৈরি করা হবে। বাস্তব টার্মিনালে রান করতে <code>npx banglacli</code> টাইপ করুন।</p>
     `;
     viewport.appendChild(aiResp);
     viewport.scrollTop = viewport.scrollHeight;
-  }, 600);
+  }, 500);
 }
 
 function executeQuickCommand(cmd) {
