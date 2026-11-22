@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#006A4E" />
+      <stop offset="100%" stop-color="#004733" />
+    </linearGradient>
+    <radialGradient id="redCircle" cx="45%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF5252" />
+      <stop offset="100%" stop-color="#F42A41" />
+    </radialGradient>
+  </defs>
+  <!-- Rounded Terminal Container -->
+  <rect width="100" height="100" rx="24" fill="#0D1117" stroke="#30363D" stroke-width="2"/>
+  <!-- Circular Red Sun of Bangladesh -->
+  <circle cx="48" cy="50" r="30" fill="url(#redCircle)" opacity="0.9"/>
+  <!-- Terminal Prompt Symbol in Vibrant Cyan & White -->
+  <path d="M30 35 L48 50 L30 65" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Blinking Cursor Line in Emerald -->
+  <line x1="56" y1="65" x2="72" y2="65" stroke="#00E599" stroke-width="7" stroke-linecap="round"/>
+</svg>
