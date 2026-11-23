@@ -67,17 +67,17 @@ export default function Navbar() {
             href="https://github.com/rakibhasanshuvo712-hub/banglacli-website"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-secondary-glass px-4 py-2 rounded-xl flex items-center gap-2 text-sm font-medium"
+            className="btn-secondary-glass px-4 py-2 rounded-xl flex items-center gap-2 text-sm font-medium border border-white/10 hover:border-emerald-500/40"
           >
             <GitHubIcon className="w-4 h-4 text-white" />
             <span>GitHub</span>
-            <span className="bg-white/10 px-2 py-0.5 rounded text-[11px] text-emerald-400 font-mono">
+            <span className="bg-emerald-500/10 px-2 py-0.5 rounded text-[11px] text-emerald-400 font-mono border border-emerald-500/20">
               ★ Star
             </span>
           </a>
           <a
             href="#quickstart"
-            className="btn-primary-neon px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2"
+            className="btn-prismatic px-4 py-2 rounded-xl text-sm font-black flex items-center gap-2 text-slate-950 shadow-md shadow-rose-500/20 transition-transform hover:scale-105"
           >
             <Terminal className="w-4 h-4" />
             <span>Install CLI</span>

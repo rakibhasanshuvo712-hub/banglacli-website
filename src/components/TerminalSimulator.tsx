@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Send, Play, Terminal } from "lucide-react";
+import { Send, Play } from "lucide-react";
 
 interface Step {
   type: "user" | "mode-switch" | "ai-thought" | "tool-call" | "confirm" | "tool-result" | "ai-final";
@@ -206,7 +206,7 @@ export default function TerminalSimulator() {
     <section id="simulator" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
       
       <div className="text-center max-w-3xl mx-auto mb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-neon text-xs font-mono font-bold uppercase tracking-wider mb-3">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-mono font-bold uppercase tracking-wider mb-4 shadow-lg shadow-emerald-950/30">
           <Play className="w-3.5 h-3.5 fill-current" />
           <span>Interactive Terminal Playground</span>
         </div>
@@ -214,18 +214,18 @@ export default function TerminalSimulator() {
           Test BanglaCLI Directly in Your Browser
         </h2>
         <p className="mt-3 text-slate-400 text-base">
-          Click any preset scenario below to experience how BanglaCLI understands natural language prompts, verifies safety with <code className="text-red-400">[Y/n/a]</code>, and creates production-ready code.
+          Click any preset scenario below to experience how BanglaCLI understands natural language prompts, verifies safety with <code className="text-rose-400 font-bold">[Y/n/a]</code>, and creates production-ready code.
         </p>
       </div>
 
-      {/* Preset Scenario Tabs */}
+      {/* Preset Scenario Tabs in 4 Unique Colorways */}
       <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-6 max-w-4xl mx-auto">
         <button
           onClick={() => startScenario("bangla")}
-          className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all ${
+          className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all border ${
             activeScenario === "bangla"
-              ? "bg-emerald-400/20 text-emerald-400 border border-emerald-400/40 shadow-lg shadow-emerald-400/20"
-              : "bg-white/5 text-slate-400 hover:text-white border border-white/10"
+              ? "bg-rose-500/20 text-rose-300 border-rose-500/50 shadow-[0_0_20px_rgba(244,63,94,0.35)]"
+              : "bg-white/5 text-slate-400 hover:text-white border-white/10"
           }`}
         >
           <span className="text-base">🇧🇩</span>
@@ -233,10 +233,10 @@ export default function TerminalSimulator() {
         </button>
         <button
           onClick={() => startScenario("banglish")}
-          className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all ${
+          className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all border ${
             activeScenario === "banglish"
-              ? "bg-emerald-400/20 text-emerald-400 border border-emerald-400/40 shadow-lg shadow-emerald-400/20"
-              : "bg-white/5 text-slate-400 hover:text-white border border-white/10"
+              ? "bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-[0_0_20px_rgba(245,158,11,0.35)]"
+              : "bg-white/5 text-slate-400 hover:text-white border-white/10"
           }`}
         >
           <span className="text-base">🔤</span>
@@ -244,10 +244,10 @@ export default function TerminalSimulator() {
         </button>
         <button
           onClick={() => startScenario("english")}
-          className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all ${
+          className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all border ${
             activeScenario === "english"
-              ? "bg-emerald-400/20 text-emerald-400 border border-emerald-400/40 shadow-lg shadow-emerald-400/20"
-              : "bg-white/5 text-slate-400 hover:text-white border border-white/10"
+              ? "bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.35)]"
+              : "bg-white/5 text-slate-400 hover:text-white border-white/10"
           }`}
         >
           <span className="text-base">🇬🇧</span>
@@ -255,10 +255,10 @@ export default function TerminalSimulator() {
         </button>
         <button
           onClick={() => startScenario("plan")}
-          className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all ${
+          className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all border ${
             activeScenario === "plan"
-              ? "bg-cyan-400/20 text-cyan-400 border border-cyan-400/40 shadow-lg shadow-cyan-400/20"
-              : "bg-white/5 text-slate-400 hover:text-white border border-white/10"
+              ? "bg-violet-500/20 text-violet-300 border-violet-500/50 shadow-[0_0_20px_rgba(139,92,246,0.35)]"
+              : "bg-white/5 text-slate-400 hover:text-white border-white/10"
           }`}
         >
           <span className="text-base">📋</span>
@@ -267,7 +267,7 @@ export default function TerminalSimulator() {
       </div>
 
       {/* Titanium Terminal Window */}
-      <div className="terminal-window max-w-4xl mx-auto">
+      <div className="terminal-window max-w-4xl mx-auto shadow-2xl">
         
         {/* Titlebar */}
         <div className="terminal-titlebar select-none">
@@ -284,8 +284,8 @@ export default function TerminalSimulator() {
             <div
               className={`px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5 ${
                 currentMode === "PLAN"
-                  ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/30"
-                  : "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+                  ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40"
+                  : "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
               }`}
             >
               <span>{currentMode === "PLAN" ? "📋" : "⚡"}</span>
@@ -305,11 +305,11 @@ export default function TerminalSimulator() {
           </div>
         </div>
 
-        {/* Output Viewport */}
+        {/* Output Viewport with rich multi-color syntax */}
         <div
           ref={viewportRef}
           className="p-5 sm:p-7 min-h-[440px] max-h-[520px] overflow-y-auto space-y-3 font-mono text-xs sm:text-sm leading-relaxed"
-          style={{ background: "radial-gradient(circle at 50% 0%, #0d121c 0%, #080c13 100%)" }}
+          style={{ background: "radial-gradient(circle at 50% 0%, #0d1424 0%, #060912 100%)" }}
         >
           {lines.map((step, idx) => (
             <div key={idx} className="animate-fadeIn">
@@ -320,7 +320,7 @@ export default function TerminalSimulator() {
                 </div>
               )}
               {step.type === "mode-switch" && (
-                <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-bold text-xs">
+                <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-bold text-xs">
                   {step.text}
                 </div>
               )}
@@ -329,15 +329,19 @@ export default function TerminalSimulator() {
               )}
               {step.type === "tool-call" && (
                 <div>
-                  <span className="term-badge term-badge-tool">[TOOL]</span>
-                  <span className="text-purple-300 font-bold">{step.name}</span>(
+                  <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-violet-500/20 text-violet-300 border border-violet-500/40 mr-2">
+                    [TOOL]
+                  </span>
+                  <span className="text-cyan-300 font-bold">{step.name}</span>(
                   <span className="text-amber-300">{step.arg}</span>)
                 </div>
               )}
               {step.type === "confirm" && (
                 <div>
-                  <span className="term-badge term-badge-confirm">[CONFIRM]</span>
-                  <span className="text-red-300 font-semibold">{step.text}</span>
+                  <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 mr-2">
+                    [CONFIRM]
+                  </span>
+                  <span className="text-rose-300 font-semibold">{step.text}</span>
                 </div>
               )}
               {step.type === "tool-result" && (
@@ -353,7 +357,7 @@ export default function TerminalSimulator() {
         </div>
 
         {/* Input Bar */}
-        <form onSubmit={handleSubmit} className="bg-[#0b1019] border-t border-white/10 p-3 sm:p-4 flex items-center gap-3">
+        <form onSubmit={handleSubmit} className="bg-[#0b101f] border-t border-white/10 p-3 sm:p-4 flex items-center gap-3">
           <span className="text-emerald-400 font-bold select-none text-sm font-mono">banglacli &gt;</span>
           <input
             type="text"
@@ -366,7 +370,7 @@ export default function TerminalSimulator() {
           />
           <button
             type="submit"
-            className="btn-primary-neon px-4 py-2 rounded-lg text-xs font-bold shrink-0 flex items-center gap-1.5 transition-all"
+            className="btn-prism px-4 py-2 rounded-lg text-xs font-bold shrink-0 flex items-center gap-1.5 transition-all shadow-md"
           >
             <span>Send</span>
             <Send className="w-3.5 h-3.5" />
@@ -374,7 +378,7 @@ export default function TerminalSimulator() {
         </form>
 
         {/* Shortcut Footer */}
-        <div className="bg-[#06090e] px-4 py-2 border-t border-white/5 flex flex-wrap items-center justify-between text-[11px] text-slate-500 font-mono">
+        <div className="bg-[#060914] px-4 py-2 border-t border-white/5 flex flex-wrap items-center justify-between text-[11px] text-slate-500 font-mono">
           <div className="flex items-center gap-3">
             <span>Quick Commands:</span>
             <button type="button" onClick={() => { setInputValue("/plan"); }} className="text-cyan-400 hover:underline">/plan</button>

@@ -2,6 +2,16 @@
 
 import React, { useEffect, useRef } from "react";
 
+const SPECTRUM_COLORS = [
+  "#ff3366", // Coral Rose
+  "#ff9900", // Solar Amber
+  "#00f59b", // Spring Jade
+  "#00e5ff", // Electric Cyan
+  "#8b5cf6", // Royal Violet
+  "#ec4899", // Neon Fuchsia
+  "#ffbe0b", // Golden Marigold
+];
+
 export default function BackgroundCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -37,7 +47,7 @@ export default function BackgroundCanvas() {
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
 
-    const numParticles = Math.min(75, Math.floor((width * height) / 16000));
+    const numParticles = Math.min(80, Math.floor((width * height) / 15000));
     const particles: {
       x: number;
       y: number;
@@ -45,24 +55,40 @@ export default function BackgroundCanvas() {
       vx: number;
       vy: number;
       alpha: number;
-      baseAlpha: number;
+      color: string;
     }[] = [];
 
     for (let i = 0; i < numParticles; i++) {
-      const alpha = Math.random() * 0.6 + 0.2;
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: Math.random() * 1.5 + 0.6,
+        radius: Math.random() * 1.8 + 0.8,
         vx: (Math.random() - 0.5) * 0.35,
         vy: (Math.random() - 0.5) * 0.35,
-        alpha,
-        baseAlpha: alpha,
+        alpha: Math.random() * 0.7 + 0.3,
+        color: SPECTRUM_COLORS[Math.floor(Math.random() * SPECTRUM_COLORS.length)],
       });
     }
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
+
+      // Draw subtle mouse aura
+      if (mouse.x > 0 && mouse.y > 0) {
+        const mouseGradient = ctx.createRadialGradient(
+          mouse.x,
+          mouse.y,
+          0,
+          mouse.x,
+          mouse.y,
+          180
+        );
+        mouseGradient.addColorStop(0, "rgba(255, 51, 102, 0.08)");
+        mouseGradient.addColorStop(0.5, "rgba(0, 229, 255, 0.04)");
+        mouseGradient.addColorStop(1, "transparent");
+        ctx.fillStyle = mouseGradient;
+        ctx.fillRect(0, 0, width, height);
+      }
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
@@ -74,40 +100,53 @@ export default function BackgroundCanvas() {
         if (p.y < 0) p.y = height;
         if (p.y > height) p.y = 0;
 
-        // Interactive mouse connection
+        // Interactive mouse connection line
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 120) {
+        if (dist < 130) {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(0, 229, 153, ${0.25 * (1 - dist / 120)})`;
-          ctx.lineWidth = 0.8;
+          ctx.strokeStyle = p.color;
+          ctx.globalAlpha = 0.25 * (1 - dist / 130);
+          ctx.lineWidth = 0.9;
           ctx.stroke();
+          ctx.globalAlpha = 1;
         }
 
         // Inter-particle links
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const distP = Math.hypot(p.x - p2.x, p.y - p2.y);
-          if (distP < 85) {
+          if (distP < 90) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(0, 210, 255, ${0.12 * (1 - distP / 85)})`;
-            ctx.lineWidth = 0.5;
+            
+            // Create gradient line between two particles
+            const grad = ctx.createLinearGradient(p.x, p.y, p2.x, p2.y);
+            grad.addColorStop(0, p.color);
+            grad.addColorStop(1, p2.color);
+            ctx.strokeStyle = grad;
+            ctx.globalAlpha = 0.16 * (1 - distP / 90);
+            ctx.lineWidth = 0.6;
             ctx.stroke();
+            ctx.globalAlpha = 1;
           }
         }
 
+        // Draw particle dot
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 229, 153, ${p.alpha})`;
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = "#00e599";
+        ctx.fillStyle = p.color;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = p.color;
+        ctx.globalAlpha = p.alpha;
         ctx.fill();
+        ctx.globalAlpha = 1;
+        ctx.shadowBlur = 0;
       }
 
       animationFrameId = requestAnimationFrame(render);
@@ -126,7 +165,7 @@ export default function BackgroundCanvas() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none z-[1] opacity-75"
+      className="fixed inset-0 w-full h-full pointer-events-none z-[1] opacity-80"
     />
   );
 }
