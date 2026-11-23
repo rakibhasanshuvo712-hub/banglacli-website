@@ -192,12 +192,34 @@ export default function TerminalSimulator() {
       return;
     }
 
+    if (raw === "/doctor" || raw === "banglacli doctor") {
+      setLines((prev) => [
+        ...prev,
+        {
+          type: "ai-final",
+          text: "🩺 BANGLACLI SYSTEM DOCTOR (v2.0.0 HEALTH REPORT)\n──────────────────────────────────────────────\n✔ [PASS] Node.js Runtime: v24.18.0 (Node 18+ verified)\n✔ [PASS] AI Provider & Key: Google Gemini 2.0 Flash / OpenRouter (Active)\n✔ [PASS] Workspace Read/Write: Verified permissions in project root\n✔ [PASS] OS & Shell Safety: Non-interactive child process safety verified\n──────────────────────────────────────────────\nAll 4 system checks passed! Your BanglaCLI v2.0 environment is healthy.",
+        },
+      ]);
+      return;
+    }
+
+    if (raw === "/stats" || raw === "/cost" || raw === "banglacli stats") {
+      setLines((prev) => [
+        ...prev,
+        {
+          type: "ai-final",
+          text: "📊 LIVE SESSION INTELLIGENCE & SAVINGS (BanglaCLI v2.0)\n──────────────────────────────────────────────\nActive Provider:    Google AI Studio / OpenRouter Free Tier\nSelected Model:     gemini-2.0-flash\nCurrent Mode:       ⚡ BUILD\nTotal LLM Calls:    14 calls\nTotal Tokens Used:  38,450 tokens (Prompt: 28,120 • Completion: 10,330)\nEstimated Savings:  $1.346 USD (vs commercial GPT-4 / Claude Opus)\nFiles Touched:      3 file(s)\n──────────────────────────────────────────────\nZero subscription fees — 100% BYOK & free model tiers in Bangladesh!",
+        },
+      ]);
+      return;
+    }
+
     if (raw === "/help") {
       setLines((prev) => [
         ...prev,
         {
           type: "ai-final",
-          text: "BanglaCLI 3-Mode Slash Commands:\n/mode - Cycle through 3 Modes (BUILD -> PLAN -> CHAT)\n/build - Activate autonomous builder mode (write_file & run_command)\n/plan - Activate safe read-only architect mode (audit & blueprint)\n/chat - Activate conversational assistant mode (Q&A & explanations)\n/model - Switch active free AI model\n/clear - Clear terminal output",
+          text: "BanglaCLI v2.0 Slash Commands:\n/mode - Cycle through 3 Modes (BUILD -> PLAN -> CHAT)\n/build - Activate autonomous builder mode (write_file & run_command)\n/plan - Activate safe read-only architect mode (audit & blueprint)\n/chat - Activate conversational assistant mode (Q&A & explanations)\n/doctor - Run automated diagnostic environment health check\n/stats - View real-time token counts & estimated dollars saved\n/model - Switch active free AI model\n/clear - Clear terminal output",
         },
       ]);
       return;
@@ -415,11 +437,13 @@ export default function TerminalSimulator() {
 
         {/* Shortcut Footer */}
         <div className="bg-[#060914] px-3 sm:px-4 py-2 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500 font-mono">
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2.5">
             <span>Quick Commands:</span>
             <button type="button" onClick={() => { setInputValue("/build"); }} className="text-emerald-400 hover:underline">/build</button>
             <button type="button" onClick={() => { setInputValue("/plan"); }} className="text-cyan-400 hover:underline">/plan</button>
             <button type="button" onClick={() => { setInputValue("/chat"); }} className="text-fuchsia-400 hover:underline">/chat</button>
+            <button type="button" onClick={() => { setInputValue("/doctor"); }} className="text-teal-400 hover:underline">/doctor</button>
+            <button type="button" onClick={() => { setInputValue("/stats"); }} className="text-yellow-400 hover:underline">/stats</button>
             <button type="button" onClick={() => { setInputValue("/mode"); }} className="text-amber-400 hover:underline">/mode</button>
             <button type="button" onClick={() => { setInputValue("/model"); }} className="text-violet-400 hover:underline">/model</button>
             <button type="button" onClick={() => { setInputValue("/help"); }} className="text-slate-300 hover:underline">/help</button>

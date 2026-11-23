@@ -137,7 +137,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       github: "GitHub",
     },
     hero: {
-      badge: "The Trilingual AI Coding Agent from Bangladesh",
+      badge: "BanglaCLI v2.0 Released • The Trilingual AI Coding Agent from Bangladesh",
       titlePart1: "Code Faster in ",
       titleBn: "বাংলা",
       titlePart2: ", ",
@@ -146,7 +146,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       titleEn: "English",
       titleEnd: " Directly in Your Terminal.",
       subtitle:
-        "BanglaCLI is an open-source, serverless AI coding agent designed from the ground up for Bengali developers in Bangladesh and worldwide. Equipped with OpenCode-style 3 Modes (Build, Plan & Chat), 4 autonomous file tools, and zero-cost free model integrations.",
+        "BanglaCLI 2.0 is an open-source, serverless AI coding agent designed from the ground up for Bengali developers in Bangladesh and worldwide. Equipped with OpenCode-style 3 Modes (Build, Plan & Chat), 7 autonomous tools (including fast codebase grep, wildcard search & web docs ingestion), system doctor, live token savings metrics, and zero-cost free model integrations.",
       trySimulator: "Try Live Terminal Simulator",
       exploreModes: "Explore 3 Modes (BUILD, PLAN, CHAT)",
       metricByok: "100%",
@@ -178,17 +178,17 @@ export const translations: Record<Language, TranslationDictionary> = {
       card3Desc:
         "Zero middleman backend and zero tracking. Your API keys are encrypted locally on your operating system via conf. All requests travel directly to the provider.",
       card4Tag: "Autonomous Engine",
-      card4Title: "4 Autonomous Native Tools",
+      card4Title: "7 Autonomous Native Tools",
       card4Desc:
-        "Equipped with list_files, read_file, write_file, and run_command to construct full-stack applications end-to-end safely.",
+        "Equipped with list_files, read_file, write_file, run_command, grep_search, find_files, and fetch_url to construct full-stack applications end-to-end safely.",
       card5Tag: "Zero Damage",
       card5Title: "Zero-Damage Safety Guardrails",
       card5Desc:
-        "Never worry about accidental file destruction. Before writing files or executing shell commands, BanglaCLI pauses for explicit confirmation [Y/n/a].",
+        "Never worry about accidental file destruction. Before writing files or executing shell commands, BanglaCLI pauses for explicit confirmation [Y/n/a] with /diff and /undo support.",
       card6Tag: "Realtime UX",
-      card6Title: "Live Status Bar & Commands",
+      card6Title: "System Doctor & Token Savings",
       card6Desc:
-        "Always view active mode, model, and provider directly above the prompt. Switch modes instantly with /mode and models with /model.",
+        "Run 'banglacli doctor' for automated runtime & key health diagnostics. Track real-time token counts and live dollars saved vs GPT-4/Opus with 'banglacli stats'.",
     },
     architecture: {
       badge: "System Architecture",
@@ -281,7 +281,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       github: "গিটহাব",
     },
     hero: {
-      badge: "বাংলাদেশ থেকে তৈরি ত্রিভাষিক এআই কোডিং এজেন্ট",
+      badge: "বাংলাসিএলআই ২.০ রিলিজড • বাংলাদেশ থেকে তৈরি ত্রিভাষিক এআই কোডিং এজেন্ট",
       titlePart1: "কোডিং করুন দ্রুত গতিতে ",
       titleBn: "বাংলা",
       titlePart2: ", ",
@@ -290,7 +290,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       titleEn: "ইংরেজি",
       titleEnd: " ভাষায় আপনার নিজস্ব টার্মিনালে।",
       subtitle:
-        "বাংলাসিএলআই (BanglaCLI) হলো বাংলাদেশ এবং বিশ্বজুড়ে বাংলাভাষী ডেভেলপারদের জন্য তৈরি ওপেন-সোর্স, সার্ভারলেস এআই কোডিং এজেন্ট। এতে রয়েছে ওপেনকোড-স্টাইলের ৩টি মোড (বিল্ড, প্ল্যান ও চ্যাট), ৪টি স্বয়ংক্রিয় ফাইল টুলস এবং সম্পূর্ণ ফ্রি এআই মডেল ইন্টিগ্রেশন।",
+        "বাংলাসিএলআই ২.০ (BanglaCLI 2.0) হলো বাংলাদেশ এবং বিশ্বজুড়ে বাংলাভাষী ডেভেলপারদের জন্য তৈরি ওপেন-সোর্স, সার্ভারলেস এআই কোডিং এজেন্ট। এতে রয়েছে ওপেনকোড-স্টাইলের ৩টি মোড (বিল্ড, প্ল্যান ও চ্যাট), ৭টি স্বয়ংক্রিয় টুলস (কোডবেস গ্রেপ সার্চ, ওয়াইল্ডকার্ড ফাইল সার্চ ও ওয়েব ডকস স্ক্র্যাপিং), সিস্টেম ডক্টর এবং লাইভ টোকেন সেভিংস ট্র্যাকার।",
       trySimulator: "লাইভ টার্মিনাল সিমুলেটর ট্রাই করুন",
       exploreModes: "৩টি মোড (বিল্ড, প্ল্যান ও চ্যাট) জানুন",
       metricByok: "১০০%",
@@ -322,17 +322,17 @@ export const translations: Record<Language, TranslationDictionary> = {
       card3Desc:
         "মাঝখানে কোনো প্রক্সি বা ট্র্যাকিং সার্ভার নেই। আপনার এপিআই কি সরাসরি আপনার কম্পিউটারে এনক্রিপ্ট থাকে এবং সরাসরি প্রোভাইডারের কাছে যায়।",
       card4Tag: "স্বয়ংক্রিয় ইঞ্জিন",
-      card4Title: "৪টি অটোনোমাস নেটিভ টুলস",
+      card4Title: "৭টি অটোনোমাস নেটিভ টুলস",
       card4Desc:
-        "ফুল-স্ট্যাক প্রোজেক্ট তৈরি করতে রয়েছে list_files, read_file, write_file এবং run_command এর মতো শক্তিশালী সুরক্ষিত টুলস।",
+        "ফুল-স্ট্যাক প্রোজেক্ট তৈরিতে রয়েছে list_files, read_file, write_file, run_command এবং নতুন grep_search, find_files ও fetch_url এর মতো শক্তিশালী সুরক্ষিত টুলস।",
       card5Tag: "জিরো ড্যামেজ",
       card5Title: "নিরাপদ কনফার্মেশন গার্ডরেইল",
       card5Desc:
-        "কোনো ফাইল ভুলবশত ডিলিট বা ওভাররাইটের ভয় নেই। প্রতিবার ফাইল সেভ বা টার্মিনাল কমান্ড চালানোর আগে ব্যবহারকারীর অনুমতি [Y/n/a] নেওয়া হয়।",
+        "কোনো ফাইল ভুলবশত ডিলিট বা ওভাররাইটের ভয় নেই। প্রতিবার ফাইল সেভ বা কমান্ড চালানোর আগে অনুমতি [Y/n/a] নেওয়া হয়, সাথে রয়েছে /diff ও /undo।",
       card6Tag: "রিয়েলটাইম অভিজ্ঞতা",
-      card6Title: "লাইভ স্ট্যাটাস বার ও স্ল্যাশ কমান্ড",
+      card6Title: "সিস্টেম ডক্টর ও টোকেন সেভিংস",
       card6Desc:
-        "টার্মিনাল প্রম্পটের উপরে সর্বদা সক্রিয় মোড ও মডেল দেখা যায়। /mode দিয়ে মোড পরিবর্তন এবং /model দিয়ে মডেল পরিবর্তন করুন মুহূর্তেই।",
+        "রান করুন 'banglacli doctor' স্বয়ংক্রিয় ডায়াগনস্টিক পরীক্ষার জন্য। এবং 'banglacli stats' দিয়ে লাইভ টোকেন ও কমার্শিয়াল মডেলের তুলনায় কত ডলার সাশ্রয় হলো তা দেখুন।",
     },
     architecture: {
       badge: "সিস্টেম আর্কিটেকচার",
@@ -422,7 +422,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       github: "GitHub",
     },
     hero: {
-      badge: "Bangladesh theke toiri Trilingual AI Coding Agent",
+      badge: "BanglaCLI v2.0 Released • Bangladesh er Trilingual AI Coding Agent",
       titlePart1: "Fast Code Korun ",
       titleBn: "বাংলা",
       titlePart2: ", ",
@@ -431,7 +431,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       titleEn: "English",
       titleEnd: " e Nijer Terminal er Bhetor.",
       subtitle:
-        "BanglaCLI holo Bangladesh o shob bangali developer der jonno open-source, serverless AI coding agent. OpenCode-style 3 Modes (Build, Plan & Chat), 4-ti auto tools ebong 100% free AI model support shoh.",
+        "BanglaCLI 2.0 holo Bangladesh o shob bangali developer der jonno open-source, serverless AI coding agent. OpenCode-style 3 Modes (Build, Plan & Chat), 7-ti auto tools (codebase grep search, wildcard search o web docs ingestion), system doctor ebong live token savings tracker shoh.",
       trySimulator: "Live Terminal Simulator Try Korun",
       exploreModes: "3 Modes (BUILD, PLAN, CHAT) Dekhun",
       metricByok: "100%",
@@ -463,17 +463,17 @@ export const translations: Record<Language, TranslationDictionary> = {
       card3Desc:
         "Majhe kono middleman tracking server nei. Apnar key local system e conf diye encrypted thake ebong direct provider e connection hoy.",
       card4Tag: "Autonomous Engine",
-      card4Title: "4-ti Native Tools",
+      card4Title: "7-ti Native Tools",
       card4Desc:
-        "Full-stack apps bananor jonno ache list_files, read_file, write_file ebong run_command er moto powerful tools.",
+        "Full-stack apps bananor jonno ache list_files, read_file, write_file, run_command ebong notun grep_search, find_files o fetch_url er moto 7-ti tools.",
       card5Tag: "Zero Damage",
       card5Title: "Safety Confirmation Guardrails",
       card5Desc:
-        "Bhul file overwrite er bhoi nei. File save ba shell commands chalanor aage BanglaCLI explicit confirmation [Y/n/a] ney.",
+        "Bhul file overwrite er bhoi nei. File save ba shell commands chalanor aage BanglaCLI explicit confirmation [Y/n/a] ney, sathe ache /diff o /undo.",
       card6Tag: "Realtime UX",
-      card6Title: "Live Status Bar & Commands",
+      card6Title: "System Doctor o Token Savings",
       card6Desc:
-        "Prompt er upore shobshomoy active mode o model dekha jay. /mode diye mode switch ebong /model diye model update kora jay.",
+        "Automated diagnostic er jonno 'banglacli doctor' run korun. Ar 'banglacli stats' diye live token usage o dollars saved track korun.",
     },
     architecture: {
       badge: "System Architecture",

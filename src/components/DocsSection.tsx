@@ -105,7 +105,7 @@ export default function DocsSection() {
             <Terminal className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
             <span>Command &amp; Slash Command Reference</span>
           </h3>
-          <span className="text-xs text-slate-500 dark:text-slate-400 font-mono font-bold bg-slate-200/60 dark:bg-white/10 px-2.5 py-1 rounded-full">v1.2.0</span>
+          <span className="text-xs text-slate-500 dark:text-slate-400 font-mono font-bold bg-slate-200/60 dark:bg-white/10 px-2.5 py-1 rounded-full">v2.0.0</span>
         </div>
         <div className="overflow-x-auto -webkit-overflow-scrolling-touch pb-2">
           <table className="w-full min-w-[500px] text-left font-mono text-xs sm:text-sm">
@@ -123,6 +123,20 @@ export default function DocsSection() {
                 </td>
                 <td className="p-4 text-slate-500 dark:text-slate-400 font-medium">Terminal CLI</td>
                 <td className="p-4">Starts the trilingual interactive coding session.</td>
+              </tr>
+              <tr className="hover:bg-slate-50/80 dark:hover:bg-white/[0.02] transition-colors">
+                <td className="p-4 text-teal-700 dark:text-teal-400 font-bold">
+                  <span className="px-2.5 py-1 rounded-md bg-teal-50 dark:bg-teal-500/10 border border-teal-200 dark:border-teal-500/30">banglacli doctor</span>
+                </td>
+                <td className="p-4 text-slate-500 dark:text-slate-400 font-medium">Terminal CLI</td>
+                <td className="p-4">Automated diagnostic report of Node runtime, workspace, shell &amp; AI keys.</td>
+              </tr>
+              <tr className="hover:bg-slate-50/80 dark:hover:bg-white/[0.02] transition-colors">
+                <td className="p-4 text-amber-700 dark:text-amber-400 font-bold">
+                  <span className="px-2.5 py-1 rounded-md bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30">banglacli stats</span>
+                </td>
+                <td className="p-4 text-slate-500 dark:text-slate-400 font-medium">Terminal CLI</td>
+                <td className="p-4">Calculates real-time token usage and live dollars saved vs commercial APIs.</td>
               </tr>
               <tr className="hover:bg-slate-50/80 dark:hover:bg-white/[0.02] transition-colors">
                 <td className="p-4 text-amber-700 dark:text-amber-400 font-bold">
@@ -144,6 +158,20 @@ export default function DocsSection() {
                 </td>
                 <td className="p-4 text-slate-500 dark:text-slate-400 font-medium">Chat Slash Command</td>
                 <td className="p-4">Cycles or switches directly between 3 Modes: BUILD, PLAN, and CHAT.</td>
+              </tr>
+              <tr className="hover:bg-slate-50/80 dark:hover:bg-white/[0.02] transition-colors">
+                <td className="p-4 text-blue-700 dark:text-blue-400 font-bold">
+                  <span className="px-2.5 py-1 rounded-md bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/30">/stats, /doctor</span>
+                </td>
+                <td className="p-4 text-slate-500 dark:text-slate-400 font-medium">Chat Slash Command</td>
+                <td className="p-4">Inspect live session token savings or execute diagnostic environment check.</td>
+              </tr>
+              <tr className="hover:bg-slate-50/80 dark:hover:bg-white/[0.02] transition-colors">
+                <td className="p-4 text-emerald-700 dark:text-emerald-400 font-bold">
+                  <span className="px-2.5 py-1 rounded-md bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30">/diff, /undo</span>
+                </td>
+                <td className="p-4 text-slate-500 dark:text-slate-400 font-medium">Chat Slash Command</td>
+                <td className="p-4">Review all modified files in the session or revert the latest change.</td>
               </tr>
               <tr className="hover:bg-slate-50/80 dark:hover:bg-white/[0.02] transition-colors">
                 <td className="p-4 text-violet-700 dark:text-violet-400 font-bold">

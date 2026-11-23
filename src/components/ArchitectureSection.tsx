@@ -75,6 +75,30 @@ export default function ArchitectureSection() {
       planMode: "Disabled",
       chatMode: "Disabled",
     },
+    {
+      name: "grep_search",
+      capability: "Fast Codebase Regex & Text Search",
+      guard: "Line-numbered pattern match (v2.0)",
+      buildMode: "Active",
+      planMode: "Active",
+      chatMode: "Active",
+    },
+    {
+      name: "find_files",
+      capability: "Wildcard File Matcher (*.tsx, *.ts)",
+      guard: "Instant codebase tree search (v2.0)",
+      buildMode: "Active",
+      planMode: "Active",
+      chatMode: "Active",
+    },
+    {
+      name: "fetch_url",
+      capability: "Web Docs & API HTML Scraper",
+      guard: "Live web ingestion & cleanup (v2.0)",
+      buildMode: "Active",
+      planMode: "Active",
+      chatMode: "Active",
+    },
   ];
 
   const envs = [
