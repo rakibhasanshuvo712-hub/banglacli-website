@@ -140,10 +140,10 @@ export default function DocsSection() {
               </tr>
               <tr className="hover:bg-slate-50/80 dark:hover:bg-white/[0.02] transition-colors">
                 <td className="p-4 text-fuchsia-700 dark:text-fuchsia-400 font-bold">
-                  <span className="px-2.5 py-1 rounded-md bg-fuchsia-50 dark:bg-fuchsia-500/10 border border-fuchsia-200 dark:border-fuchsia-500/30">/mode, /plan, /build</span>
+                  <span className="px-2.5 py-1 rounded-md bg-fuchsia-50 dark:bg-fuchsia-500/10 border border-fuchsia-200 dark:border-fuchsia-500/30">/mode, /build, /plan, /chat</span>
                 </td>
                 <td className="p-4 text-slate-500 dark:text-slate-400 font-medium">Chat Slash Command</td>
-                <td className="p-4">Switches between autonomous BUILD mode and read-only PLAN mode.</td>
+                <td className="p-4">Cycles or switches directly between 3 Modes: BUILD, PLAN, and CHAT.</td>
               </tr>
               <tr className="hover:bg-slate-50/80 dark:hover:bg-white/[0.02] transition-colors">
                 <td className="p-4 text-violet-700 dark:text-violet-400 font-bold">

@@ -23,8 +23,8 @@ export default function FaqSection() {
         indicator: "text-amber-600 dark:text-amber-400",
       },
       {
-        q: "Can I switch between BUILD mode and PLAN mode during a session?",
-        a: "Yes! Simply type /plan to activate read-only mode, or /build to return to autonomous creation mode. You can also type /mode to toggle between them. The live status bar above the prompt updates immediately.",
+        q: "Can I switch between BUILD, PLAN, and CHAT modes during a session?",
+        a: "Yes! Type /build for autonomous development, /plan for read-only architectural analysis, or /chat for interactive Q&A and code discussions. You can also type /mode to cycle through all 3 modes instantly. The live status indicator in your terminal bar updates in real time.",
         accent: "border-emerald-300 dark:border-emerald-500/40 shadow-emerald-500/10",
         indicator: "text-emerald-600 dark:text-emerald-400",
       },
@@ -55,8 +55,8 @@ export default function FaqSection() {
         indicator: "text-amber-600 dark:text-amber-400",
       },
       {
-        q: "সেশন চলাকালে কি বিল্ড ও প্ল্যান মোড বদলানো যায়?",
-        a: "অবশ্যই! /plan লিখলে রিড-অনলি প্ল্যান মোড চালু হয় এবং /build লিখলে সরাসরি স্বয়ংক্রিয় বিল্ডার মোড অন হয়। /mode লিখলেও সহজে সুইচ করা যায়।",
+        q: "সেশন চলাকালে কি বিল্ড, প্ল্যান ও চ্যাট মোড বদলানো যায়?",
+        a: "অবশ্যই! /build লিখলে সরাসরি স্বয়ংক্রিয় বিল্ডার মোড, /plan লিখলে রিড-অনলি সল্যুশন মোড এবং /chat লিখলে নিরাপদ কথোপকথন ও প্রশ্নোত্তর মোড চালু হয়। /mode লিখলেও ৩টি মোডের মধ্যে সহজে সাইকেল করা যায়।",
         accent: "border-emerald-300 dark:border-emerald-500/40 shadow-emerald-500/10",
         indicator: "text-emerald-600 dark:text-emerald-400",
       },
@@ -87,8 +87,8 @@ export default function FaqSection() {
         indicator: "text-amber-600 dark:text-amber-400",
       },
       {
-        q: "Session e BUILD o PLAN mode switch kora jay?",
-        a: "Haa! Shudhu /plan type korle safe read-only hoy, ar /build dile autonomous builder active hoy. /mode diyeo toggle kora jay.",
+        q: "Session e BUILD, PLAN o CHAT mode switch kora jay?",
+        a: "Haa! /build dile autonomous builder, /plan dile safe read-only architect ar /chat dile disk modification chara interactive Q&A active hoy. /mode diyeo 3ta mode er moddhe cycle kora jay.",
         accent: "border-emerald-300 dark:border-emerald-500/40 shadow-emerald-500/10",
         indicator: "text-emerald-600 dark:text-emerald-400",
       },

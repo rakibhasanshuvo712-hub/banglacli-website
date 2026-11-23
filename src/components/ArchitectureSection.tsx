@@ -21,7 +21,7 @@ export default function ArchitectureSection() {
       icon: <Cpu className="w-6 h-6 text-amber-500" />,
       title: t.architecture.step2Title,
       desc: t.architecture.step2Desc,
-      tag: "Dual Controller",
+      tag: "3-Mode Controller",
       color: "border-amber-400/40 text-amber-500 bg-amber-500/10",
     },
     {
@@ -47,29 +47,33 @@ export default function ArchitectureSection() {
       name: "write_file",
       capability: "File Creation & Overwrite",
       guard: "Requires [Y/n/a] Confirmation",
-      planMode: "Disabled",
       buildMode: "Active",
+      planMode: "Disabled",
+      chatMode: "Disabled",
     },
     {
       name: "read_file",
       capability: "Targeted File Inspection",
       guard: "Read-only / Safe",
-      planMode: "Active",
       buildMode: "Active",
+      planMode: "Active",
+      chatMode: "Active",
     },
     {
       name: "list_files",
       capability: "Recursive Directory Scans",
       guard: "Ignores node_modules, .git",
-      planMode: "Active",
       buildMode: "Active",
+      planMode: "Active",
+      chatMode: "Active",
     },
     {
       name: "run_command",
       capability: "Terminal Command Execution",
       guard: "Requires [Y/n/a] Confirmation",
-      planMode: "Disabled",
       buildMode: "Active",
+      planMode: "Disabled",
+      chatMode: "Disabled",
     },
   ];
 
@@ -168,6 +172,7 @@ export default function ArchitectureSection() {
                   <th className="p-3">Capability</th>
                   <th className="p-3">BUILD</th>
                   <th className="p-3">PLAN</th>
+                  <th className="p-3">CHAT</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-white/5 text-slate-700 dark:text-slate-300">
@@ -179,6 +184,13 @@ export default function ArchitectureSection() {
                     <td className="p-3 font-bold">
                       {tItem.planMode === "Active" ? (
                         <span className="text-cyan-600 dark:text-cyan-400">✓ Active</span>
+                      ) : (
+                        <span className="text-rose-500 dark:text-rose-400">✗ Locked</span>
+                      )}
+                    </td>
+                    <td className="p-3 font-bold">
+                      {tItem.chatMode === "Active" ? (
+                        <span className="text-violet-600 dark:text-violet-400">✓ Active</span>
                       ) : (
                         <span className="text-rose-500 dark:text-rose-400">✗ Locked</span>
                       )}

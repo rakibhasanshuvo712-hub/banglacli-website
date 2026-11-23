@@ -11,14 +11,14 @@ interface Step {
 }
 
 interface Scenario {
-  mode: "BUILD" | "PLAN";
+  mode: "BUILD" | "PLAN" | "CHAT";
   model: string;
   steps: Step[];
 }
 
 export default function TerminalSimulator() {
-  const [activeScenario, setActiveScenario] = useState<"bangla" | "banglish" | "english" | "plan">("bangla");
-  const [currentMode, setCurrentMode] = useState<"BUILD" | "PLAN">("BUILD");
+  const [activeScenario, setActiveScenario] = useState<"bangla" | "banglish" | "english" | "plan" | "chat">("bangla");
+  const [currentMode, setCurrentMode] = useState<"BUILD" | "PLAN" | "CHAT">("BUILD");
   const [currentModel, setCurrentModel] = useState("gemini-2.0-flash");
   const [lines, setLines] = useState<Step[]>([]);
   const [inputValue, setInputValue] = useState("");
@@ -82,10 +82,20 @@ export default function TerminalSimulator() {
         { type: "tool-result", text: "Inspected package.json: Node 18, CommonJS module type detected" },
         { type: "ai-final", text: "📋 MIGRATION BLUEPRINT (Architect Review):\n1. Phase 1: Initialize tsconfig.json with strict typechecking enabled.\n2. Phase 2: Install devDependencies (@types/node, @types/express, typescript, tsx).\n3. Phase 3: Migrate utility files first (src/utils/*.ts) to establish foundational types.\n4. Phase 4: Convert route handlers and add Express Request/Response typing.\n\nType `/build` when ready to let BanglaCLI execute this migration automatically!" }
       ]
+    },
+    chat: {
+      mode: "CHAT",
+      model: "gemini-2.0-flash",
+      steps: [
+        { type: "user", text: "/chat Explain how Next.js App Router Server Components differ from Client Components" },
+        { type: "mode-switch", text: "💬 CHAT MODE ACTIVATED (Interactive Q&A - Zero Disk Modification)" },
+        { type: "ai-thought", text: "Formulating architectural explanation with code comparison..." },
+        { type: "ai-final", text: "💬 Server vs Client Components in Next.js:\n\n1. 🖥️ Server Components (Default):\n- Execute exclusively on the server, zero JS bundle shipped to client.\n- Can query databases and secrets directly without API routes.\n- Cannot use hooks (useState, useEffect) or browser event listeners.\n\n2. 📱 Client Components ('use client'):\n- Rendered on server, then hydrated in the browser.\n- Essential for interactive UI: buttons with onClick, form inputs, animations.\n\n💡 Pro-Tip: Keep state at leaves of your component tree to maximize server-side performance!" }
+      ]
     }
   };
 
-  const startScenario = (key: "bangla" | "banglish" | "english" | "plan") => {
+  const startScenario = (key: "bangla" | "banglish" | "english" | "plan" | "chat") => {
     timeoutIdsRef.current.forEach((id) => clearTimeout(id));
     timeoutIdsRef.current = [];
     setLines([]);
@@ -145,14 +155,27 @@ export default function TerminalSimulator() {
       return;
     }
 
+    if (raw === "/chat") {
+      setCurrentMode("CHAT");
+      setLines((prev) => [
+        ...prev,
+        { type: "mode-switch", text: "💬 Switched to CHAT MODE (Interactive conversational assistant & algorithm Q&A enabled)." },
+      ]);
+      return;
+    }
+
     if (raw === "/mode") {
-      const next = currentMode === "BUILD" ? "PLAN" : "BUILD";
+      const modesOrder: ("BUILD" | "PLAN" | "CHAT")[] = ["BUILD", "PLAN", "CHAT"];
+      const nextIndex = (modesOrder.indexOf(currentMode) + 1) % modesOrder.length;
+      const next = modesOrder[nextIndex];
       setCurrentMode(next);
+      const icon = next === "PLAN" ? "📋" : next === "CHAT" ? "💬" : "⚡";
+      const desc = next === "PLAN" ? "PLAN MODE (Read-Only Architect)" : next === "CHAT" ? "CHAT MODE (Q&A & Discussion)" : "BUILD MODE (Full Agent)";
       setLines((prev) => [
         ...prev,
         {
           type: "mode-switch",
-          text: `Active mode is now: ${next === "PLAN" ? "📋 PLAN MODE (Read-Only)" : "⚡ BUILD MODE (Full Agent)"}`,
+          text: `Active mode is now: ${icon} ${desc}`,
         },
       ]);
       return;
@@ -174,7 +197,7 @@ export default function TerminalSimulator() {
         ...prev,
         {
           type: "ai-final",
-          text: "BanglaCLI Slash Commands:\n/mode - Toggle between BUILD and PLAN modes\n/plan - Activate safe read-only architect mode\n/build - Activate autonomous builder mode\n/model - Switch active AI model\n/clear - Clear terminal output",
+          text: "BanglaCLI 3-Mode Slash Commands:\n/mode - Cycle through 3 Modes (BUILD -> PLAN -> CHAT)\n/build - Activate autonomous builder mode (write_file & run_command)\n/plan - Activate safe read-only architect mode (audit & blueprint)\n/chat - Activate conversational assistant mode (Q&A & explanations)\n/model - Switch active free AI model\n/clear - Clear terminal output",
         },
       ]);
       return;
@@ -257,12 +280,23 @@ export default function TerminalSimulator() {
           onClick={() => startScenario("plan")}
           className={`px-4.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all border ${
             activeScenario === "plan"
-              ? "bg-gradient-to-r from-violet-600 to-purple-600 text-white border-violet-600 shadow-md shadow-violet-600/30 scale-105"
+              ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white border-cyan-600 shadow-md shadow-cyan-600/30 scale-105"
               : "bg-white text-slate-700 hover:text-slate-950 hover:bg-slate-50 border-slate-200 shadow-xs"
           }`}
         >
           <span className="text-base">📋</span>
           <span>PLAN Mode: Architecture Audit</span>
+        </button>
+        <button
+          onClick={() => startScenario("chat")}
+          className={`px-4.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all border ${
+            activeScenario === "chat"
+              ? "bg-gradient-to-r from-violet-600 to-purple-600 text-white border-violet-600 shadow-md shadow-violet-600/30 scale-105"
+              : "bg-white text-slate-700 hover:text-slate-950 hover:bg-slate-50 border-slate-200 shadow-xs"
+          }`}
+        >
+          <span className="text-base">💬</span>
+          <span>CHAT Mode: Explanations &amp; Q&amp;A</span>
         </button>
       </div>
 
@@ -276,7 +310,7 @@ export default function TerminalSimulator() {
             <span className="traffic-light light-yellow"></span>
             <span className="traffic-light light-green"></span>
             <span className="ml-2 text-slate-400 text-xs font-mono font-medium hidden sm:inline">
-              banglacli terminal ~ (interactive)
+              banglacli terminal ~ (3-mode engine)
             </span>
           </div>
 
@@ -285,10 +319,12 @@ export default function TerminalSimulator() {
               className={`px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5 ${
                 currentMode === "PLAN"
                   ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40"
+                  : currentMode === "CHAT"
+                  ? "bg-violet-500/20 text-violet-300 border border-violet-500/40"
                   : "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
               }`}
             >
-              <span>{currentMode === "PLAN" ? "📋" : "⚡"}</span>
+              <span>{currentMode === "PLAN" ? "📋" : currentMode === "CHAT" ? "💬" : "⚡"}</span>
               <span>{currentMode} MODE</span>
             </div>
             <div className="px-2.5 py-0.5 rounded text-[11px] font-mono bg-white/5 text-slate-300 border border-white/10 hidden sm:flex items-center gap-1.5">
@@ -363,7 +399,7 @@ export default function TerminalSimulator() {
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Type a command (/plan, /build, /model, /help) or prompt in বাংলা / Banglish / English..."
+            placeholder="Type a command (/build, /plan, /chat, /mode, /model, /help) or prompt in বাংলা / Banglish / English..."
             className="w-full bg-transparent border-0 text-white placeholder-slate-500 focus:outline-none focus:ring-0 text-xs sm:text-sm font-mono"
             autoComplete="off"
             spellCheck="false"
@@ -381,8 +417,9 @@ export default function TerminalSimulator() {
         <div className="bg-[#060914] px-4 py-2 border-t border-white/5 flex flex-wrap items-center justify-between text-[11px] text-slate-500 font-mono">
           <div className="flex items-center gap-3">
             <span>Quick Commands:</span>
-            <button type="button" onClick={() => { setInputValue("/plan"); }} className="text-cyan-400 hover:underline">/plan</button>
             <button type="button" onClick={() => { setInputValue("/build"); }} className="text-emerald-400 hover:underline">/build</button>
+            <button type="button" onClick={() => { setInputValue("/plan"); }} className="text-cyan-400 hover:underline">/plan</button>
+            <button type="button" onClick={() => { setInputValue("/chat"); }} className="text-fuchsia-400 hover:underline">/chat</button>
             <button type="button" onClick={() => { setInputValue("/mode"); }} className="text-amber-400 hover:underline">/mode</button>
             <button type="button" onClick={() => { setInputValue("/model"); }} className="text-violet-400 hover:underline">/model</button>
             <button type="button" onClick={() => { setInputValue("/help"); }} className="text-slate-300 hover:underline">/help</button>

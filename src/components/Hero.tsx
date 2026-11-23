@@ -14,7 +14,7 @@ const techMarquee = [
   { label: "Groq Cloud Llama 3.3 (500 T/s)", color: "from-pink-500 to-rose-500" },
   { label: "Ollama 100% Offline Local", color: "from-yellow-500 to-amber-500" },
   { label: "100% BYOK & Zero Middleman", color: "from-teal-500 to-emerald-600" },
-  { label: "OpenCode Dual Modes (BUILD / PLAN)", color: "from-indigo-500 to-cyan-500" },
+  { label: "3 Modes Architecture (BUILD / PLAN / CHAT)", color: "from-indigo-500 to-cyan-500" },
   { label: "TypeScript & Node.js 18+", color: "from-blue-500 to-indigo-600" },
   { label: "Zero Cost & Privacy First", color: "from-emerald-400 to-teal-500" },
   { label: "Made in Bangladesh", color: "from-red-500 to-emerald-600" },

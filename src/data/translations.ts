@@ -84,6 +84,9 @@ export interface TranslationDictionary {
     planTitle: string;
     planTag: string;
     planDesc: string;
+    chatTitle: string;
+    chatTag: string;
+    chatDesc: string;
   };
   models: {
     badge: string;
@@ -125,7 +128,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       simulator: "Live Simulator",
       features: "Features",
       architecture: "Architecture",
-      modes: "Build & Plan",
+      modes: "3 Modes",
       models: "AI Models",
       docs: "Docs",
       creator: "Creator",
@@ -143,15 +146,15 @@ export const translations: Record<Language, TranslationDictionary> = {
       titleEn: "English",
       titleEnd: " Directly in Your Terminal.",
       subtitle:
-        "BanglaCLI is an open-source, serverless AI coding agent designed from the ground up for Bengali developers in Bangladesh and worldwide. Equipped with OpenCode-style Build & Plan modes, 4 autonomous file tools, and zero-cost free model integrations.",
+        "BanglaCLI is an open-source, serverless AI coding agent designed from the ground up for Bengali developers in Bangladesh and worldwide. Equipped with OpenCode-style 3 Modes (Build, Plan & Chat), 4 autonomous file tools, and zero-cost free model integrations.",
       trySimulator: "Try Live Terminal Simulator",
-      exploreModes: "Explore BUILD vs PLAN Modes",
+      exploreModes: "Explore 3 Modes (BUILD, PLAN, CHAT)",
       metricByok: "100%",
       metricByokLabel: "BYOK & Serverless",
       metricLang: "3 Languages",
       metricLangLabel: "বাংলা, Banglish, English",
-      metricModes: "2 Modes",
-      metricModesLabel: "BUILD & PLAN",
+      metricModes: "3 Modes",
+      metricModesLabel: "BUILD, PLAN & CHAT",
       metricCost: "0 Taka / $0",
       metricCostLabel: "Free Tiers in Bangladesh",
       copyCmd: "Copy Command",
@@ -166,10 +169,10 @@ export const translations: Record<Language, TranslationDictionary> = {
       card1Title: "Native Trilingual Comprehension",
       card1Desc:
         "Type naturally in proper বাংলা ('একটি auth middleware বানাও'), Banglish ('ekta mongo schema banai daw'), or English. BanglaCLI responds in the same language.",
-      card2Tag: "Dual Architecture",
-      card2Title: "OpenCode Dual Modes",
+      card2Tag: "3 Architecture Modes",
+      card2Title: "OpenCode 3 Modes",
       card2Desc:
-        "Switch effortlessly between BUILD Mode (creates files, installs packages, runs tests) and PLAN Mode (read-only architectural audit without editing files).",
+        "Switch effortlessly between ⚡ BUILD Mode (creates files, runs tests), 📋 PLAN Mode (read-only architectural audit), and 💬 CHAT Mode (conversational Q&A & code explanations).",
       card3Tag: "Privacy First",
       card3Title: "100% BYOK & Serverless",
       card3Desc:
@@ -185,7 +188,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       card6Tag: "Realtime UX",
       card6Title: "Live Status Bar & Commands",
       card6Desc:
-        "Always view active mode, model, and provider directly above the prompt. Switch models instantly with /model and reconfigure keys with /config.",
+        "Always view active mode, model, and provider directly above the prompt. Switch modes instantly with /mode and models with /model.",
     },
     architecture: {
       badge: "System Architecture",
@@ -195,9 +198,9 @@ export const translations: Record<Language, TranslationDictionary> = {
       step1Title: "Trilingual Prompt Ingestion",
       step1Desc:
         "Accepts prompts in বাংলা script, phonetic Banglish, or English. Normalizes intent and identifies code actions.",
-      step2Title: "Agent Context & Mode Controller",
+      step2Title: "3-Mode Context Controller",
       step2Desc:
-        "Injects system instructions, git status, and project file tree into the conversation context while respecting BUILD vs PLAN modes.",
+        "Injects system instructions, git status, and project file tree into the conversation context while enforcing BUILD, PLAN, or CHAT mode guardrails.",
       step3Title: "Model Inference (BYOK)",
       step3Desc:
         "Dispatches streaming requests directly to Google Gemini 2.0 Flash, OpenRouter, or Groq with zero intermediary proxy servers.",
@@ -208,18 +211,22 @@ export const translations: Record<Language, TranslationDictionary> = {
       envTitle: "Supported Environment Variables",
     },
     modes: {
-      badge: "Dual Architecture",
-      heading: "BUILD Mode vs PLAN Mode",
+      badge: "Triple Mode Architecture",
+      heading: "BUILD, PLAN & CHAT Modes",
       subheading:
-        "Inspired by OpenCode, BanglaCLI lets you choose between autonomous hands-on building and safe senior architectural reviews.",
+        "Inspired by OpenCode, BanglaCLI lets you choose between autonomous hands-on building, safe senior architectural reviews, and interactive conversational guidance.",
       buildTitle: "BUILD Mode",
-      buildTag: "Default Mode",
+      buildTag: "Autonomous Agent",
       buildDesc:
         "Full autonomous developer. Capable of creating files, refactoring legacy functions, running shell scripts, and building projects from scratch.",
       planTitle: "PLAN Mode",
       planTag: "Safe Architect",
       planDesc:
         "Read-only Senior Software Architect. Safely audits directory structures, reads code, and formulates step-by-step blueprints without altering files.",
+      chatTitle: "CHAT Mode",
+      chatTag: "Interactive Q&A",
+      chatDesc:
+        "Conversational software assistant. Explains complex algorithms, answers architecture questions, and generates code snippets without touching your disk.",
     },
     models: {
       badge: "Zero-Cost AI Providers",
@@ -245,7 +252,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     developer: {
       badge: "Architect & Creator",
       role: "Full-Stack Web Developer (Next.js & MERN Stack)",
-      bio: "Based in Savar, Dhaka, Bangladesh. Rakib architected and created BanglaCLI to bring state-of-the-art autonomous AI agent workflows to Bengali developers worldwide — combining natural language comprehension, dual OpenCode Build/Plan modes, and free API access in your terminal.",
+      bio: "Based in Savar, Dhaka, Bangladesh. Rakib architected and created BanglaCLI to bring state-of-the-art autonomous AI agent workflows to Bengali developers worldwide — combining natural language comprehension, OpenCode-style 3 Modes, and free API access in your terminal.",
       location: "Savar, Dhaka, Bangladesh",
     },
     faq: {
@@ -265,7 +272,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       simulator: "লাইভ সিমুলেটর",
       features: "ফিচারসমূহ",
       architecture: "আর্কিটেকচার",
-      modes: "বিল্ড ও প্ল্যান",
+      modes: "৩টি মোড",
       models: "এআই মডেল",
       docs: "ডকুমেন্টেশন",
       creator: "ডেভেলপার",
@@ -283,15 +290,15 @@ export const translations: Record<Language, TranslationDictionary> = {
       titleEn: "ইংরেজি",
       titleEnd: " ভাষায় আপনার নিজস্ব টার্মিনালে।",
       subtitle:
-        "বাংলাসিএলআই (BanglaCLI) হলো বাংলাদেশ এবং বিশ্বজুড়ে বাংলাভাষী ডেভেলপারদের জন্য তৈরি ওপেন-সোর্স, সার্ভারলেস এআই কোডিং এজেন্ট। এতে রয়েছে ওপেনকোড-স্টাইলের বিল্ড ও প্ল্যান মোড, ৪টি স্বয়ংক্রিয় ফাইল টুলস এবং সম্পূর্ণ ফ্রি এআই মডেল ইন্টিগ্রেশন।",
+        "বাংলাসিএলআই (BanglaCLI) হলো বাংলাদেশ এবং বিশ্বজুড়ে বাংলাভাষী ডেভেলপারদের জন্য তৈরি ওপেন-সোর্স, সার্ভারলেস এআই কোডিং এজেন্ট। এতে রয়েছে ওপেনকোড-স্টাইলের ৩টি মোড (বিল্ড, প্ল্যান ও চ্যাট), ৪টি স্বয়ংক্রিয় ফাইল টুলস এবং সম্পূর্ণ ফ্রি এআই মডেল ইন্টিগ্রেশন।",
       trySimulator: "লাইভ টার্মিনাল সিমুলেটর ট্রাই করুন",
-      exploreModes: "বিল্ড বনাম প্ল্যান মোড জানুন",
+      exploreModes: "৩টি মোড (বিল্ড, প্ল্যান ও চ্যাট) জানুন",
       metricByok: "১০০%",
       metricByokLabel: "বিওয়াইওকে ও সার্ভারলেস",
       metricLang: "৩টি ভাষা",
       metricLangLabel: "বাংলা, বাংলিশ ও ইংরেজি",
-      metricModes: "২টি মোড",
-      metricModesLabel: "বিল্ড ও প্ল্যান",
+      metricModes: "৩টি মোড",
+      metricModesLabel: "বিল্ড, প্ল্যান ও চ্যাট",
       metricCost: "০ টাকা / $০",
       metricCostLabel: "বাংলাদেশে সম্পূর্ণ ফ্রি",
       copyCmd: "কমান্ড কপি করুন",
@@ -306,10 +313,10 @@ export const translations: Record<Language, TranslationDictionary> = {
       card1Title: "ন্যাচারাল ত্রিভাষিক অনুধাবন",
       card1Desc:
         "স্বাভাবিকভাবে লিখুন খাঁটি বাংলায় ('একটি auth middleware বানাও'), বাংলিশে ('ekta mongo schema banai daw') বা ইংরেজিতে। বাংলাসিএলআই উত্তর দেবে একই ভাষায়।",
-      card2Tag: "দ্বৈত আর্কিটেকচার",
-      card2Title: "ওপেনকোড দ্বৈত মোড",
+      card2Tag: "৩টি মোড আর্কিটেকচার",
+      card2Title: "ওপেনকোড ৩টি মোড",
       card2Desc:
-        "সহজেই সুইচ করুন বিল্ড মোড (ফাইল তৈরি, প্যাকেজ ইনস্টল, টেস্ট রান) এবং নিরাপদ প্ল্যান মোডের (ফাইল পরিবর্তন না করে আর্কিটেকচার অডিট) মধ্যে।",
+        "সহজেই সুইচ করুন বিল্ড মোড (ফাইল তৈরি ও প্যাকেজ ইনস্টল), প্ল্যান মোড (নিরাপদ আর্কিটেকচার অডিট) এবং চ্যাট মোডের (এআই প্রশ্নোত্তর ও কোড ব্যাখ্যা) মধ্যে।",
       card3Tag: "নিরাপত্তা ও প্রাইভেসি",
       card3Title: "১০০% নিজস্ব কি ও সার্ভারলেস",
       card3Desc:
@@ -325,7 +332,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       card6Tag: "রিয়েলটাইম অভিজ্ঞতা",
       card6Title: "লাইভ স্ট্যাটাস বার ও স্ল্যাশ কমান্ড",
       card6Desc:
-        "টার্মিনাল প্রম্পটের উপরে সর্বদা সক্রিয় মোড ও মডেল দেখা যায়। /model দিয়ে মডেল পরিবর্তন এবং /config দিয়ে কি সেট করুন মুহূর্তেই।",
+        "টার্মিনাল প্রম্পটের উপরে সর্বদা সক্রিয় মোড ও মডেল দেখা যায়। /mode দিয়ে মোড পরিবর্তন এবং /model দিয়ে মডেল পরিবর্তন করুন মুহূর্তেই।",
     },
     architecture: {
       badge: "সিস্টেম আর্কিটেকচার",
@@ -335,9 +342,9 @@ export const translations: Record<Language, TranslationDictionary> = {
       step1Title: "ত্রিভাষিক প্রম্পট ইনপুট",
       step1Desc:
         "বাংলা লিপি, বাংলিশ রোমান হরফ বা ইংরেজি প্রম্পট গ্রহণ করে উদ্দেশ্য ও কোডিং অ্যাকশন শনাক্ত করে।",
-      step2Title: "কনটেক্সট ও মোড কন্ট্রোলার",
+      step2Title: "৩-মোড কনটেক্সট কন্ট্রোলার",
       step2Desc:
-        "সিস্টেম নির্দেশাবলী, গিট স্ট্যাটাস ও ডিরেক্টরি ট্রি লোড করে এবং বিল্ড বনাম প্ল্যান মোডের নিয়ম মেনে চলে।",
+        "সিস্টেম নির্দেশাবলী, গিট স্ট্যাটাস ও ডিরেক্টরি ট্রি লোড করে এবং বিল্ড, প্ল্যান বা চ্যাট মোডের নিয়ম কঠোরভাবে মেনে চলে।",
       step3Title: "এআই মডেল ইনফারেন্স (BYOK)",
       step3Desc:
         "গুগল জেমিনি ২.০ ফ্ল্যাশ, ওপেনরাউটার বা গ্রোক ক্লাউডে সরাসরি কল পাঠায়—কোনো থার্ড-পার্টি ইন্টারমিডিয়ারি ছাড়া।",
@@ -348,18 +355,22 @@ export const translations: Record<Language, TranslationDictionary> = {
       envTitle: "সাপোর্টেড এনভায়রনমেন্ট ভেরিয়েবল",
     },
     modes: {
-      badge: "দ্বৈত আর্কিটেকচার",
-      heading: "বিল্ড মোড বনাম প্ল্যান মোড",
+      badge: "৩টি মোড আর্কিটেকচার",
+      heading: "বিল্ড, প্ল্যান ও চ্যাট মোড",
       subheading:
-        "ওপেনকোড দ্বারা অনুপ্রাণিত হয়ে বাংলাসিএলআই আপনাকে দিচ্ছে সরাসরি কোড তৈরি এবং আর্কিটেকচারাল পর্যালোচনার স্বাধীনতা।",
+        "ওপেনকোড দ্বারা অনুপ্রাণিত হয়ে বাংলাসিএলআই আপনাকে দিচ্ছে কোড তৈরি, স্থাপত্য পর্যালোচনা এবং ইন্টার‍্যাক্টিভ চ্যাটের সম্পূর্ণ স্বাধীনতা।",
       buildTitle: "বিল্ড মোড (BUILD)",
-      buildTag: "ডিফল্ট মোড",
+      buildTag: "স্বয়ংক্রিয় এজেন্ট",
       buildDesc:
         "পূর্ণ স্বয়ংক্রিয় ডেভেলপার। ফাইল তৈরি, কোড রিফ্যাক্টরিং, প্যাকেজ ইনস্টলেশন এবং সম্পূর্ণ প্রোজেক্ট টার্মিনালে দাঁড় করাতে সক্ষম।",
       planTitle: "প্ল্যান মোড (PLAN)",
       planTag: "নিরাপদ আর্কিটেক্ট",
       planDesc:
         "রিড-অনলি সল্যুশন আর্কিটেক্ট। ফাইল এডিট না করে কোডবেস পরীক্ষা করে এবং ধাপে ধাপে পরিকল্পনা ও ব্লুপ্রিন্ট তৈরি করে।",
+      chatTitle: "চ্যাট মোড (CHAT)",
+      chatTag: "ইন্টারেক্টিভ চ্যাট",
+      chatDesc:
+        "কথোপকথনের মাধ্যমে সমস্যা সমাধান। জটিল অ্যালগরিদম ব্যাখ্যা করা, পরামর্শ দেওয়া এবং ফাইল পরিবর্তন ছাড়া কোড স্নিপেট তৈরি করে।",
     },
     models: {
       badge: "বিনামূল্যের এআই মডেল",
@@ -382,7 +393,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     developer: {
       badge: "আর্কিটেক্ট ও ক্রিয়েটর",
       role: "ফুল-স্ট্যাক ওয়েব ডেভেলপার (Next.js ও MERN স্ট্যাক)",
-      bio: "সাভার, ঢাকা, বাংলাদেশ-এ বসবাসরত। রাকিব হাসান শুভ বাংলাভাষী ডেভেলপারদের জন্য বাংলাসিএলআই আর্কিটেক্ট ও তৈরি করেছেন—যা টার্মিনাল থেকেই এআই এজেন্টের আধুনিক সুবিধা এবং সম্পূর্ণ ফ্রি এপিআই ব্যবহারের সুযোগ দেয়।",
+      bio: "সাভার, ঢাকা, বাংলাদেশ-এ বসবাসরত। রাকিব হাসান শুভ বাংলাভাষী ডেভেলপারদের জন্য বাংলাসিএলআই আর্কিটেক্ট ও তৈরি করেছেন—যা টার্মিনাল থেকেই এআই এজেন্টের আধুনিক ৩টি মোড এবং সম্পূর্ণ ফ্রি এপিআই ব্যবহারের সুযোগ দেয়।",
       location: "সাভার, ঢাকা, বাংলাদেশ",
     },
     faq: {
@@ -402,7 +413,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       simulator: "Live Simulator",
       features: "Features",
       architecture: "Architecture",
-      modes: "Build o Plan",
+      modes: "3 Modes",
       models: "AI Models",
       docs: "Docs",
       creator: "Developer",
@@ -420,15 +431,15 @@ export const translations: Record<Language, TranslationDictionary> = {
       titleEn: "English",
       titleEnd: " e Nijer Terminal er Bhetor.",
       subtitle:
-        "BanglaCLI holo Bangladesh o shob bangali developer der jonno open-source, serverless AI coding agent. OpenCode-style Build & Plan mode, 4-ti auto tools ebong 100% free AI model support shoh.",
+        "BanglaCLI holo Bangladesh o shob bangali developer der jonno open-source, serverless AI coding agent. OpenCode-style 3 Modes (Build, Plan & Chat), 4-ti auto tools ebong 100% free AI model support shoh.",
       trySimulator: "Live Terminal Simulator Try Korun",
-      exploreModes: "BUILD vs PLAN Mode Dekhun",
+      exploreModes: "3 Modes (BUILD, PLAN, CHAT) Dekhun",
       metricByok: "100%",
       metricByokLabel: "BYOK & Serverless",
       metricLang: "3 Languages",
-      metricLangLabel: "Bangla, Banglish, English",
-      metricModes: "2 Modes",
-      metricModesLabel: "BUILD & PLAN",
+      metricLangLabel: "বাংলা, Banglish, English",
+      metricModes: "3 Modes",
+      metricModesLabel: "BUILD, PLAN & CHAT",
       metricCost: "0 Taka / $0",
       metricCostLabel: "Free Tiers in Bangladesh",
       copyCmd: "Command Copy Korun",
@@ -443,10 +454,10 @@ export const translations: Record<Language, TranslationDictionary> = {
       card1Title: "Native Trilingual Comprehension",
       card1Desc:
         "Likhun Bangla te ('একটি auth middleware বানাও'), Banglish e ('ekta mongo schema banai daw') ba English e. BanglaCLI shei bhabei reply korbe.",
-      card2Tag: "Dual Architecture",
-      card2Title: "OpenCode Dual Modes",
+      card2Tag: "3 Architecture Modes",
+      card2Title: "OpenCode 3 Modes",
       card2Desc:
-        "Easily switch korun BUILD Mode (files create, packages install) ebong PLAN Mode (read-only safe architectural review) er moddhe.",
+        "Easily switch korun ⚡ BUILD Mode (files create, packages install), 📋 PLAN Mode (read-only safe audit) ebong 💬 CHAT Mode (conversational Q&A & code explanations) er moddhe.",
       card3Tag: "Privacy First",
       card3Title: "100% BYOK & Serverless",
       card3Desc:
@@ -462,7 +473,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       card6Tag: "Realtime UX",
       card6Title: "Live Status Bar & Commands",
       card6Desc:
-        "Prompt er upore shobshomoy active mode o model dekha jay. /model diye model switch ebong /config diye key update kora jay.",
+        "Prompt er upore shobshomoy active mode o model dekha jay. /mode diye mode switch ebong /model diye model update kora jay.",
     },
     architecture: {
       badge: "System Architecture",
@@ -472,9 +483,9 @@ export const translations: Record<Language, TranslationDictionary> = {
       step1Title: "Trilingual Input Processing",
       step1Desc:
         "Bangla lipi, Banglish ba English prompts grohon kore actual intention ar coding tools identify kore.",
-      step2Title: "Context & Mode Controller",
+      step2Title: "3-Mode Context Controller",
       step2Desc:
-        "System prompt, git status o file tree load kore BUILD vs PLAN rules apply kore.",
+        "System prompt, git status o file tree load kore BUILD, PLAN o CHAT rules apply kore.",
       step3Title: "Direct AI Inference (BYOK)",
       step3Desc:
         "Google Gemini 2.0 Flash, OpenRouter ba Groq e direct requests pathay zero intermediary latency te.",
@@ -485,18 +496,22 @@ export const translations: Record<Language, TranslationDictionary> = {
       envTitle: "Supported Env Variables",
     },
     modes: {
-      badge: "Dual Architecture",
-      heading: "BUILD Mode vs PLAN Mode",
+      badge: "3 Modes Architecture",
+      heading: "BUILD, PLAN o CHAT Modes",
       subheading:
-        "OpenCode theke inspired hoye BanglaCLI apnake hands-on builder o safe senior architect er choice dey.",
+        "OpenCode theke inspired hoye BanglaCLI apnake hands-on builder, safe senior architect ebong interactive chat assistant er complete choice dey.",
       buildTitle: "BUILD Mode",
-      buildTag: "Default Mode",
+      buildTag: "Autonomous Agent",
       buildDesc:
         "Full autonomous developer. Files banano, legacy code refactor kora, terminal tests run kora ebong notun project scratch theke build kore.",
       planTitle: "PLAN Mode",
       planTag: "Safe Architect",
       planDesc:
         "Read-only Senior Software Architect. Kono file touch na kore pura directory audit kore ebong step-by-step blueprints formulate kore.",
+      chatTitle: "CHAT Mode",
+      chatTag: "Interactive Q&A",
+      chatDesc:
+        "Conversational assistant. Code explain kora, queries answer kora ebong disk change chara code snippets toiri kore.",
     },
     models: {
       badge: "Zero-Cost AI Providers",
@@ -519,7 +534,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     developer: {
       badge: "Architect & Creator",
       role: "Full-Stack Web Developer (Next.js & MERN Stack)",
-      bio: "Savar, Dhaka, Bangladesh er basinda. Rakib Hasan Shuvo BanglaCLI architect o create korechen bangali developers der terminal e powerful AI agent workflows o free model access dite.",
+      bio: "Savar, Dhaka, Bangladesh er basinda. Rakib Hasan Shuvo BanglaCLI architect o create korechen bangali developers der terminal e powerful AI agent workflows, 3-ti Modes o free model access dite.",
       location: "Savar, Dhaka, Bangladesh",
     },
     faq: {
