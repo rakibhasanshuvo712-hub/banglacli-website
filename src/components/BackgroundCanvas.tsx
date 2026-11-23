@@ -83,8 +83,8 @@ export default function BackgroundCanvas() {
           mouse.y,
           180
         );
-        mouseGradient.addColorStop(0, "rgba(255, 51, 102, 0.08)");
-        mouseGradient.addColorStop(0.5, "rgba(0, 229, 255, 0.04)");
+        mouseGradient.addColorStop(0, "rgba(255, 42, 95, 0.05)");
+        mouseGradient.addColorStop(0.5, "rgba(6, 182, 212, 0.03)");
         mouseGradient.addColorStop(1, "transparent");
         ctx.fillStyle = mouseGradient;
         ctx.fillRect(0, 0, width, height);

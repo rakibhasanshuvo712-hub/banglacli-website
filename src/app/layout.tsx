@@ -73,13 +73,13 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} ${hindSiliguri.variable} scroll-smooth`}
     >
-      <body className="grain min-h-screen font-sans text-slate-100 antialiased selection:bg-rose-500 selection:text-white">
+      <body className="min-h-screen font-sans bg-white text-slate-900 antialiased selection:bg-rose-500 selection:text-white">
         
-        {/* Dynamic Multi-Spectrum Prismatic Background */}
+        {/* Dynamic White Prismatic Background */}
         <div className="prismatic-mesh-bg"></div>
         <div className="chromatic-grid"></div>
         
-        {/* Floating Multi-Hued Chromatic Orbs */}
+        {/* Floating Soft Pastel Chromatic Orbs */}
         <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
           <div className="chromatic-orb orb-coral"></div>
           <div className="chromatic-orb orb-emerald"></div>

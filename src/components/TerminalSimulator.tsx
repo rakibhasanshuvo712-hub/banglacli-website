@@ -206,26 +206,26 @@ export default function TerminalSimulator() {
     <section id="simulator" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
       
       <div className="text-center max-w-3xl mx-auto mb-10">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-mono font-bold uppercase tracking-wider mb-4 shadow-lg shadow-emerald-950/30">
-          <Play className="w-3.5 h-3.5 fill-current" />
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-300 bg-emerald-50 text-emerald-800 text-xs font-mono font-bold uppercase tracking-wider mb-4 shadow-xs">
+          <Play className="w-3.5 h-3.5 fill-current text-emerald-600" />
           <span>Interactive Terminal Playground</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+        <h2 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
           Test BanglaCLI Directly in Your Browser
         </h2>
-        <p className="mt-3 text-slate-400 text-base">
-          Click any preset scenario below to experience how BanglaCLI understands natural language prompts, verifies safety with <code className="text-rose-400 font-bold">[Y/n/a]</code>, and creates production-ready code.
+        <p className="mt-3 text-slate-600 text-base">
+          Click any preset scenario below to experience how BanglaCLI understands natural language prompts, verifies safety with <code className="text-rose-600 font-bold bg-rose-50 px-1 py-0.5 rounded">[Y/n/a]</code>, and creates production-ready code.
         </p>
       </div>
 
-      {/* Preset Scenario Tabs in 4 Unique Colorways */}
+      {/* Preset Scenario Tabs in 4 Attractive Gradient Colorways */}
       <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-6 max-w-4xl mx-auto">
         <button
           onClick={() => startScenario("bangla")}
-          className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all border ${
+          className={`px-4.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all border ${
             activeScenario === "bangla"
-              ? "bg-rose-500/20 text-rose-300 border-rose-500/50 shadow-[0_0_20px_rgba(244,63,94,0.35)]"
-              : "bg-white/5 text-slate-400 hover:text-white border-white/10"
+              ? "bg-gradient-to-r from-rose-500 to-red-500 text-white border-rose-500 shadow-md shadow-rose-500/30 scale-105"
+              : "bg-white text-slate-700 hover:text-slate-950 hover:bg-slate-50 border-slate-200 shadow-xs"
           }`}
         >
           <span className="text-base">🇧🇩</span>
@@ -233,10 +233,10 @@ export default function TerminalSimulator() {
         </button>
         <button
           onClick={() => startScenario("banglish")}
-          className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all border ${
+          className={`px-4.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all border ${
             activeScenario === "banglish"
-              ? "bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-[0_0_20px_rgba(245,158,11,0.35)]"
-              : "bg-white/5 text-slate-400 hover:text-white border-white/10"
+              ? "bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 border-amber-500 shadow-md shadow-amber-500/30 scale-105"
+              : "bg-white text-slate-700 hover:text-slate-950 hover:bg-slate-50 border-slate-200 shadow-xs"
           }`}
         >
           <span className="text-base">🔤</span>
@@ -244,10 +244,10 @@ export default function TerminalSimulator() {
         </button>
         <button
           onClick={() => startScenario("english")}
-          className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all border ${
+          className={`px-4.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all border ${
             activeScenario === "english"
-              ? "bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.35)]"
-              : "bg-white/5 text-slate-400 hover:text-white border-white/10"
+              ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white border-cyan-600 shadow-md shadow-cyan-600/30 scale-105"
+              : "bg-white text-slate-700 hover:text-slate-950 hover:bg-slate-50 border-slate-200 shadow-xs"
           }`}
         >
           <span className="text-base">🇬🇧</span>
@@ -255,10 +255,10 @@ export default function TerminalSimulator() {
         </button>
         <button
           onClick={() => startScenario("plan")}
-          className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all border ${
+          className={`px-4.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all border ${
             activeScenario === "plan"
-              ? "bg-violet-500/20 text-violet-300 border-violet-500/50 shadow-[0_0_20px_rgba(139,92,246,0.35)]"
-              : "bg-white/5 text-slate-400 hover:text-white border-white/10"
+              ? "bg-gradient-to-r from-violet-600 to-purple-600 text-white border-violet-600 shadow-md shadow-violet-600/30 scale-105"
+              : "bg-white text-slate-700 hover:text-slate-950 hover:bg-slate-50 border-slate-200 shadow-xs"
           }`}
         >
           <span className="text-base">📋</span>
@@ -370,7 +370,7 @@ export default function TerminalSimulator() {
           />
           <button
             type="submit"
-            className="btn-prism px-4 py-2 rounded-lg text-xs font-bold shrink-0 flex items-center gap-1.5 transition-all shadow-md"
+            className="btn-emerald-glow px-5 py-2.5 rounded-xl text-xs font-extrabold shrink-0 flex items-center gap-1.5 transition-all shadow-md active:scale-95"
           >
             <span>Send</span>
             <Send className="w-3.5 h-3.5" />
