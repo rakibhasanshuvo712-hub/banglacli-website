@@ -164,8 +164,8 @@ export default function ArchitectureSection() {
             <FileCode2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
             <span>{t.architecture.toolsTitle}</span>
           </h3>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left font-mono text-xs">
+          <div className="overflow-x-auto -webkit-overflow-scrolling-touch pb-2">
+            <table className="w-full min-w-[480px] text-left font-mono text-xs">
               <thead className="bg-slate-100/70 dark:bg-white/5 text-slate-600 dark:text-slate-400 border-b border-slate-200 dark:border-white/10">
                 <tr>
                   <th className="p-3">Tool</th>

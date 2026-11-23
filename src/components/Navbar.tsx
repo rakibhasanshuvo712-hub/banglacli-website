@@ -38,7 +38,7 @@ export default function Navbar() {
                 v1.2.0
               </span>
             </div>
-            <span className="text-[11px] text-slate-500 dark:text-slate-400 -mt-0.5 font-bengali font-semibold">
+            <span className="text-[11px] text-slate-500 dark:text-slate-400 -mt-0.5 font-bengali font-semibold truncate max-w-[140px] xs:max-w-none">
               বাংলা কোডিং এজেন্ট • বাংলাদেশ
             </span>
           </div>
@@ -229,6 +229,14 @@ export default function Navbar() {
             ❓ {t.nav.faq}
           </Link>
           <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex flex-col gap-2.5">
+            <a
+              href="#quickstart"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full py-3 rounded-xl btn-aurora-glow text-center text-white flex items-center justify-center gap-2 font-extrabold shadow-md shadow-rose-500/25"
+            >
+              <Terminal className="w-4 h-4 text-white" />
+              <span>{t.nav.installCli}</span>
+            </a>
             <a
               href="https://github.com/rakibhasanshuvo712-hub/banglacli-website"
               target="_blank"

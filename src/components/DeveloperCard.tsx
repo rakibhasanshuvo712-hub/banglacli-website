@@ -11,7 +11,7 @@ export default function DeveloperCard() {
 
   return (
     <section id="developer" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
-      <div className="glass-panel p-8 sm:p-14 rounded-3xl relative overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl">
+      <div className="glass-panel p-5 sm:p-10 lg:p-14 rounded-3xl relative overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl">
         
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] items-center gap-12 lg:gap-16">
           
@@ -72,12 +72,12 @@ export default function DeveloperCard() {
             </div>
 
             {/* Social and Contact Links */}
-            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+            <div className="mt-8 flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-3 w-full">
               <a
                 href="https://github.com/rakibhasanshuvo712-hub"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-porcelain px-5 py-2.5 rounded-xl text-sm font-bold flex items-center gap-2 border-slate-200 dark:border-white/10 shadow-sm hover:scale-105 transition-all"
+                className="w-full sm:w-auto btn-porcelain px-5 py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 border-slate-200 dark:border-white/10 shadow-sm hover:scale-105 transition-all text-center"
               >
                 <GitHubIcon className="w-4 h-4 text-slate-900 dark:text-white" />
                 <span>GitHub Profile</span>
@@ -86,14 +86,14 @@ export default function DeveloperCard() {
                 href="https://www.linkedin.com/in/rakib-hasan-shuvo-7110ba407?utm_source=share_via&utm_content=profile&utm_medium=member_android"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-2.5 rounded-xl bg-[#0077b5] text-white hover:bg-[#006097] text-sm font-bold flex items-center gap-2 shadow-sm transition-all hover:scale-105 active:scale-95"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#0077b5] text-white hover:bg-[#006097] text-sm font-bold flex items-center justify-center gap-2 shadow-sm transition-all hover:scale-105 active:scale-95 text-center"
               >
                 <LinkedInIcon className="w-4 h-4 text-white" />
                 <span>LinkedIn Profile</span>
               </a>
               <a
                 href="mailto:rakibhasanshuvo712@gmail.com"
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600 text-white text-sm font-bold flex items-center gap-2 shadow-sm transition-all hover:scale-105 active:scale-95"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600 text-white text-sm font-bold flex items-center justify-center gap-2 shadow-sm transition-all hover:scale-105 active:scale-95 text-center"
               >
                 <Mail className="w-4 h-4 text-white" />
                 <span>Email Rakib</span>
@@ -103,10 +103,10 @@ export default function DeveloperCard() {
           </div>
 
           {/* Photo Showcase with User-Uploaded Portrait */}
-          <div className="relative mx-auto w-full max-w-sm order-1 lg:order-2">
+          <div className="relative mx-auto w-full max-w-xs sm:max-w-sm order-1 lg:order-2">
             {/* Spinning conic halo behind photo */}
-            <div className="ring-conic animate-spin-slow absolute -inset-3 rounded-[2.5rem] opacity-75 blur-[8px]" />
-            <div className="absolute -inset-3 rounded-[2.5rem] bg-white dark:bg-[#06040f]" style={{ inset: "2px" }} />
+            <div className="ring-conic animate-spin-slow absolute -inset-2.5 rounded-[2.5rem] opacity-75 blur-[8px]" />
+            <div className="absolute -inset-2.5 rounded-[2.5rem] bg-white dark:bg-[#06040f]" style={{ inset: "2px" }} />
             
             {/* Upright, Stationary Photo Frame with user's uploaded photo */}
             <div className="relative overflow-hidden rounded-[2.2rem] border-2 border-slate-200 dark:border-white/20 shadow-2xl bg-slate-950">
@@ -115,13 +115,13 @@ export default function DeveloperCard() {
                 alt="Rakib Hasan Shuvo"
                 width={500}
                 height={600}
-                className="h-[26rem] sm:h-[30rem] w-full object-cover object-top"
+                className="h-[22rem] sm:h-[28rem] lg:h-[30rem] w-full object-cover object-top"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
               
               {/* Bottom Glass Overlay Card */}
-              <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-white/20 bg-slate-900/85 p-4 backdrop-blur-xl text-white shadow-lg">
+              <div className="absolute inset-x-3.5 bottom-3.5 sm:inset-x-4 sm:bottom-4 rounded-2xl border border-white/20 bg-slate-900/85 p-3.5 sm:p-4 backdrop-blur-xl text-white shadow-lg">
                 <p className="text-base font-extrabold text-white">Rakib Hasan Shuvo</p>
                 <p className="bg-gradient-to-r from-amber-300 to-cyan-300 bg-clip-text text-xs font-semibold text-transparent">
                   Creator &amp; Full-Stack Architect • BanglaCLI
@@ -133,9 +133,9 @@ export default function DeveloperCard() {
               </div>
             </div>
 
-            {/* Floating Badges */}
+            {/* Floating Badges (hidden on narrow screens to prevent horizontal overflow) */}
             <div
-              className="bg-white/95 dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 animate-floaty absolute -left-6 top-8 flex items-center gap-2 rounded-2xl px-3.5 py-2 text-xs font-bold text-slate-900 dark:text-white shadow-xl"
+              className="hidden sm:flex bg-white/95 dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 animate-floaty absolute -left-6 top-8 items-center gap-2 rounded-2xl px-3.5 py-2 text-xs font-bold text-slate-900 dark:text-white shadow-xl"
               style={{ animationDelay: "-2s" }}
             >
               <span className="rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 p-1.5 text-white">
@@ -145,7 +145,7 @@ export default function DeveloperCard() {
             </div>
 
             <div
-              className="bg-white/95 dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 animate-floaty absolute -right-4 top-1/2 flex items-center gap-2 rounded-2xl px-3.5 py-2 text-xs font-bold text-slate-900 dark:text-white shadow-xl"
+              className="hidden sm:flex bg-white/95 dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 animate-floaty absolute -right-4 top-1/2 items-center gap-2 rounded-2xl px-3.5 py-2 text-xs font-bold text-slate-900 dark:text-white shadow-xl"
               style={{ animationDelay: "-3.5s" }}
             >
               <span className="rounded-lg bg-gradient-to-r from-rose-500 to-violet-500 p-1.5 text-white">

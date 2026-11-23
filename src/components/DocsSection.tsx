@@ -107,8 +107,8 @@ export default function DocsSection() {
           </h3>
           <span className="text-xs text-slate-500 dark:text-slate-400 font-mono font-bold bg-slate-200/60 dark:bg-white/10 px-2.5 py-1 rounded-full">v1.2.0</span>
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-left font-mono text-xs sm:text-sm">
+        <div className="overflow-x-auto -webkit-overflow-scrolling-touch pb-2">
+          <table className="w-full min-w-[500px] text-left font-mono text-xs sm:text-sm">
             <thead className="bg-slate-50 dark:bg-white/[0.02] text-slate-600 dark:text-slate-400 border-b border-slate-200 dark:border-white/5 font-semibold">
               <tr>
                 <th className="p-4">Command</th>

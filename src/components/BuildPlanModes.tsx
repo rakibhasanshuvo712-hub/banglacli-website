@@ -9,7 +9,7 @@ export default function BuildPlanModes() {
 
   return (
     <section id="modes" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
-      <div className="glass-panel p-8 sm:p-14 rounded-3xl relative overflow-hidden border border-slate-200 dark:border-white/10 shadow-xl">
+      <div className="glass-panel p-5 sm:p-10 lg:p-14 rounded-3xl relative overflow-hidden border border-slate-200 dark:border-white/10 shadow-xl">
         
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-300 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 text-amber-800 dark:text-amber-300 text-xs font-mono font-bold uppercase tracking-wider mb-4 shadow-xs">

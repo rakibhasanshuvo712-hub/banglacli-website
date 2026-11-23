@@ -133,17 +133,17 @@ export default function FaqSection() {
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? null : idx)}
-                className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-slate-950 dark:text-white text-base sm:text-lg focus:outline-none"
+                className="w-full p-4.5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-slate-950 dark:text-white text-base sm:text-lg focus:outline-none"
               >
                 <span>{faq.q}</span>
                 <ChevronDown
-                  className={`w-5 h-5 transition-transform duration-300 ${
+                  className={`w-5 h-5 transition-transform duration-300 shrink-0 ${
                     isOpen ? `rotate-180 ${faq.indicator}` : "text-slate-400"
                   }`}
                 />
               </button>
               {isOpen && (
-                <div className="px-6 pb-6 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed border-t border-slate-100 dark:border-white/5 pt-4">
+                <div className="px-4.5 pb-5 sm:px-6 sm:pb-6 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed border-t border-slate-100 dark:border-white/5 pt-3.5 sm:pt-4">
                   {faq.a}
                 </div>
               )}

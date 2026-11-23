@@ -62,7 +62,7 @@ export default function Hero() {
         </div>
 
         {/* Monumental Headline */}
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-950 dark:text-white tracking-tight leading-[1.08] max-w-5xl mx-auto">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-950 dark:text-white tracking-tight leading-[1.12] sm:leading-[1.08] max-w-5xl mx-auto">
           {t.hero.titlePart1}
           <span className="text-gradient-coral-gold font-bengali">{t.hero.titleBn}</span>
           {t.hero.titlePart2}
@@ -73,7 +73,7 @@ export default function Hero() {
         </h1>
 
         {/* Subtitle */}
-        <p className="mt-6 text-base sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+        <p className="mt-5 sm:mt-6 text-sm sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed px-2">
           {t.hero.subtitle}
         </p>
 
@@ -140,17 +140,17 @@ export default function Hero() {
         </div>
 
         {/* Hero CTA Buttons */}
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-8 sm:mt-9 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 max-w-md sm:max-w-none mx-auto">
           <Link
             href="#simulator"
-            className="btn-aurora-glow px-8 py-4 rounded-2xl text-base font-extrabold flex items-center gap-3 shadow-xl shadow-rose-500/25 hover:scale-105 active:scale-95 transition-all"
+            className="w-full sm:w-auto btn-aurora-glow px-7 sm:px-8 py-3.5 sm:py-4 rounded-2xl text-sm sm:text-base font-extrabold flex items-center justify-center gap-3 shadow-xl shadow-rose-500/25 hover:scale-105 active:scale-95 transition-all text-center"
           >
             <Terminal className="w-5 h-5 text-white" />
             <span>{t.hero.trySimulator}</span>
           </Link>
           <Link
             href="#modes"
-            className="btn-porcelain px-8 py-4 rounded-2xl text-base font-bold flex items-center gap-3 border-2 border-slate-200 dark:border-white/10 hover:border-slate-300 shadow-sm hover:scale-105 active:scale-95 transition-all"
+            className="w-full sm:w-auto btn-porcelain px-7 sm:px-8 py-3.5 sm:py-4 rounded-2xl text-sm sm:text-base font-bold flex items-center justify-center gap-3 border-2 border-slate-200 dark:border-white/10 hover:border-slate-300 shadow-sm hover:scale-105 active:scale-95 transition-all text-center"
           >
             <Layers className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
             <span>{t.hero.exploreModes}</span>
@@ -158,28 +158,28 @@ export default function Hero() {
         </div>
 
         {/* Metrics Row in 4 Unique Colors */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto pt-10 border-t border-slate-200 dark:border-white/10">
-          <div className="glass-card p-5 rounded-2xl text-center border-rose-200/80 dark:border-rose-500/20 bg-rose-50/30 dark:bg-rose-500/[0.03] hover:border-rose-400 transition-all">
-            <div className="text-3xl font-black text-rose-600 dark:text-rose-400 font-mono">{t.hero.metricByok}</div>
-            <div className="text-xs text-rose-800 dark:text-rose-200/80 mt-1 font-bold uppercase tracking-wider">
+        <div className="mt-12 sm:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-5xl mx-auto pt-8 sm:pt-10 border-t border-slate-200 dark:border-white/10">
+          <div className="glass-card p-4 sm:p-5 rounded-2xl text-center border-rose-200/80 dark:border-rose-500/20 bg-rose-50/30 dark:bg-rose-500/[0.03] hover:border-rose-400 transition-all">
+            <div className="text-2xl sm:text-3xl font-black text-rose-600 dark:text-rose-400 font-mono">{t.hero.metricByok}</div>
+            <div className="text-[10px] sm:text-xs text-rose-800 dark:text-rose-200/80 mt-1 font-bold uppercase tracking-wider">
               {t.hero.metricByokLabel}
             </div>
           </div>
-          <div className="glass-card p-5 rounded-2xl text-center border-emerald-200/80 dark:border-emerald-500/20 bg-emerald-50/30 dark:bg-emerald-500/[0.03] hover:border-emerald-400 transition-all">
-            <div className="text-3xl font-black text-emerald-600 dark:text-emerald-400 font-mono">{t.hero.metricLang}</div>
-            <div className="text-xs text-emerald-800 dark:text-emerald-200/80 mt-1 font-bengali font-bold">
+          <div className="glass-card p-4 sm:p-5 rounded-2xl text-center border-emerald-200/80 dark:border-emerald-500/20 bg-emerald-50/30 dark:bg-emerald-500/[0.03] hover:border-emerald-400 transition-all">
+            <div className="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400 font-mono">{t.hero.metricLang}</div>
+            <div className="text-[10px] sm:text-xs text-emerald-800 dark:text-emerald-200/80 mt-1 font-bengali font-bold">
               {t.hero.metricLangLabel}
             </div>
           </div>
-          <div className="glass-card p-5 rounded-2xl text-center border-cyan-200/80 dark:border-cyan-500/20 bg-cyan-50/30 dark:bg-cyan-500/[0.03] hover:border-cyan-400 transition-all">
-            <div className="text-3xl font-black text-cyan-600 dark:text-cyan-400 font-mono">{t.hero.metricModes}</div>
-            <div className="text-xs text-cyan-800 dark:text-cyan-200/80 mt-1 font-bold uppercase tracking-wider">
+          <div className="glass-card p-4 sm:p-5 rounded-2xl text-center border-cyan-200/80 dark:border-cyan-500/20 bg-cyan-50/30 dark:bg-cyan-500/[0.03] hover:border-cyan-400 transition-all">
+            <div className="text-2xl sm:text-3xl font-black text-cyan-600 dark:text-cyan-400 font-mono">{t.hero.metricModes}</div>
+            <div className="text-[10px] sm:text-xs text-cyan-800 dark:text-cyan-200/80 mt-1 font-bold uppercase tracking-wider">
               {t.hero.metricModesLabel}
             </div>
           </div>
-          <div className="glass-card p-5 rounded-2xl text-center border-amber-200/80 dark:border-amber-500/20 bg-amber-50/30 dark:bg-amber-500/[0.03] hover:border-amber-400 transition-all">
-            <div className="text-3xl font-black text-amber-600 dark:text-amber-400 font-mono">{t.hero.metricCost}</div>
-            <div className="text-xs text-amber-800 dark:text-amber-200/80 mt-1 font-bold uppercase tracking-wider">
+          <div className="glass-card p-4 sm:p-5 rounded-2xl text-center border-amber-200/80 dark:border-amber-500/20 bg-amber-50/30 dark:bg-amber-500/[0.03] hover:border-amber-400 transition-all">
+            <div className="text-2xl sm:text-3xl font-black text-amber-600 dark:text-amber-400 font-mono">{t.hero.metricCost}</div>
+            <div className="text-[10px] sm:text-xs text-amber-800 dark:text-amber-200/80 mt-1 font-bold uppercase tracking-wider">
               {t.hero.metricCostLabel}
             </div>
           </div>

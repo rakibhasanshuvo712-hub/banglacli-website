@@ -34,10 +34,10 @@ export default function ScrollChrome() {
       {showTopBtn && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 z-[70] rounded-2xl p-3.5 bg-white text-slate-900 shadow-xl transition-all hover:scale-110 active:scale-95 border border-slate-200 hover:border-slate-300"
+          className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-[70] rounded-2xl p-3 sm:p-3.5 bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xl transition-all hover:scale-110 active:scale-95 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20"
           aria-label="Back to top"
         >
-          <ArrowUp className="w-5 h-5 text-rose-600" />
+          <ArrowUp className="w-5 h-5 text-rose-600 dark:text-rose-400" />
         </button>
       )}
     </>

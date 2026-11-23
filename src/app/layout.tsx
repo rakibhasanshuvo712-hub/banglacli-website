@@ -1,9 +1,19 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import BackgroundCanvas from "@/components/BackgroundCanvas";
 import ScrollChrome from "@/components/ScrollChrome";
 import { AppProvider } from "@/context/AppContext";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#05070e" },
+  ],
+};
 
 const inter = Inter({
   subsets: ["latin"],
@@ -74,7 +84,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} ${hindSiliguri.variable} scroll-smooth`}
     >
-      <body className="min-h-screen font-sans bg-white text-slate-900 antialiased selection:bg-rose-500 selection:text-white">
+      <body className="min-h-screen font-sans bg-white text-slate-900 antialiased selection:bg-rose-500 selection:text-white overflow-x-hidden w-full max-w-full">
         
         {/* Dynamic White Prismatic Background */}
         <div className="prismatic-mesh-bg"></div>

@@ -242,61 +242,61 @@ export default function TerminalSimulator() {
       </div>
 
       {/* Preset Scenario Tabs in 4 Attractive Gradient Colorways */}
-      <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-6 max-w-4xl mx-auto">
+      <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6 max-w-4xl mx-auto">
         <button
           onClick={() => startScenario("bangla")}
-          className={`px-4.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all border ${
+          className={`px-3 sm:px-4.5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 sm:gap-2 transition-all border ${
             activeScenario === "bangla"
               ? "bg-gradient-to-r from-rose-500 to-red-500 text-white border-rose-500 shadow-md shadow-rose-500/30 scale-105"
               : "bg-white text-slate-700 hover:text-slate-950 hover:bg-slate-50 border-slate-200 shadow-xs"
           }`}
         >
           <span className="text-base">🇧🇩</span>
-          <span className="font-bengali">বাংলা: Express REST API (JWT)</span>
+          <span className="font-bengali">বাংলা: Express REST API</span>
         </button>
         <button
           onClick={() => startScenario("banglish")}
-          className={`px-4.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all border ${
+          className={`px-3 sm:px-4.5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 sm:gap-2 transition-all border ${
             activeScenario === "banglish"
               ? "bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 border-amber-500 shadow-md shadow-amber-500/30 scale-105"
               : "bg-white text-slate-700 hover:text-slate-950 hover:bg-slate-50 border-slate-200 shadow-xs"
           }`}
         >
           <span className="text-base">🔤</span>
-          <span>Banglish: React Counter App</span>
+          <span>Banglish: React Counter</span>
         </button>
         <button
           onClick={() => startScenario("english")}
-          className={`px-4.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all border ${
+          className={`px-3 sm:px-4.5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 sm:gap-2 transition-all border ${
             activeScenario === "english"
               ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white border-cyan-600 shadow-md shadow-cyan-600/30 scale-105"
               : "bg-white text-slate-700 hover:text-slate-950 hover:bg-slate-50 border-slate-200 shadow-xs"
           }`}
         >
           <span className="text-base">🇬🇧</span>
-          <span>English: Rate Limiter Middleware</span>
+          <span>English: Rate Limiter</span>
         </button>
         <button
           onClick={() => startScenario("plan")}
-          className={`px-4.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all border ${
+          className={`px-3 sm:px-4.5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 sm:gap-2 transition-all border ${
             activeScenario === "plan"
               ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white border-cyan-600 shadow-md shadow-cyan-600/30 scale-105"
               : "bg-white text-slate-700 hover:text-slate-950 hover:bg-slate-50 border-slate-200 shadow-xs"
           }`}
         >
           <span className="text-base">📋</span>
-          <span>PLAN Mode: Architecture Audit</span>
+          <span>PLAN Mode</span>
         </button>
         <button
           onClick={() => startScenario("chat")}
-          className={`px-4.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all border ${
+          className={`px-3 sm:px-4.5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 sm:gap-2 transition-all border ${
             activeScenario === "chat"
               ? "bg-gradient-to-r from-violet-600 to-purple-600 text-white border-violet-600 shadow-md shadow-violet-600/30 scale-105"
               : "bg-white text-slate-700 hover:text-slate-950 hover:bg-slate-50 border-slate-200 shadow-xs"
           }`}
         >
           <span className="text-base">💬</span>
-          <span>CHAT Mode: Explanations &amp; Q&amp;A</span>
+          <span>CHAT Mode</span>
         </button>
       </div>
 
@@ -344,27 +344,27 @@ export default function TerminalSimulator() {
         {/* Output Viewport with rich multi-color syntax */}
         <div
           ref={viewportRef}
-          className="p-5 sm:p-7 min-h-[440px] max-h-[520px] overflow-y-auto space-y-3 font-mono text-xs sm:text-sm leading-relaxed"
+          className="p-3.5 sm:p-7 min-h-[340px] sm:min-h-[440px] max-h-[520px] overflow-y-auto space-y-3 font-mono text-xs sm:text-sm leading-relaxed"
           style={{ background: "radial-gradient(circle at 50% 0%, #0d1424 0%, #060912 100%)" }}
         >
           {lines.map((step, idx) => (
             <div key={idx} className="animate-fadeIn">
               {step.type === "user" && (
                 <div>
-                  <span className="text-emerald-400 font-bold select-none">banglacli &gt;</span>{" "}
-                  <span className="text-white font-semibold">{step.text}</span>
+                  <span className="text-emerald-400 font-bold select-none text-xs sm:text-sm">banglacli &gt;</span>{" "}
+                  <span className="text-white font-semibold break-words">{step.text}</span>
                 </div>
               )}
               {step.type === "mode-switch" && (
-                <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-bold text-xs">
+                <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-bold text-xs break-words">
                   {step.text}
                 </div>
               )}
               {step.type === "ai-thought" && (
-                <div className="text-slate-400 italic text-xs">{step.text}</div>
+                <div className="text-slate-400 italic text-xs break-words">{step.text}</div>
               )}
               {step.type === "tool-call" && (
-                <div>
+                <div className="break-all">
                   <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-violet-500/20 text-violet-300 border border-violet-500/40 mr-2">
                     [TOOL]
                   </span>
@@ -373,7 +373,7 @@ export default function TerminalSimulator() {
                 </div>
               )}
               {step.type === "confirm" && (
-                <div>
+                <div className="break-words">
                   <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 mr-2">
                     [CONFIRM]
                   </span>
@@ -381,10 +381,10 @@ export default function TerminalSimulator() {
                 </div>
               )}
               {step.type === "tool-result" && (
-                <div className="text-emerald-400 text-xs ml-4">{step.text}</div>
+                <div className="text-emerald-400 text-xs ml-2 sm:ml-4 break-words">{step.text}</div>
               )}
               {step.type === "ai-final" && (
-                <div className="p-4 mt-2 rounded-2xl bg-white/[0.04] border border-white/10 text-slate-200 leading-relaxed font-sans shadow-lg whitespace-pre-line">
+                <div className="p-3.5 sm:p-4 mt-2 rounded-2xl bg-white/[0.04] border border-white/10 text-slate-200 leading-relaxed font-sans shadow-lg whitespace-pre-line text-xs sm:text-sm break-words">
                   {step.text}
                 </div>
               )}
@@ -393,20 +393,20 @@ export default function TerminalSimulator() {
         </div>
 
         {/* Input Bar */}
-        <form onSubmit={handleSubmit} className="bg-[#0b101f] border-t border-white/10 p-3 sm:p-4 flex items-center gap-3">
-          <span className="text-emerald-400 font-bold select-none text-sm font-mono">banglacli &gt;</span>
+        <form onSubmit={handleSubmit} className="bg-[#0b101f] border-t border-white/10 p-2.5 sm:p-4 flex items-center gap-2 sm:gap-3">
+          <span className="text-emerald-400 font-bold select-none text-xs sm:text-sm font-mono shrink-0">banglacli &gt;</span>
           <input
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Type a command (/build, /plan, /chat, /mode, /model, /help) or prompt in বাংলা / Banglish / English..."
-            className="w-full bg-transparent border-0 text-white placeholder-slate-500 focus:outline-none focus:ring-0 text-xs sm:text-sm font-mono"
+            placeholder="Type /build, /plan, /chat or ask in বাংলা / Banglish / English..."
+            className="min-w-0 flex-1 bg-transparent border-0 text-white placeholder-slate-500 focus:outline-none focus:ring-0 text-xs sm:text-sm font-mono"
             autoComplete="off"
             spellCheck="false"
           />
           <button
             type="submit"
-            className="btn-emerald-glow px-5 py-2.5 rounded-xl text-xs font-extrabold shrink-0 flex items-center gap-1.5 transition-all shadow-md active:scale-95"
+            className="btn-emerald-glow px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs font-extrabold shrink-0 flex items-center gap-1.5 transition-all shadow-md active:scale-95"
           >
             <span>Send</span>
             <Send className="w-3.5 h-3.5" />
@@ -414,7 +414,7 @@ export default function TerminalSimulator() {
         </form>
 
         {/* Shortcut Footer */}
-        <div className="bg-[#060914] px-4 py-2 border-t border-white/5 flex flex-wrap items-center justify-between text-[11px] text-slate-500 font-mono">
+        <div className="bg-[#060914] px-3 sm:px-4 py-2 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500 font-mono">
           <div className="flex items-center gap-3">
             <span>Quick Commands:</span>
             <button type="button" onClick={() => { setInputValue("/build"); }} className="text-emerald-400 hover:underline">/build</button>

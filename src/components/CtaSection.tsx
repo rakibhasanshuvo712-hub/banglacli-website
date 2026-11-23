@@ -35,10 +35,10 @@ export default function CtaSection() {
             <p className="mt-5 text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
               {t.cta.subheading}
             </p>
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+            <div className="mt-8 sm:mt-9 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 max-w-md sm:max-w-none mx-auto">
               <button
                 onClick={copy}
-                className="btn-aurora-glow px-8 py-4 rounded-2xl text-base font-extrabold flex items-center gap-3 text-white shadow-xl shadow-rose-500/35 hover:scale-105 active:scale-95 transition-all"
+                className="w-full sm:w-auto btn-aurora-glow px-7 sm:px-8 py-3.5 sm:py-4 rounded-2xl text-sm sm:text-base font-extrabold flex items-center justify-center gap-3 text-white shadow-xl shadow-rose-500/35 hover:scale-105 active:scale-95 transition-all text-center"
               >
                 {copied ? (
                   <>
@@ -56,7 +56,7 @@ export default function CtaSection() {
                 href="https://github.com/rakibhasanshuvo712-hub/banglacli-website"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-porcelain px-8 py-4 rounded-2xl text-base font-bold flex items-center gap-3 border-2 border-slate-200 dark:border-white/10 hover:border-slate-300 shadow-sm hover:scale-105 active:scale-95 transition-all"
+                className="w-full sm:w-auto btn-porcelain px-7 sm:px-8 py-3.5 sm:py-4 rounded-2xl text-sm sm:text-base font-bold flex items-center justify-center gap-3 border-2 border-slate-200 dark:border-white/10 hover:border-slate-300 shadow-sm hover:scale-105 active:scale-95 transition-all text-center"
               >
                 <GitHubIcon className="w-5 h-5 text-slate-900 dark:text-white" />
                 <span>Star on GitHub</span>
