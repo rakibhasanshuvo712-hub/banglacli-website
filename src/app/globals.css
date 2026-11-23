@@ -3,27 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --bg-deep: #ffffff;
-  --color-coral: #ff2a5f;
-  --color-amber: #f59e0b;
-  --color-lime: #10b981;
-  --color-emerald: #059669;
-  --color-cyan: #06b6d4;
-  --color-blue: #2563eb;
-  --color-violet: #7c3aed;
-  --color-fuchsia: #db2777;
+  --bg-color: #ffffff;
+  --text-color: #0f172a;
+}
+
+html.dark {
+  --bg-color: #05070e;
+  --text-color: #f8fafc;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #ffffff;
+  background-color: var(--bg-color);
 }
 
 body {
-  background-color: #ffffff;
-  color: #0f172a;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   overflow-x: hidden;
   position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
@@ -33,18 +32,18 @@ body {
 
 /* Custom Scrollbars */
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #f8fafc; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #ff2a5f 0%, #f59e0b 25%, #10b981 50%, #06b6d4 75%, #7c3aed 100%);
   border-radius: 9999px;
-  border: 2px solid #ffffff;
+  border: 2px solid transparent;
 }
 
 /* ==========================================================================
-   PURE WHITE PRISMATIC BACKGROUND SYSTEM
-   Crisp, clean white canvas with subtle luminous chromatic ambient auras
+   DYNAMIC BACKGROUND SYSTEM (LIGHT & DARK DUAL SUPPORT)
    ========================================================================== */
 
+/* Light Mode Mesh Background */
 .prismatic-mesh-bg {
   position: fixed;
   inset: 0;
@@ -58,29 +57,53 @@ body {
     radial-gradient(1100px 650px at 15% 70%, rgba(245, 158, 11, 0.06), transparent 60%),
     radial-gradient(1100px 600px at 80% 95%, rgba(124, 58, 237, 0.07), transparent 65%);
   background-attachment: fixed;
+  transition: opacity 0.4s ease;
 }
 
-/* Crisp Light Geometric Grid Overlay */
+/* Dark Mode Mesh Background */
+html.dark .prismatic-mesh-bg {
+  background-color: #05070e;
+  background-image:
+    radial-gradient(1400px 700px at 85% -10%, rgba(255, 42, 95, 0.22), transparent 60%),
+    radial-gradient(1100px 650px at 10% 15%, rgba(16, 185, 129, 0.18), transparent 60%),
+    radial-gradient(1000px 600px at 90% 45%, rgba(6, 182, 212, 0.18), transparent 60%),
+    radial-gradient(1200px 700px at 15% 70%, rgba(245, 158, 11, 0.18), transparent 60%),
+    radial-gradient(1100px 650px at 80% 95%, rgba(124, 58, 237, 0.2), transparent 65%),
+    linear-gradient(180deg, #05070e 0%, #080d1a 35%, #0d091a 70%, #071018 100%);
+}
+
+/* Geometric Grid Overlay */
 .chromatic-grid {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
   background-image:
-    linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 95% 80% at 50% 35%, black 40%, transparent 95%);
   -webkit-mask-image: radial-gradient(ellipse 95% 80% at 50% 35%, black 40%, transparent 95%);
 }
 
-/* Animated Floating Soft Pastel Orbs on White */
+html.dark .chromatic-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* Floating Soft Pastel Orbs */
 .chromatic-orb {
   position: absolute;
   filter: blur(120px);
   border-radius: 9999px;
   pointer-events: none;
   opacity: 0.65;
+}
+
+html.dark .chromatic-orb {
+  filter: blur(140px);
+  opacity: 0.85;
 }
 
 .orb-coral {
@@ -92,6 +115,10 @@ body {
   animation: floatOrb1 16s ease-in-out infinite alternate;
 }
 
+html.dark .orb-coral {
+  background: radial-gradient(circle, rgba(255, 42, 95, 0.3) 0%, rgba(245, 158, 11, 0.15) 50%, transparent 75%);
+}
+
 .orb-emerald {
   top: 30%;
   right: -5%;
@@ -99,6 +126,10 @@ body {
   height: 450px;
   background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 75%);
   animation: floatOrb2 20s ease-in-out infinite alternate;
+}
+
+html.dark .orb-emerald {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.28) 0%, rgba(6, 182, 212, 0.15) 50%, transparent 75%);
 }
 
 .orb-violet {
@@ -110,6 +141,10 @@ body {
   animation: floatOrb3 22s ease-in-out infinite alternate;
 }
 
+html.dark .orb-violet {
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.26) 0%, rgba(219, 39, 119, 0.15) 50%, transparent 75%);
+}
+
 .orb-amber {
   bottom: -5%;
   right: 15%;
@@ -117,6 +152,10 @@ body {
   height: 420px;
   background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, rgba(255, 42, 95, 0.05) 50%, transparent 75%);
   animation: floatOrb1 18s ease-in-out infinite alternate-reverse;
+}
+
+html.dark .orb-amber {
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, rgba(255, 42, 95, 0.12) 50%, transparent 75%);
 }
 
 @keyframes floatOrb1 {
@@ -138,7 +177,7 @@ body {
 }
 
 /* ==========================================================================
-   CLEAN LIGHT BENTO CARDS & PANELS
+   BENTO CARDS & PANELS (LIGHT & DARK)
    ========================================================================== */
 
 .glass-card {
@@ -150,6 +189,12 @@ body {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+html.dark .glass-card {
+  background: rgba(13, 18, 30, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+}
+
 .glass-panel {
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(24px);
@@ -158,57 +203,58 @@ body {
   box-shadow: 0 12px 35px -8px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
 }
 
-/* Hover Card Glows on Light Canvas */
+html.dark .glass-panel {
+  background: rgba(10, 14, 25, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.85), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Hover Card Glows */
 .glow-card-coral:hover {
   border-color: rgba(255, 42, 95, 0.5);
-  box-shadow: 0 16px 36px -8px rgba(255, 42, 95, 0.18), 0 0 0 1px rgba(255, 42, 95, 0.25);
+  box-shadow: 0 16px 36px -8px rgba(255, 42, 95, 0.22), 0 0 0 1px rgba(255, 42, 95, 0.25);
   transform: translateY(-4px);
 }
 
 .glow-card-emerald:hover {
   border-color: rgba(16, 185, 129, 0.5);
-  box-shadow: 0 16px 36px -8px rgba(16, 185, 129, 0.18), 0 0 0 1px rgba(16, 185, 129, 0.25);
+  box-shadow: 0 16px 36px -8px rgba(16, 185, 129, 0.22), 0 0 0 1px rgba(16, 185, 129, 0.25);
   transform: translateY(-4px);
 }
 
 .glow-card-amber:hover {
   border-color: rgba(245, 158, 11, 0.5);
-  box-shadow: 0 16px 36px -8px rgba(245, 158, 11, 0.18), 0 0 0 1px rgba(245, 158, 11, 0.25);
+  box-shadow: 0 16px 36px -8px rgba(245, 158, 11, 0.22), 0 0 0 1px rgba(245, 158, 11, 0.25);
   transform: translateY(-4px);
 }
 
 .glow-card-cyan:hover {
   border-color: rgba(6, 182, 212, 0.5);
-  box-shadow: 0 16px 36px -8px rgba(6, 182, 212, 0.18), 0 0 0 1px rgba(6, 182, 212, 0.25);
+  box-shadow: 0 16px 36px -8px rgba(6, 182, 212, 0.22), 0 0 0 1px rgba(6, 182, 212, 0.25);
   transform: translateY(-4px);
 }
 
 .glow-card-violet:hover {
   border-color: rgba(124, 58, 237, 0.5);
-  box-shadow: 0 16px 36px -8px rgba(124, 58, 237, 0.18), 0 0 0 1px rgba(124, 58, 237, 0.25);
+  box-shadow: 0 16px 36px -8px rgba(124, 58, 237, 0.22), 0 0 0 1px rgba(124, 58, 237, 0.25);
   transform: translateY(-4px);
 }
 
 .glow-card-fuchsia:hover {
   border-color: rgba(219, 39, 119, 0.5);
-  box-shadow: 0 16px 36px -8px rgba(219, 39, 119, 0.18), 0 0 0 1px rgba(219, 39, 119, 0.25);
+  box-shadow: 0 16px 36px -8px rgba(219, 39, 119, 0.22), 0 0 0 1px rgba(219, 39, 119, 0.25);
   transform: translateY(-4px);
 }
 
-/* ==========================================================================
-   VIBRANT GRADIENT TYPOGRAPHY FOR WHITE THEME
-   ========================================================================== */
-
-.text-gradient-rainbow {
-  background: linear-gradient(120deg, #ff2a5f 0%, #ea580c 25%, #059669 50%, #0284c7 75%, #7c3aed 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 8s linear infinite;
-}
-
+/* Typography Gradients */
 .text-gradient-coral-gold {
   background: linear-gradient(135deg, #e11d48 0%, #ea580c 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.dark .text-gradient-coral-gold {
+  background: linear-gradient(135deg, #ff3366 0%, #ff7b00 50%, #ffd000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -219,14 +265,22 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+html.dark .text-gradient-emerald-cyan {
+  background: linear-gradient(135deg, #00f59b 0%, #00e5ff 50%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .text-gradient-violet-rose {
   background: linear-gradient(135deg, #7c3aed 0%, #c026d3 50%, #e11d48 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-@keyframes shine {
-  to { background-position: 200% center; }
+html.dark .text-gradient-violet-rose {
+  background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #ff3366 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Rainbow border shine container */
@@ -245,7 +299,7 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* Marquee */
+/* Animations */
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -255,7 +309,6 @@ body {
   animation: marquee 26s linear infinite;
 }
 
-/* Float */
 @keyframes floaty {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
@@ -265,7 +318,6 @@ body {
   animation: floaty 5s ease-in-out infinite;
 }
 
-/* Conic Halo */
 .ring-conic {
   background: conic-gradient(from 0deg, #ff2a5f, #f59e0b, #10b981, #06b6d4, #7c3aed, #db2777, #ff2a5f);
 }
@@ -278,15 +330,18 @@ body {
   animation: spin-slow 18s linear infinite;
 }
 
-/* ==========================================================================
-   TERMINAL WINDOW (Dark Mac/Linux aesthetic on white background)
-   ========================================================================== */
+/* Terminal Window */
 .terminal-window {
   background: #0d111c;
   border: 1px solid rgba(203, 213, 225, 0.4);
   box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.35), 0 0 30px rgba(16, 185, 129, 0.12);
   border-radius: 22px;
   overflow: hidden;
+}
+
+html.dark .terminal-window {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 35px 85px -20px rgba(0, 0, 0, 0.9), 0 0 50px rgba(16, 185, 129, 0.15);
 }
 
 .terminal-titlebar {
@@ -315,11 +370,9 @@ body {
 .light-green { background: #27c93f; box-shadow: 0 0 8px rgba(39, 201, 63, 0.6); }
 
 /* ==========================================================================
-   ULTRA-ATTRACTIVE HIGH-ENERGY BUTTON SYSTEM
-   Tactile, gorgeous gradients, glowing shadows, modern pill aesthetics
+   BUTTON STYLES
    ========================================================================== */
 
-/* Primary Vibrant Aurora Button */
 .btn-aurora-glow {
   position: relative;
   background: linear-gradient(135deg, #ff2a5f 0%, #ff6a00 50%, #ff007a 100%);
@@ -339,7 +392,6 @@ body {
   transform: translateY(0) scale(0.98);
 }
 
-/* Secondary Porcelain Glass Button */
 .btn-porcelain {
   background: #ffffff;
   border: 1.5px solid #e2e8f0;
@@ -349,19 +401,25 @@ body {
   transition: all 0.25s ease;
 }
 
+html.dark .btn-porcelain {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
 .btn-porcelain:hover {
   background: #f8fafc;
   border-color: #cbd5e1;
-  color: #0f172a;
   box-shadow: 0 8px 22px rgba(15, 23, 42, 0.09);
   transform: translateY(-2px);
 }
 
-.btn-porcelain:active {
-  transform: translateY(0) scale(0.98);
+html.dark .btn-porcelain:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
-/* Electric Emerald Button */
 .btn-emerald-glow {
   background: linear-gradient(135deg, #059669 0%, #10b981 50%, #06b6d4 100%);
   color: #ffffff;
@@ -376,7 +434,6 @@ body {
   transform: translateY(-2px) scale(1.02);
 }
 
-/* Electric Violet Button */
 .btn-violet-glow {
   background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #ec4899 100%);
   color: #ffffff;
@@ -391,7 +448,6 @@ body {
   transform: translateY(-2px) scale(1.02);
 }
 
-/* Solar Amber Button */
 .btn-amber-glow {
   background: linear-gradient(135deg, #f59e0b 0%, #ea580c 50%, #e11d48 100%);
   color: #ffffff;
@@ -404,11 +460,4 @@ body {
   background: linear-gradient(135deg, #d97706 0%, #c2410c 50%, #be123c 100%);
   box-shadow: 0 14px 32px -4px rgba(245, 158, 11, 0.55);
   transform: translateY(-2px) scale(1.02);
-}
-
-/* Badge Neon (Light variant) */
-.badge-neon {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  color: #0f172a;
 }

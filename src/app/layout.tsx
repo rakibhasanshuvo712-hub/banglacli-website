@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono, Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import BackgroundCanvas from "@/components/BackgroundCanvas";
 import ScrollChrome from "@/components/ScrollChrome";
+import { AppProvider } from "@/context/AppContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -49,10 +50,10 @@ export const metadata: Metadata = {
     siteName: "BanglaCLI",
     images: [
       {
-        url: "https://github.com/rakibhasanshuvo712-hub.png",
+        url: "/rakib-profile.jpg",
         width: 800,
         height: 800,
-        alt: "BanglaCLI",
+        alt: "BanglaCLI by Rakib Hasan Shuvo",
       },
     ],
     locale: "en_US",
@@ -93,9 +94,11 @@ export default function RootLayout({
         {/* Scroll Progress Bar & Back to Top */}
         <ScrollChrome />
 
-        <div className="relative z-10 flex min-h-screen flex-col">
-          {children}
-        </div>
+        <AppProvider>
+          <div className="relative z-10 flex min-h-screen flex-col">
+            {children}
+          </div>
+        </AppProvider>
       </body>
     </html>
   );
