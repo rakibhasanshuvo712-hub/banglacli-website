@@ -35,7 +35,7 @@ export default function ModelGrid() {
             </div>
             <h3 className="text-2xl font-bold text-slate-950 dark:text-white mb-2">Google Gemini</h3>
             <p className="text-slate-600 dark:text-slate-300 text-sm mb-5 leading-relaxed">
-              Official SDK integration with Google&apos;s latest Gemini models featuring up to 1M token context windows.
+              Official SDK integration with Google&apos;s latest Gemini models featuring up to 1M token context windows. <strong className="text-emerald-700 dark:text-emerald-400">Zero-Key Starter available via Pollinations.ai</strong> — no API key needed.
             </p>
             <div className="space-y-2 font-mono text-xs text-slate-800 dark:text-slate-200 mb-6">
               <div className="bg-slate-50 dark:bg-black/50 p-3 rounded-xl border border-emerald-200 dark:border-emerald-500/20 flex items-center justify-between">
@@ -74,7 +74,7 @@ export default function ModelGrid() {
             </div>
             <h3 className="text-2xl font-bold text-slate-950 dark:text-white mb-2">OpenRouter Free Tier</h3>
             <p className="text-slate-600 dark:text-slate-300 text-sm mb-5 leading-relaxed">
-              Auto-routing free model aggregator with Particle-1, Nemotron, Gemma 4, and ERNIE models.
+              Auto-routing free model aggregator with <strong className="text-violet-700 dark:text-violet-300">Dynamic Free Model Explorer</strong> — Particle-1, Nemotron, Gemma 4, and ERNIE models with Auto-Cascade for zero downtime.
             </p>
             <div className="space-y-2 font-mono text-xs text-slate-800 dark:text-slate-200 mb-6">
               <div className="bg-slate-50 dark:bg-black/50 p-3 rounded-xl border border-violet-200 dark:border-violet-500/20 flex items-center justify-between">
@@ -113,7 +113,7 @@ export default function ModelGrid() {
             </div>
             <h3 className="text-2xl font-bold text-slate-950 dark:text-white mb-2">Groq, DeepSeek &amp; Ollama</h3>
             <p className="text-slate-600 dark:text-slate-300 text-sm mb-5 leading-relaxed">
-              Point BanglaCLI to any OpenAI-compatible API or run local models completely offline via Ollama.
+              Point BanglaCLI to any OpenAI-compatible API or run local models completely offline via Ollama. <strong className="text-amber-700 dark:text-amber-300">Auto-discovered on startup</strong> — no config needed.
             </p>
             <div className="space-y-2 font-mono text-xs text-slate-800 dark:text-slate-200 mb-6">
               <div className="bg-slate-50 dark:bg-black/50 p-3 rounded-xl border border-amber-200 dark:border-amber-500/20 flex items-center justify-between">

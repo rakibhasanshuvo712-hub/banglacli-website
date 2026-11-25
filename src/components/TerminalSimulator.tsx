@@ -17,7 +17,7 @@ interface Scenario {
 }
 
 export default function TerminalSimulator() {
-  const [activeScenario, setActiveScenario] = useState<"bangla" | "banglish" | "english" | "plan" | "chat">("bangla");
+  const [activeScenario, setActiveScenario] = useState<"bangla" | "banglish" | "english" | "plan" | "chat" | "mesh">("bangla");
   const [currentMode, setCurrentMode] = useState<"BUILD" | "PLAN" | "CHAT">("BUILD");
   const [currentModel, setCurrentModel] = useState("gemini-2.0-flash");
   const [lines, setLines] = useState<Step[]>([]);
@@ -92,10 +92,25 @@ export default function TerminalSimulator() {
         { type: "ai-thought", text: "Formulating architectural explanation with code comparison..." },
         { type: "ai-final", text: "💬 Server vs Client Components in Next.js:\n\n1. 🖥️ Server Components (Default):\n- Execute exclusively on the server, zero JS bundle shipped to client.\n- Can query databases and secrets directly without API routes.\n- Cannot use hooks (useState, useEffect) or browser event listeners.\n\n2. 📱 Client Components ('use client'):\n- Rendered on server, then hydrated in the browser.\n- Essential for interactive UI: buttons with onClick, form inputs, animations.\n\n💡 Pro-Tip: Keep state at leaves of your component tree to maximize server-side performance!" }
       ]
+    },
+    mesh: {
+      mode: "BUILD",
+      model: "gemini-2.0-flash",
+      steps: [
+        { type: "user", text: "banglacli --mesh --role coordinator" },
+        { type: "mode-switch", text: "🌐 MESH MODE ACTIVE — WebSocket Node started on port 49152 (Coordinator Role)" },
+        { type: "ai-thought", text: "Discovering peer terminal instances on local network..." },
+        { type: "tool-call", name: "list_mesh_peers", arg: "localhost:49152" },
+        { type: "tool-result", text: "✓ 2 peer instances found:\n  [builder] Node: abc123 | Workspace: /project/frontend | Mode: BUILD\n  [reviewer] Node: def456 | Workspace: /project/backend | Mode: PLAN" },
+        { type: "user", text: "Ask the builder peer to list its files" },
+        { type: "tool-call", name: "peer_call_tool", arg: 'peer: "builder", tool: "list_files"' },
+        { type: "tool-result", text: "✓ Remote peer response: src/App.tsx, src/components/Hero.tsx, package.json (12 files total)" },
+        { type: "ai-final", text: "🌐 MULTI-AGENT MESH (v4.2.7):\nCoordinator connected to 2 peers.\nSent remote list_files RPC to 'builder' peer — received full file tree.\nYou can now delegate BUILD tasks across terminal windows simultaneously!\n\nMesh Commands:\n  list_mesh_peers   — discover all connected nodes\n  peer_call_tool    — invoke any of 12 tools on a remote peer\n  peer_send_message — send messages across terminals\n\nTo join as a worker: banglacli --mesh --connect localhost:49152" }
+      ]
     }
   };
 
-  const startScenario = (key: "bangla" | "banglish" | "english" | "plan" | "chat") => {
+  const startScenario = (key: "bangla" | "banglish" | "english" | "plan" | "chat" | "mesh") => {
     timeoutIdsRef.current.forEach((id) => clearTimeout(id));
     timeoutIdsRef.current = [];
     setLines([]);
@@ -197,7 +212,7 @@ export default function TerminalSimulator() {
         ...prev,
         {
           type: "ai-final",
-          text: "🩺 BANGLACLI SYSTEM DOCTOR (v2.0.0 HEALTH REPORT)\n──────────────────────────────────────────────\n✔ [PASS] Node.js Runtime: v24.18.0 (Node 18+ verified)\n✔ [PASS] AI Provider & Key: Google Gemini 2.0 Flash / OpenRouter (Active)\n✔ [PASS] Workspace Read/Write: Verified permissions in project root\n✔ [PASS] OS & Shell Safety: Non-interactive child process safety verified\n──────────────────────────────────────────────\nAll 4 system checks passed! Your BanglaCLI v2.0 environment is healthy.",
+          text: "🩺 BANGLACLI SYSTEM DOCTOR (v4.2.7 HEALTH REPORT)\n──────────────────────────────────────────────\n✔ [PASS] Node.js Runtime: v24.18.0 (Node 18+ verified)\n✔ [PASS] AI Provider & Key: Google Gemini 2.0 Flash / Zero-Key Starter (Active)\n✔ [PASS] Workspace Read/Write: Verified permissions in project root\n✔ [PASS] OS & Shell Safety: Non-interactive child process safety verified\n✔ [PASS] Mesh WebSocket: Ready (port 49152 available)\n✔ [PASS] 12 Native Tools: All tools registered and functional\n──────────────────────────────────────────────\nAll 6 system checks passed! Your BanglaCLI v4.2.7 environment is healthy.",
         },
       ]);
       return;
@@ -208,7 +223,7 @@ export default function TerminalSimulator() {
         ...prev,
         {
           type: "ai-final",
-          text: "📊 LIVE SESSION INTELLIGENCE & SAVINGS (BanglaCLI v2.0)\n──────────────────────────────────────────────\nActive Provider:    Google AI Studio / OpenRouter Free Tier\nSelected Model:     gemini-2.0-flash\nCurrent Mode:       ⚡ BUILD\nTotal LLM Calls:    14 calls\nTotal Tokens Used:  38,450 tokens (Prompt: 28,120 • Completion: 10,330)\nEstimated Savings:  $1.346 USD (vs commercial GPT-4 / Claude Opus)\nFiles Touched:      3 file(s)\n──────────────────────────────────────────────\nZero subscription fees — 100% BYOK & free model tiers in Bangladesh!",
+          text: "📊 LIVE SESSION INTELLIGENCE & SAVINGS (BanglaCLI v4.2.7)\n──────────────────────────────────────────────\nActive Provider:    Google AI Studio / OpenRouter Free Tier\nSelected Model:     gemini-2.0-flash\nCurrent Mode:       ⚡ BUILD\nTotal LLM Calls:    14 calls\nTotal Tokens Used:  38,450 tokens (Prompt: 28,120 • Completion: 10,330)\nEstimated Savings:  $1.346 USD (vs commercial GPT-4 / Claude Opus)\nFiles Touched:      3 file(s)\nMesh Peers:         0 connected (run --mesh to activate)\nTools Available:    12 native tools\n──────────────────────────────────────────────\nZero subscription fees — 100% BYOK & Zero-Key free model tiers from Bangladesh!",
         },
       ]);
       return;
@@ -219,7 +234,41 @@ export default function TerminalSimulator() {
         ...prev,
         {
           type: "ai-final",
-          text: "BanglaCLI v2.0 Slash Commands:\n/mode - Cycle through 3 Modes (BUILD -> PLAN -> CHAT)\n/build - Activate autonomous builder mode (write_file & run_command)\n/plan - Activate safe read-only architect mode (audit & blueprint)\n/chat - Activate conversational assistant mode (Q&A & explanations)\n/doctor - Run automated diagnostic environment health check\n/stats - View real-time token counts & estimated dollars saved\n/model - Switch active free AI model\n/clear - Clear terminal output",
+          text: "BanglaCLI v4.2.7 — Slash Commands:\n/mode      - Cycle through 3 Modes (BUILD → PLAN → CHAT)\n/build     - Activate autonomous builder mode (write_file & run_command)\n/plan      - Activate safe read-only architect mode (audit & blueprint)\n/chat      - Activate conversational assistant mode (Q&A & explanations)\n/image     - Multimodal Vision: paste screenshot/UI for code suggestions\n/free      - Dynamic Free Model Explorer (live probe all free tiers)\n/models    - List all available free AI models with status\n/peers     - Show connected Mesh Network peers\n/doctor    - Run automated diagnostic environment health check (6 checks)\n/stats     - View real-time token counts & estimated dollars saved\n/model     - Switch active free AI model (auto-cascade enabled)\n/help      - Show this help message\n/clear     - Clear terminal output\n\nCLI Commands:\n  banglacli --mesh    Start Multi-Agent WebSocket Mesh (port 49152)\n  banglacli guide     Show free API key guide\n  banglacli limits    Show token quota table\n  banglacli doctor    Run system health check\n  banglacli stats     View session statistics\n\n12 Native Tools: write_file, read_file, edit_file, list_files, run_command,\n  grep_search, find_files, fetch_url, web_search, list_mesh_peers,\n  peer_call_tool, peer_send_message",
+        },
+      ]);
+      return;
+    }
+
+    if (raw.startsWith("/image") || raw.startsWith("@image")) {
+      setLines((prev) => [
+        ...prev,
+        {
+          type: "ai-final",
+          text: "📸 MULTIMODAL VISION ANALYSIS (v4.2.7)\n──────────────────────────────\nImage loaded: screenshot.png (1280x800)\nAnalyzing visual layout, UI components, and structure...\n\n📐 Detected UI Components:\n- Navigation bar with 5 links + dark mode toggle\n- Hero section with gradient headline and CTA buttons\n- 3-column feature card grid with icons\n- Responsive breakpoints: sm/md/lg detected\n\n💡 Code Suggestions:\n1. Use Next.js Image component for the hero banner\n2. Apply Tailwind gap-6 grid for the feature cards\n3. Add aria-label to the nav toggle button for accessibility\n4. Consider adding loading='lazy' for below-fold images\n\nType /build to implement these suggestions automatically!",
+        },
+      ]);
+      return;
+    }
+
+    if (raw === "/free" || raw === "/models") {
+      setLines((prev) => [
+        ...prev,
+        { type: "ai-thought", text: "🔍 Probing live free model availability across providers..." },
+        {
+          type: "ai-final",
+          text: "🚀 DYNAMIC FREE MODEL EXPLORER (v4.2.7)\n──────────────────────────\n✔ [ACTIVE] gemini-2.0-flash          (Google AI Studio, 15 RPM)\n✔ [ACTIVE] openrouter/free            (Auto-route, Zero Downtime)\n✔ [ACTIVE] particle-ai/particle-1:free (1M context window)\n✔ [ACTIVE] google/gemma-4-31b-it:free  (Advanced Reasoning)\n✔ [ACTIVE] pollinations/openai         (Zero-Key, No API needed)\n──────────────────────────\nAuto-Cascade: ON — rotates on rate-limit for zero downtime\nAuto-selected: gemini-2.0-flash (fastest response)\n\nTo start Zero-Key (no API needed): banglacli (uses Pollinations.ai)",
+        },
+      ]);
+      return;
+    }
+
+    if (raw === "/peers") {
+      setLines((prev) => [
+        ...prev,
+        {
+          type: "ai-final",
+          text: "🌐 LOCAL MESH PEERS (v4.2.7)\n──────────────────────────\nMesh Node: Offline (run with --mesh to activate)\nTo start as coordinator: banglacli --mesh --role coordinator\nTo join as worker:       banglacli --mesh --connect localhost:49152\n──────────────────────────\nMesh enables cross-terminal multi-agent collaboration!\nTools: list_mesh_peers, peer_call_tool, peer_send_message",
         },
       ]);
       return;
@@ -320,6 +369,17 @@ export default function TerminalSimulator() {
           <span className="text-base">💬</span>
           <span>CHAT Mode</span>
         </button>
+        <button
+          onClick={() => startScenario("mesh")}
+          className={`px-3 sm:px-4.5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 sm:gap-2 transition-all border ${
+            activeScenario === "mesh"
+              ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-white border-teal-500 shadow-md shadow-teal-500/30 scale-105"
+              : "bg-white text-slate-700 hover:text-slate-950 hover:bg-slate-50 border-slate-200 shadow-xs"
+          }`}
+        >
+          <span className="text-base">🌐</span>
+          <span>Mesh Network</span>
+        </button>
       </div>
 
       {/* Titanium Terminal Window */}
@@ -332,7 +392,7 @@ export default function TerminalSimulator() {
             <span className="traffic-light light-yellow"></span>
             <span className="traffic-light light-green"></span>
             <span className="ml-2 text-slate-400 text-xs font-mono font-medium hidden sm:inline">
-              banglacli terminal ~ (3-mode engine)
+              banglacli v4.2.7 ~ (3-mode + mesh)
             </span>
           </div>
 
@@ -442,7 +502,10 @@ export default function TerminalSimulator() {
             <button type="button" onClick={() => { setInputValue("/build"); }} className="text-emerald-400 hover:underline">/build</button>
             <button type="button" onClick={() => { setInputValue("/plan"); }} className="text-cyan-400 hover:underline">/plan</button>
             <button type="button" onClick={() => { setInputValue("/chat"); }} className="text-fuchsia-400 hover:underline">/chat</button>
-            <button type="button" onClick={() => { setInputValue("/doctor"); }} className="text-teal-400 hover:underline">/doctor</button>
+            <button type="button" onClick={() => { setInputValue("/image screenshot.png"); }} className="text-pink-400 hover:underline">/image</button>
+            <button type="button" onClick={() => { setInputValue("/free"); }} className="text-lime-400 hover:underline">/free</button>
+            <button type="button" onClick={() => { setInputValue("/peers"); }} className="text-teal-400 hover:underline">/peers</button>
+            <button type="button" onClick={() => { setInputValue("/doctor"); }} className="text-orange-400 hover:underline">/doctor</button>
             <button type="button" onClick={() => { setInputValue("/stats"); }} className="text-yellow-400 hover:underline">/stats</button>
             <button type="button" onClick={() => { setInputValue("/mode"); }} className="text-amber-400 hover:underline">/mode</button>
             <button type="button" onClick={() => { setInputValue("/model"); }} className="text-violet-400 hover:underline">/model</button>

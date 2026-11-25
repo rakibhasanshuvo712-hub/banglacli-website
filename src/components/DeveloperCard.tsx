@@ -141,7 +141,7 @@ export default function DeveloperCard() {
               <span className="rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 p-1.5 text-white">
                 <Trophy size={14} />
               </span>
-              <span>BanglaCLI • v2.0.0</span>
+              <span>BanglaCLI • v4.2.7</span>
             </div>
 
             <div

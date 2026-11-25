@@ -52,6 +52,14 @@ export default function ArchitectureSection() {
       chatMode: "Disabled",
     },
     {
+      name: "edit_file",
+      capability: "Targeted Exact Replacement & Patching",
+      guard: "Target block verification with [Y/n/a]",
+      buildMode: "Active",
+      planMode: "Disabled",
+      chatMode: "Disabled",
+    },
+    {
       name: "read_file",
       capability: "Targeted File Inspection",
       guard: "Read-only / Safe",
@@ -62,7 +70,7 @@ export default function ArchitectureSection() {
     {
       name: "list_files",
       capability: "Recursive Directory Scans",
-      guard: "Ignores node_modules, .git",
+      guard: "Auto-ignores node_modules, .git",
       buildMode: "Active",
       planMode: "Active",
       chatMode: "Active",
@@ -78,7 +86,7 @@ export default function ArchitectureSection() {
     {
       name: "grep_search",
       capability: "Fast Codebase Regex & Text Search",
-      guard: "Line-numbered pattern match (v2.0)",
+      guard: "Line-numbered pattern matching",
       buildMode: "Active",
       planMode: "Active",
       chatMode: "Active",
@@ -86,7 +94,7 @@ export default function ArchitectureSection() {
     {
       name: "find_files",
       capability: "Wildcard File Matcher (*.tsx, *.ts)",
-      guard: "Instant codebase tree search (v2.0)",
+      guard: "Instant codebase tree search",
       buildMode: "Active",
       planMode: "Active",
       chatMode: "Active",
@@ -94,7 +102,39 @@ export default function ArchitectureSection() {
     {
       name: "fetch_url",
       capability: "Web Docs & API HTML Scraper",
-      guard: "Live web ingestion & cleanup (v2.0)",
+      guard: "Live web ingestion & cleanup",
+      buildMode: "Active",
+      planMode: "Active",
+      chatMode: "Active",
+    },
+    {
+      name: "web_search",
+      capability: "DuckDuckGo Instant Web Search",
+      guard: "Real-time docs & error lookups",
+      buildMode: "Active",
+      planMode: "Active",
+      chatMode: "Active",
+    },
+    {
+      name: "list_mesh_peers",
+      capability: "Local WebSocket Mesh Discovery",
+      guard: "Discovers active terminal peers",
+      buildMode: "Active",
+      planMode: "Active",
+      chatMode: "Active",
+    },
+    {
+      name: "peer_call_tool",
+      capability: "Remote Tool Execution Across Terminals",
+      guard: "Peer permission verification",
+      buildMode: "Active",
+      planMode: "Disabled",
+      chatMode: "Disabled",
+    },
+    {
+      name: "peer_send_message",
+      capability: "Cross-Instance Inter-Agent Messaging",
+      guard: "Local WebSocket mesh RPC",
       buildMode: "Active",
       planMode: "Active",
       chatMode: "Active",
@@ -102,6 +142,12 @@ export default function ArchitectureSection() {
   ];
 
   const envs = [
+    {
+      var: "ZERO-KEY STARTER",
+      provider: "Built-in Zero-Key AI",
+      quota: "100% Free / No Setup",
+      desc: "Instant out-of-the-box coding without entering any API key.",
+    },
     {
       var: "GEMINI_API_KEY",
       provider: "Google AI Studio",
@@ -112,7 +158,7 @@ export default function ArchitectureSection() {
       var: "OPENROUTER_API_KEY",
       provider: "OpenRouter Gateway",
       quota: "Unlimited Free Tier Access",
-      desc: "Auto-routes between free Particle-1, Gemma, and DeepSeek variants.",
+      desc: "Auto-routes between free Particle-1, Gemma 4, and DeepSeek variants.",
     },
     {
       var: "GROQ_API_KEY",

@@ -79,7 +79,7 @@ export default function Features() {
             {t.features.card3Desc}
           </p>
           <div className="bg-slate-50 dark:bg-black/50 rounded-xl p-3 font-mono text-xs text-amber-800 dark:text-amber-200 border border-amber-200 dark:border-amber-500/20">
-            <span>🔒 Direct Client-to-API • 0 Telemetry</span>
+            <span>⚡ Instant Zero-Key Start • Local .env / Ollama</span>
           </div>
         </div>
 
@@ -98,7 +98,7 @@ export default function Features() {
             {t.features.card4Desc}
           </p>
           <div className="bg-slate-50 dark:bg-black/50 rounded-xl p-3 font-mono text-xs text-cyan-800 dark:text-cyan-200 border border-cyan-200 dark:border-cyan-500/20">
-            <span>🛠️ Complete Full-Stack Scaffolding</span>
+            <span>🛠️ 12 Native Tools + Local Mesh RPC</span>
           </div>
         </div>
 
@@ -117,7 +117,7 @@ export default function Features() {
             {t.features.card5Desc}
           </p>
           <div className="bg-slate-50 dark:bg-black/50 rounded-xl p-3 font-mono text-xs text-pink-800 dark:text-pink-200 border border-pink-200 dark:border-pink-500/20">
-            <span>[CONFIRM] Execute &apos;npm install&apos; [Y/n/a]:</span>
+            <span>📸 /image Vision Analysis • /undo Rollback</span>
           </div>
         </div>
 
@@ -136,7 +136,7 @@ export default function Features() {
             {t.features.card6Desc}
           </p>
           <div className="bg-slate-50 dark:bg-black/50 rounded-xl p-3 font-mono text-xs text-violet-800 dark:text-violet-200 border border-violet-200 dark:border-violet-500/20">
-            <span>[⚡ BUILD MODE] [🤖 openrouter/free]</span>
+            <span>🔄 Auto-Cascade Active • 🌐 Local Mesh WS</span>
           </div>
         </div>
 

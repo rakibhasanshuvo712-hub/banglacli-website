@@ -6,18 +6,19 @@ import { Copy, Check, Terminal, Layers, Sparkles } from "lucide-react";
 import { useApp } from "@/context/AppContext";
 
 const techMarquee = [
-  { label: "BanglaCLI v2.0 Official Release", color: "from-emerald-400 to-teal-500" },
+  { label: "BanglaCLI v4.2.7 Official Release", color: "from-emerald-400 to-teal-500" },
+  { label: "Zero-Key Starter AI (Instant Setup)", color: "from-amber-400 to-orange-500" },
+  { label: "Multimodal Vision & Screenshots (/image)", color: "from-cyan-400 to-blue-500" },
+  { label: "Dynamic Free Model Explorer & Cascade", color: "from-fuchsia-500 to-pink-500" },
+  { label: "Multi-Agent WebSocket Mesh Network", color: "from-violet-500 to-purple-600" },
+  { label: "12 Autonomous Native Tools", color: "from-emerald-500 to-teal-600" },
   { label: "বাংলা লিপি (Bangla Native)", color: "from-rose-500 to-red-500" },
   { label: "Banglish Phonetic AI", color: "from-amber-500 to-orange-500" },
   { label: "English Engineering Prompts", color: "from-cyan-500 to-blue-500" },
-  { label: "Fast Grep & Wildcard Search (v2.0)", color: "from-fuchsia-500 to-pink-500" },
-  { label: "Web Docs Ingestion fetch_url (v2.0)", color: "from-blue-500 to-indigo-500" },
-  { label: "Live Token Savings /stats (v2.0)", color: "from-amber-400 to-emerald-500" },
-  { label: "System Doctor /doctor (v2.0)", color: "from-teal-400 to-cyan-500" },
-  { label: "Google Gemini 2.0 Flash (Free)", color: "from-emerald-500 to-teal-500" },
-  { label: "OpenRouter Multi-Model Gateway", color: "from-violet-500 to-purple-600" },
+  { label: "DuckDuckGo Web Search & Docs fetch_url", color: "from-blue-500 to-indigo-500" },
+  { label: "Live Token Savings /stats", color: "from-amber-400 to-emerald-500" },
+  { label: "System Doctor /doctor & Undo /diff", color: "from-teal-400 to-cyan-500" },
   { label: "3 Modes Architecture (BUILD / PLAN / CHAT)", color: "from-indigo-500 to-cyan-500" },
-  { label: "100% BYOK & Zero Middleman", color: "from-teal-500 to-emerald-600" },
   { label: "Made in Bangladesh", color: "from-red-500 to-emerald-600" },
 ];
 

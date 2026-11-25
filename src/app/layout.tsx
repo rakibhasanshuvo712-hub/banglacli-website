@@ -35,13 +35,16 @@ const hindSiliguri = Hind_Siliguri({
 });
 
 export const metadata: Metadata = {
-  title: "BanglaCLI 2.0 — The Trilingual AI Coding Agent (বাংলা, Banglish & English)",
+  title: "BanglaCLI 4.2.7 — The Trilingual AI Coding Agent (বাংলা, Banglish & English)",
   description:
-    "BanglaCLI 2.0 is an autonomous, lightweight BYOK AI coding agent CLI fluent in Bangla, Banglish, and English. Features OpenCode-style Build, Plan & Chat modes, 7 autonomous tools (grep, wildcard search, web ingestion), and 100% free tier AI support.",
+    "BanglaCLI 4.2.7 is an autonomous, lightweight BYOK AI coding agent CLI fluent in Bangla, Banglish, and English. Features Zero-Key Starter AI, Dynamic Free Model Explorer & Auto-Cascade, Multimodal Vision (/image), Multi-Agent Mesh, OpenCode 3 Modes, and 12 autonomous native tools.",
   keywords: [
     "BanglaCLI",
     "banglacli",
     "AI coding agent",
+    "Zero-Key Starter AI",
+    "Multimodal Vision AI",
+    "Multi-Agent Mesh",
     "Bangla AI",
     "Banglish AI",
     "BYOK AI",

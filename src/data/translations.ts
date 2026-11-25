@@ -137,7 +137,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       github: "GitHub",
     },
     hero: {
-      badge: "BanglaCLI v2.0 Released • The Trilingual AI Coding Agent from Bangladesh",
+      badge: "BanglaCLI v4.2.7 Released • The Trilingual AI Coding Agent from Bangladesh",
       titlePart1: "Code Faster in ",
       titleBn: "বাংলা",
       titlePart2: ", ",
@@ -146,11 +146,11 @@ export const translations: Record<Language, TranslationDictionary> = {
       titleEn: "English",
       titleEnd: " Directly in Your Terminal.",
       subtitle:
-        "BanglaCLI 2.0 is an open-source, serverless AI coding agent designed from the ground up for Bengali developers in Bangladesh and worldwide. Equipped with OpenCode-style 3 Modes (Build, Plan & Chat), 7 autonomous tools (including fast codebase grep, wildcard search & web docs ingestion), system doctor, live token savings metrics, and zero-cost free model integrations.",
+        "BanglaCLI 4.2.7 is an autonomous, serverless terminal AI coding agent from Bangladesh. Powered by Zero-Key Starter AI, Dynamic Free Model Explorer & Auto-Cascade, Multimodal Vision (/image), Multi-Agent WebSocket Mesh, OpenCode-style 3 Modes (Build, Plan & Chat), and 12 autonomous native tools.",
       trySimulator: "Try Live Terminal Simulator",
       exploreModes: "Explore 3 Modes (BUILD, PLAN, CHAT)",
       metricByok: "100%",
-      metricByokLabel: "BYOK & Serverless",
+      metricByokLabel: "BYOK & Zero-Key Start",
       metricLang: "3 Languages",
       metricLangLabel: "বাংলা, Banglish, English",
       metricModes: "3 Modes",
@@ -173,41 +173,41 @@ export const translations: Record<Language, TranslationDictionary> = {
       card2Title: "OpenCode 3 Modes",
       card2Desc:
         "Switch effortlessly between ⚡ BUILD Mode (creates files, runs tests), 📋 PLAN Mode (read-only architectural audit), and 💬 CHAT Mode (conversational Q&A & code explanations).",
-      card3Tag: "Privacy First",
-      card3Title: "100% BYOK & Serverless",
+      card3Tag: "Zero Friction & Privacy",
+      card3Title: "Zero-Key Starter AI & BYOK",
       card3Desc:
-        "Zero middleman backend and zero tracking. Your API keys are encrypted locally on your operating system via conf. All requests travel directly to the provider.",
+        "Instant startup with zero required API keys, plus auto-discovery for local .env keys and Ollama models. Your keys remain encrypted locally via conf.",
       card4Tag: "Autonomous Engine",
-      card4Title: "7 Autonomous Native Tools",
+      card4Title: "12 Autonomous Native Tools",
       card4Desc:
-        "Equipped with list_files, read_file, write_file, run_command, grep_search, find_files, and fetch_url to construct full-stack applications end-to-end safely.",
-      card5Tag: "Zero Damage",
-      card5Title: "Zero-Damage Safety Guardrails",
+        "Equipped with list_files, read_file, write_file, edit_file, run_command, grep_search, find_files, fetch_url, web_search, and cross-instance mesh tools.",
+      card5Tag: "Zero Damage & Multimodal",
+      card5Title: "Safety Guardrails & Vision (/image)",
       card5Desc:
-        "Never worry about accidental file destruction. Before writing files or executing shell commands, BanglaCLI pauses for explicit confirmation [Y/n/a] with /diff and /undo support.",
-      card6Tag: "Realtime UX",
-      card6Title: "System Doctor & Token Savings",
+        "Never worry about accidental file destruction with [Y/n/a] confirmations and /undo. Paste screenshots or UI mockups via /image for instant multimodal analysis.",
+      card6Tag: "Infinite Cascade & Mesh",
+      card6Title: "Free Model Explorer & Mesh Network",
       card6Desc:
-        "Run 'banglacli doctor' for automated runtime & key health diagnostics. Track real-time token counts and live dollars saved vs GPT-4/Opus with 'banglacli stats'.",
+        "Dynamic free model explorer with zero-downtime auto-cascade. Multi-agent WebSocket mesh lets multiple terminal windows collaborate on shared codebases.",
     },
     architecture: {
       badge: "System Architecture",
       heading: "How BanglaCLI Works Under the Hood",
       subheading:
-        "A lightweight, reactive agent loop that converts natural language into verified filesystem and terminal actions.",
-      step1Title: "Trilingual Prompt Ingestion",
+        "A lightweight, reactive agent loop that converts natural language into verified filesystem, web ingestion, and terminal actions.",
+      step1Title: "Trilingual Prompt & Image Ingestion",
       step1Desc:
-        "Accepts prompts in বাংলা script, phonetic Banglish, or English. Normalizes intent and identifies code actions.",
+        "Accepts prompts in বাংলা script, phonetic Banglish, English, or screenshots via /image. Normalizes intent and identifies code actions.",
       step2Title: "3-Mode Context Controller",
       step2Desc:
         "Injects system instructions, git status, and project file tree into the conversation context while enforcing BUILD, PLAN, or CHAT mode guardrails.",
-      step3Title: "Model Inference (BYOK)",
+      step3Title: "Zero-Key AI & Model Inference",
       step3Desc:
-        "Dispatches streaming requests directly to Google Gemini 2.0 Flash, OpenRouter, or Groq with zero intermediary proxy servers.",
-      step4Title: "Guarded Tool Execution",
+        "Connects via Zero-Key starter models, Google Gemini, OpenRouter free cascade, or local Ollama with zero intermediary proxy servers.",
+      step4Title: "Guarded 12-Tool & Mesh Execution",
       step4Desc:
-        "Parses function calls and prompts developer approval [Y/n/a] before modifying disk files or running terminal scripts.",
-      toolsTitle: "Autonomous Native Tools Matrix",
+        "Executes filesystem changes, grep searches, web ingestion, or cross-instance mesh RPCs with interactive developer approval [Y/n/a].",
+      toolsTitle: "12 Autonomous Native Tools Matrix",
       envTitle: "Supported Environment Variables",
     },
     modes: {
@@ -281,7 +281,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       github: "গিটহাব",
     },
     hero: {
-      badge: "বাংলাসিএলআই ২.০ রিলিজড • বাংলাদেশ থেকে তৈরি ত্রিভাষিক এআই কোডিং এজেন্ট",
+      badge: "বাংলাসিএলআই ৪.২.৭ রিলিজড • বাংলাদেশ থেকে তৈরি ত্রিভাষিক এআই কোডিং এজেন্ট",
       titlePart1: "কোডিং করুন দ্রুত গতিতে ",
       titleBn: "বাংলা",
       titlePart2: ", ",
@@ -290,11 +290,11 @@ export const translations: Record<Language, TranslationDictionary> = {
       titleEn: "ইংরেজি",
       titleEnd: " ভাষায় আপনার নিজস্ব টার্মিনালে।",
       subtitle:
-        "বাংলাসিএলআই ২.০ (BanglaCLI 2.0) হলো বাংলাদেশ এবং বিশ্বজুড়ে বাংলাভাষী ডেভেলপারদের জন্য তৈরি ওপেন-সোর্স, সার্ভারলেস এআই কোডিং এজেন্ট। এতে রয়েছে ওপেনকোড-স্টাইলের ৩টি মোড (বিল্ড, প্ল্যান ও চ্যাট), ৭টি স্বয়ংক্রিয় টুলস (কোডবেস গ্রেপ সার্চ, ওয়াইল্ডকার্ড ফাইল সার্চ ও ওয়েব ডকস স্ক্র্যাপিং), সিস্টেম ডক্টর এবং লাইভ টোকেন সেভিংস ট্র্যাকার।",
+        "বাংলাসিএলআই ৪.২.৭ (BanglaCLI 4.2.7) হলো বাংলাদেশ এবং বিশ্বজুড়ে বাংলাভাষী ডেভেলপারদের জন্য আধুনিক টার্মিনাল এআই কোডিং এজেন্ট। এতে রয়েছে জিরো-কি স্টার্টার এআই, ফ্রি মডেল এক্সপ্লোরার ও অটো-ক্যাসকেড, মাল্টিমোডাল ভিশন (/image), মাল্টি-এজেন্ট মেশ নেটওয়ার্ক, ওপেনকোড-স্টাইলের ৩টি মোড (বিল্ড, প্ল্যান ও চ্যাট) এবং ১২টি স্বয়ংক্রিয় টুলস।",
       trySimulator: "লাইভ টার্মিনাল সিমুলেটর ট্রাই করুন",
       exploreModes: "৩টি মোড (বিল্ড, প্ল্যান ও চ্যাট) জানুন",
       metricByok: "১০০%",
-      metricByokLabel: "বিওয়াইওকে ও সার্ভারলেস",
+      metricByokLabel: "বিওয়াইওকে ও জিরো-কি স্টার্ট",
       metricLang: "৩টি ভাষা",
       metricLangLabel: "বাংলা, বাংলিশ ও ইংরেজি",
       metricModes: "৩টি মোড",
@@ -317,41 +317,41 @@ export const translations: Record<Language, TranslationDictionary> = {
       card2Title: "ওপেনকোড ৩টি মোড",
       card2Desc:
         "সহজেই সুইচ করুন বিল্ড মোড (ফাইল তৈরি ও প্যাকেজ ইনস্টল), প্ল্যান মোড (নিরাপদ আর্কিটেকচার অডিট) এবং চ্যাট মোডের (এআই প্রশ্নোত্তর ও কোড ব্যাখ্যা) মধ্যে।",
-      card3Tag: "নিরাপত্তা ও প্রাইভেসি",
-      card3Title: "১০০% নিজস্ব কি ও সার্ভারলেস",
+      card3Tag: "জিরো ফ্র্রিকশন ও প্রাইভেসি",
+      card3Title: "জিরো-কি স্টার্টার এআই ও বিওয়াইওকে",
       card3Desc:
-        "মাঝখানে কোনো প্রক্সি বা ট্র্যাকিং সার্ভার নেই। আপনার এপিআই কি সরাসরি আপনার কম্পিউটারে এনক্রিপ্ট থাকে এবং সরাসরি প্রোভাইডারের কাছে যায়।",
+        "কোনো এপিআই কি ছাড়াও তাৎক্ষণিক কোডিং শুরু করুন, সাথে রয়েছে লোকাল .env কি ও ওলামা (Ollama) অটো-ডিসকভারি। আপনার কি লোকালি সম্পূর্ণ সুরক্ষিত থাকে।",
       card4Tag: "স্বয়ংক্রিয় ইঞ্জিন",
-      card4Title: "৭টি অটোনোমাস নেটিভ টুলস",
+      card4Title: "১২টি অটোনোমাস নেটিভ টুলস",
       card4Desc:
-        "ফুল-স্ট্যাক প্রোজেক্ট তৈরিতে রয়েছে list_files, read_file, write_file, run_command এবং নতুন grep_search, find_files ও fetch_url এর মতো শক্তিশালী সুরক্ষিত টুলস।",
-      card5Tag: "জিরো ড্যামেজ",
-      card5Title: "নিরাপদ কনফার্মেশন গার্ডরেইল",
+        "ফুল-স্ট্যাক প্রোজেক্ট তৈরিতে রয়েছে list_files, read_file, write_file, edit_file, run_command, grep_search, find_files, fetch_url, web_search এবং ক্রস-টার্মিনাল মেশ টুলস।",
+      card5Tag: "জিরো ড্যামেজ ও মাল্টিমোডাল",
+      card5Title: "নিরাপদ গার্ডরেইল ও ভিশন (/image)",
       card5Desc:
-        "কোনো ফাইল ভুলবশত ডিলিট বা ওভাররাইটের ভয় নেই। প্রতিবার ফাইল সেভ বা কমান্ড চালানোর আগে অনুমতি [Y/n/a] নেওয়া হয়, সাথে রয়েছে /diff ও /undo।",
-      card6Tag: "রিয়েলটাইম অভিজ্ঞতা",
-      card6Title: "সিস্টেম ডক্টর ও টোকেন সেভিংস",
+        "কোনো ফাইল ভুলবশত মুছে যাওয়ার ভয় নেই [Y/n/a] ও /undo এর কল্যাণে। /image কমান্ড দিয়ে সরাসরি স্ক্রিনশট বা ইউআই মকআপ পেস্ট করে এনালাইসিস করুন।",
+      card6Tag: "ইনফিনিট ক্যাসকেড ও মেশ",
+      card6Title: "ফ্রি মডেল এক্সপ্লোরার ও মেশ নেটওয়ার্ক",
       card6Desc:
-        "রান করুন 'banglacli doctor' স্বয়ংক্রিয় ডায়াগনস্টিক পরীক্ষার জন্য। এবং 'banglacli stats' দিয়ে লাইভ টোকেন ও কমার্শিয়াল মডেলের তুলনায় কত ডলার সাশ্রয় হলো তা দেখুন।",
+        "ডায়নামিক ফ্রি মডেল এক্সপ্লোরার কোনো ডাউনটাইম ছাড়াই ফ্রি মডেলে অটো-ক্যাসকেড করে। আর লোকাল মেশ নেটওয়ার্ক একাধিক টার্মিনাল উইন্ডোকে একসাথে যুক্ত করে।",
     },
     architecture: {
       badge: "সিস্টেম আর্কিটেকচার",
       heading: "বাংলাসিএলআই যেভাবে কাজ করে",
       subheading:
         "একটি আধুনিক রিঅ্যাক্টিভ এজেন্ট লুপ যা আপনার মুখের ভাষাকে যাচাইকৃত ফাইল ও টার্মিনাল অ্যাকশনে রূপান্তর করে।",
-      step1Title: "ত্রিভাষিক প্রম্পট ইনপুট",
+      step1Title: "ত্রিভাষিক প্রম্পট ও ইমেজ ইনপুট",
       step1Desc:
-        "বাংলা লিপি, বাংলিশ রোমান হরফ বা ইংরেজি প্রম্পট গ্রহণ করে উদ্দেশ্য ও কোডিং অ্যাকশন শনাক্ত করে।",
+        "বাংলা লিপি, বাংলিশ, ইংরেজি প্রম্পট কিংবা /image দিয়ে স্ক্রিনশট গ্রহণ করে উদ্দেশ্য ও কোডিং অ্যাকশন শনাক্ত করে।",
       step2Title: "৩-মোড কনটেক্সট কন্ট্রোলার",
       step2Desc:
         "সিস্টেম নির্দেশাবলী, গিট স্ট্যাটাস ও ডিরেক্টরি ট্রি লোড করে এবং বিল্ড, প্ল্যান বা চ্যাট মোডের নিয়ম কঠোরভাবে মেনে চলে।",
-      step3Title: "এআই মডেল ইনফারেন্স (BYOK)",
+      step3Title: "জিরো-কি এআই ও মডেল ইনফারেন্স",
       step3Desc:
-        "গুগল জেমিনি ২.০ ফ্ল্যাশ, ওপেনরাউটার বা গ্রোক ক্লাউডে সরাসরি কল পাঠায়—কোনো থার্ড-পার্টি ইন্টারমিডিয়ারি ছাড়া।",
-      step4Title: "সুরক্ষিত টুল এক্সিকিউশন",
+        "জিরো-কি স্টার্টার মডেল, গুগল জেমিনি, ওপেনরাউটার ফ্রি ক্যাসকেড বা লোকাল ওলামায় সরাসরি কল পাঠায়—কোনো ইন্টারমিডিয়ারি ছাড়া।",
+      step4Title: "সুরক্ষিত ১২-টুল ও মেশ এক্সিকিউশন",
       step4Desc:
-        "ফাইল সিস্টেমে লেখার পূর্বে ডেভেলপার কনফার্মেশন [Y/n/a] গ্রহণ করে এবং কমান্ড এক্সিকিউট করে।",
-      toolsTitle: "নেটিভ টুলস ম্যাট্রিক্স",
+        "ফাইল সিস্টেমে লেখার পূর্বে ডেভেলপার কনফার্মেশন [Y/n/a] গ্রহণ করে এবং কমান্ড ও মেশ আরপিসি এক্সিকিউট করে।",
+      toolsTitle: "১২টি নেটিভ টুলস ম্যাট্রিক্স",
       envTitle: "সাপোর্টেড এনভায়রনমেন্ট ভেরিয়েবল",
     },
     modes: {
@@ -422,7 +422,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       github: "GitHub",
     },
     hero: {
-      badge: "BanglaCLI v2.0 Released • Bangladesh er Trilingual AI Coding Agent",
+      badge: "BanglaCLI v4.2.7 Released • Bangladesh er Trilingual AI Coding Agent",
       titlePart1: "Fast Code Korun ",
       titleBn: "বাংলা",
       titlePart2: ", ",
@@ -431,11 +431,11 @@ export const translations: Record<Language, TranslationDictionary> = {
       titleEn: "English",
       titleEnd: " e Nijer Terminal er Bhetor.",
       subtitle:
-        "BanglaCLI 2.0 holo Bangladesh o shob bangali developer der jonno open-source, serverless AI coding agent. OpenCode-style 3 Modes (Build, Plan & Chat), 7-ti auto tools (codebase grep search, wildcard search o web docs ingestion), system doctor ebong live token savings tracker shoh.",
+        "BanglaCLI 4.2.7 holo Bangladesh o shob developers der jonno modern terminal AI coding agent. Zero-Key Starter AI, Dynamic Free Model Explorer o Auto-Cascade, Multimodal Vision (/image), Multi-Agent WebSocket Mesh, OpenCode-style 3 Modes (Build, Plan & Chat) ebong 12-ti autonomous native tools shoh.",
       trySimulator: "Live Terminal Simulator Try Korun",
       exploreModes: "3 Modes (BUILD, PLAN, CHAT) Dekhun",
       metricByok: "100%",
-      metricByokLabel: "BYOK & Serverless",
+      metricByokLabel: "BYOK & Zero-Key Start",
       metricLang: "3 Languages",
       metricLangLabel: "বাংলা, Banglish, English",
       metricModes: "3 Modes",
@@ -458,41 +458,41 @@ export const translations: Record<Language, TranslationDictionary> = {
       card2Title: "OpenCode 3 Modes",
       card2Desc:
         "Easily switch korun ⚡ BUILD Mode (files create, packages install), 📋 PLAN Mode (read-only safe audit) ebong 💬 CHAT Mode (conversational Q&A & code explanations) er moddhe.",
-      card3Tag: "Privacy First",
-      card3Title: "100% BYOK & Serverless",
+      card3Tag: "Zero Friction & Privacy",
+      card3Title: "Zero-Key Starter AI o BYOK",
       card3Desc:
-        "Majhe kono middleman tracking server nei. Apnar key local system e conf diye encrypted thake ebong direct provider e connection hoy.",
+        "Kono API key charao instant coding shuru korun, sathe ache local .env keys o Ollama auto-discovery. Nijer keys local system e conf diye safe thake.",
       card4Tag: "Autonomous Engine",
-      card4Title: "7-ti Native Tools",
+      card4Title: "12-ti Native Tools",
       card4Desc:
-        "Full-stack apps bananor jonno ache list_files, read_file, write_file, run_command ebong notun grep_search, find_files o fetch_url er moto 7-ti tools.",
-      card5Tag: "Zero Damage",
-      card5Title: "Safety Confirmation Guardrails",
+        "Full-stack apps bananor jonno ache list_files, read_file, write_file, edit_file, run_command, grep_search, find_files, fetch_url, web_search o cross-terminal mesh tools.",
+      card5Tag: "Zero Damage o Multimodal",
+      card5Title: "Safety Guardrails o Vision (/image)",
       card5Desc:
-        "Bhul file overwrite er bhoi nei. File save ba shell commands chalanor aage BanglaCLI explicit confirmation [Y/n/a] ney, sathe ache /diff o /undo.",
-      card6Tag: "Realtime UX",
-      card6Title: "System Doctor o Token Savings",
+        "Bhul file overwrite er bhoi nei [Y/n/a] o /undo thakay. /image command diye screenshot ba UI mockups paste kore instant visual coding analysis korun.",
+      card6Tag: "Infinite Cascade o Mesh",
+      card6Title: "Free Model Explorer o Mesh Network",
       card6Desc:
-        "Automated diagnostic er jonno 'banglacli doctor' run korun. Ar 'banglacli stats' diye live token usage o dollars saved track korun.",
+        "Dynamic free model explorer zero-downtime auto-cascade kore. Ar local WebSocket mesh diye ekadhik terminal windows eksathe collaborate kore.",
     },
     architecture: {
       badge: "System Architecture",
       heading: "BanglaCLI Kibhabe Kaaj Kore",
       subheading:
         "Lightweight reactive agent loop ja apnar natural prompt ke verified filesystem ebong terminal actions e rupantor kore.",
-      step1Title: "Trilingual Input Processing",
+      step1Title: "Trilingual Input & Image Processing",
       step1Desc:
-        "Bangla lipi, Banglish ba English prompts grohon kore actual intention ar coding tools identify kore.",
+        "Bangla lipi, Banglish, English prompts ba /image diye screenshot grohon kore actual intention ar coding tools identify kore.",
       step2Title: "3-Mode Context Controller",
       step2Desc:
         "System prompt, git status o file tree load kore BUILD, PLAN o CHAT rules apply kore.",
-      step3Title: "Direct AI Inference (BYOK)",
+      step3Title: "Zero-Key AI & Model Inference",
       step3Desc:
-        "Google Gemini 2.0 Flash, OpenRouter ba Groq e direct requests pathay zero intermediary latency te.",
-      step4Title: "Guarded Tool Execution",
+        "Zero-Key starter models, Google Gemini, OpenRouter free cascade ba local Ollama te direct connection kore zero intermediary chara.",
+      step4Title: "Guarded 12-Tool & Mesh Execution",
       step4Desc:
-        "File write ba command execute er aage developer confirmation [Y/n/a] niye tarpor execute kore.",
-      toolsTitle: "Native Tools Matrix",
+        "File write ba mesh RPC execution er aage developer confirmation [Y/n/a] niye tarpor execute kore.",
+      toolsTitle: "12-ti Native Tools Matrix",
       envTitle: "Supported Env Variables",
     },
     modes: {

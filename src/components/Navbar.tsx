@@ -35,7 +35,7 @@ export default function Navbar() {
                 Bangla<span className="text-emerald-600 dark:text-emerald-400">CLI</span>
               </span>
               <span className="px-2 py-0.5 text-[10px] font-mono font-bold tracking-wider rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30">
-                v2.0.0
+                v4.2.7
               </span>
             </div>
             <span className="text-[11px] text-slate-500 dark:text-slate-400 -mt-0.5 font-bengali font-semibold truncate max-w-[140px] xs:max-w-none">
